@@ -107,11 +107,26 @@ elsoc_21 <- elsoc_long_2016_2022%>%
   select(idencuesta,ponderador02)%>%
   left_join(pond_21,by="idencuesta")
 
-elsoc_fe <- bind_rows(pond_16,pond_17,pond_18,pond_19,pond_21)
+elsoc_fe <- bind_rows(pond_16,pond_17,pond_18,pond_19,pond_21)%>%
+            select(-pd_muestra)
+
+
+# FACTORES CON ULTIMO AÑO IMPUTADO
+elsoc_fe <- elsoc_long_2016_2022%>%
+  select(idencuesta,ola)%>%
+  left_join(elsoc_fe)%>%
+  group_by(idencuesta)%>%
+  mutate(across(c(pd_elsoc,pd_diseno,pd_nr,pd_sexo,muestra),
+                ~ifelse(is.na(.x),
+                        last(na.omit(.x)),.x)))%>%
+  ungroup()%>%
+  mutate(across(c(pd_elsoc,pd_diseno,pd_nr,pd_sexo,muestra), ~ifelse(is.na(.x),mean(.x,na.rm=TRUE),.x)))%>%
+  arrange(idencuesta)
+
 
 
 # JUNTAR BASES ------------------------------------------------------------
-#saveRDS(elsoc_fe,file="PONDERADOR/factores_expansion.RDS")
+saveRDS(elsoc_fe,file="datos/insumos_ponderadores/factores_expansion.RDS")
 
 
 
