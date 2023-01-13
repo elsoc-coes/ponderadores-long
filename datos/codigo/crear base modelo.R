@@ -1,21 +1,13 @@
 library(tidyverse)
-elsoc_imp <- readr::read_csv("datos/insumos_ponderadores/elsoc_imp.csv")
-CIT <- readr::read_csv("DATOS/CIT/BASES ORI/bases_CIT.csv")
-elsoc_prd <- readRDS("DATOS/PRD/elsoc_prd.RDS")
-
-
-elsoc_imp <- readr::read_csv("DATOS/IMPUTACION/elsoc_imp.csv")%>%
+elsoc_imp <- readr::read_csv("datos/insumos_ponderadores/elsoc_imp.csv")%>%
   mutate(muestra=ifelse(muestra=="Original",1,0),
-         ola=car::recode(ola,'2016=1;2017=2;2018=3;2019=4;2021=5'))
+         ola=car::recode(ola,'2016=1;2017=2;2018=3;2019=4;2021=5;2022=6'))
 
-
-CIT <- readr::read_csv("DATOS/CIT/BASES ORI/bases_CIT.csv")%>%
+CIT <- readr::read_csv("datos/insumos_ponderadores/bases_CIT.csv")%>%
   mutate(muestra=ifelse(muestra=="Original",1,0),
-         ola=car::recode(ola,'2016=1;2017=2;2018=3;2019=4;2021=5'))
+         ola=car::recode(ola,'2016=1;2017=2;2018=3;2019=4;2021=5;2022=6'))
 
-
-
-elsoc_prd <- readRDS("DATOS/PRD/elsoc_prd.RDS")%>%
+elsoc_prd <- readRDS("datos/insumos_ponderadores/elsoc_prd.RDS")%>%
   mutate(muestra=ifelse(muestra==1,1,0))
 
 
@@ -31,7 +23,7 @@ base_modelo <-list(elsoc_imp,
 
 
 
-data.table::fwrite(base_modelo,file = "DATOS/base_modelo_sin_centrar.csv")
+data.table::fwrite(base_modelo,file = "datos/insumos_ponderadores/base_modelo_sin_centrar.csv")
 
 # CENTRAR LAS VARIABLES ---------------------------------------------------
 
@@ -50,7 +42,7 @@ vars_a_centrar<- c("nsnr_total_1ra","nsnr_total_lag","nsnr_median_mod_1ra",
 
 base_modelo <- select(base_modelo,-!!vars_a_centrar)%>%
   bind_cols(bind_cols(lapply(vars_a_centrar,centrar)))%>%
-  mutate(ola_fac=factor(ola,labels = c("2016","2017","2018","2019","2021")),
+  mutate(ola_fac=factor(ola,labels = c("2016","2017","2018","2019","2021","2022")),
          responde=as.numeric(responde=="Responde"))
 
 
@@ -63,7 +55,7 @@ m2 <- base_modelo%>%
   mutate(ola_num=ola_num-1)
 
 
-saveRDS(m1,file="DATOS/m1.RDS")
-saveRDS(m2,file="DATOS/m2.RDS")
+saveRDS(m1,file="datos/insumos_ponderadores/m1.RDS")
+saveRDS(m2,file="datos/insumos_ponderadores/m2.RDS")
 
-data.table::fwrite(base_modelo,file = "DATOS/base_modelo.csv")
+data.table::fwrite(base_modelo,file = "datos/insumos_ponderadores/base_modelo.csv")
