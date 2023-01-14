@@ -70,13 +70,13 @@ back_gee <-function(base,vars,metrica){
 
 bestGEE_QICU<- back_gee(m1,covariables,"QICu")
 
-save(bestGEE_QICU,file = "modelamiento NR/modelos/bestGEE_QICU.RDS",
-     compression_level = 9)
+saveRDS(bestGEE_QICU,file = "modelamiento NR/modelos/bestGEE_QICU.RDS",
+     compress = "bzip2")
 
 
 bestGEE_QICU_m2 <- back_gee(m2,covariables,"QICu")
 
-save(bestGEE_QICU_m2,
+saveRDS(bestGEE_QICU_m2,
         file = "modelamiento NR/modelos/bestGEE_QICU_m2.RDS",
-        compression_level = 9)
+        compress = "bzip2")
 
