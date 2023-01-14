@@ -18,9 +18,8 @@ m2 <- filter(base_modelo_imp,muestra==0)%>%
 
 
 
-bestGEE_QICU <- readRDS("MODELOS/GEE/bestGEE_QICU.RDS")
-bestGEE_QICU_m2 <- readRDS("MODELOS/GEE/bestGEE_QICU_m2.RDS")
-
+bestGEE_QICU_m2 <- readRDS("modelamiento NR/modelos/bestGEE_QICU_m2.RDS")
+bestGEE_QICU <- readRDS("modelamiento NR/modelos/bestGEE_QICU.RDS")
 
 
 # GENERAR PREDICCIONES ----------------------------------------------------
@@ -33,4 +32,4 @@ preds_imp <- bind_rows(m1,m2)%>%
         select(idencuesta,ola,preds_gee)
 
 
-saveRDS(preds_imp,file="PONDERADOR/PREDICCIONES NR/elsoc_preds_imp.RDS")
+saveRDS(preds_imp,file="modelamiento NR/predicciones/elsoc_preds_imp.RDS")
