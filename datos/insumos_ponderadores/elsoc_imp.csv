@@ -184,7 +184,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 1107021,2018,Original,Responde,Ciudades Grandes,110702,Hombre,18 a 29,Técnica,Soltero,2
 1107021,2019,Original,Responde,Ciudades Grandes,110702,Hombre,18 a 29,Universitaria,Soltero,3
 1107021,2021,Original,Responde,Ciudades Grandes,110702,Hombre,18 a 29,Técnica,Soltero,5
-1107021,2022,Original,Responde,Ciudades Grandes,110702,Hombre,18 a 29,Universitaria,Soltero,6
+1107021,2022,Original,Responde,Ciudades Grandes,110702,Hombre,18 a 29,Técnica,Soltero,6
 1107033,2016,Original,Responde,Ciudades Grandes,110703,Hombre,18 a 29,Media,Soltero,0
 1107033,2017,Original,Responde,Ciudades Grandes,110703,Hombre,18 a 29,Media,Soltero,1
 1107033,2018,Original,Responde,Ciudades Grandes,110703,Hombre,18 a 29,Media,Soltero,2
@@ -544,7 +544,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 2101251,2018,Original,Responde,Ciudades Grandes,210125,Mujer,30 a 44,Media,Soltero,2
 2101251,2019,Original,Responde,Ciudades Grandes,210125,Mujer,30 a 44,Técnica,Soltero,3
 2101251,2021,Original,Responde,Ciudades Grandes,210125,Mujer,30 a 44,Media,Soltero,5
-2101251,2022,Original,Responde,Ciudades Grandes,210125,Mujer,30 a 44,Técnica,Soltero,6
+2101251,2022,Original,Responde,Ciudades Grandes,210125,Mujer,30 a 44,Media,Soltero,6
 2101254,2016,Original,Responde,Ciudades Grandes,210125,Mujer,45 a 59,Media,Soltero,0
 2101254,2017,Original,No Responde,Ciudades Grandes,210125,Mujer,45 a 59,Media,Soltero,1
 2101254,2018,Original,No Responde,Ciudades Grandes,210125,Mujer,45 a 59,Media,Soltero,2
@@ -784,7 +784,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 3101182,2018,Original,Responde,Ciudades Grandes,310118,Mujer,18 a 29,Media,Soltero,2
 3101182,2019,Original,Responde,Ciudades Grandes,310118,Mujer,18 a 29,Universitaria,Soltero,3
 3101182,2021,Original,No Responde,Ciudades Grandes,310118,Mujer,18 a 29,Universitaria,Soltero,5
-3101182,2022,Original,No Responde,Ciudades Grandes,310118,Mujer,18 a 29,Universitaria,Soltero,6
+3101182,2022,Original,Responde,Ciudades Grandes,310118,Mujer,18 a 29,Universitaria,Soltero,6
 3101183,2016,Original,Responde,Ciudades Grandes,310118,Hombre,18 a 29,Técnica,En Pareja,0
 3101183,2017,Original,Responde,Ciudades Grandes,310118,Hombre,18 a 29,Media,En Pareja,1
 3101183,2018,Original,Responde,Ciudades Grandes,310118,Hombre,18 a 29,Media,En Pareja,2
@@ -934,7 +934,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 3301021,2018,Original,Responde,Ciudades Medianas,330102,Hombre,18 a 29,Media,Soltero,2
 3301021,2019,Original,Responde,Ciudades Medianas,330102,Hombre,18 a 29,Universitaria,En Pareja,3
 3301021,2021,Original,Responde,Ciudades Medianas,330102,Hombre,18 a 29,Técnica,Soltero,5
-3301021,2022,Original,Responde,Ciudades Medianas,330102,Hombre,18 a 29,Universitaria,Soltero,6
+3301021,2022,Original,Responde,Ciudades Medianas,330102,Hombre,18 a 29,Técnica,Soltero,6
 3301023,2016,Original,Responde,Ciudades Medianas,330102,Hombre,60 0 más,Universitaria,Soltero,0
 3301023,2017,Original,Responde,Ciudades Medianas,330102,Hombre,60 0 más,Universitaria,Soltero,1
 3301023,2018,Original,Responde,Ciudades Medianas,330102,Hombre,60 0 más,Universitaria,Soltero,2
@@ -958,7 +958,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 3301041,2018,Original,Responde,Ciudades Medianas,330104,Mujer,45 a 59,Básica,En Pareja,2
 3301041,2019,Original,Responde,Ciudades Medianas,330104,Mujer,45 a 59,Básica,Soltero,3
 3301041,2021,Original,Responde,Ciudades Medianas,330104,Mujer,45 a 59,Básica,Soltero,5
-3301041,2022,Original,Responde,Ciudades Medianas,330104,Mujer,45 a 59,Media,Soltero,6
+3301041,2022,Original,Responde,Ciudades Medianas,330104,Mujer,45 a 59,Básica,Soltero,6
 3301043,2016,Original,Responde,Ciudades Medianas,330104,Mujer,45 a 59,Media,Soltero,0
 3301043,2017,Original,Responde,Ciudades Medianas,330104,Mujer,45 a 59,Media,Soltero,1
 3301043,2018,Original,Responde,Ciudades Medianas,330104,Mujer,45 a 59,Media,Soltero,2
@@ -1450,7 +1450,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 4102051,2018,Original,Responde,Ciudades Grandes,410205,Mujer,60 0 más,Media,En Pareja,2
 4102051,2019,Original,Responde,Ciudades Grandes,410205,Mujer,60 0 más,Media,En Pareja,3
 4102051,2021,Original,Responde,Ciudades Grandes,410205,Mujer,60 0 más,Media,En Pareja,5
-4102051,2022,Original,Responde,Ciudades Grandes,410205,Mujer,60 0 más,Universitaria,Soltero,6
+4102051,2022,Original,Responde,Ciudades Grandes,410205,Mujer,60 0 más,Media,Soltero,6
 4102052,2016,Original,Responde,Ciudades Grandes,410205,Mujer,45 a 59,Media,En Pareja,0
 4102052,2017,Original,Responde,Ciudades Grandes,410205,Mujer,45 a 59,Media,En Pareja,1
 4102052,2018,Original,Responde,Ciudades Grandes,410205,Mujer,45 a 59,Media,En Pareja,2
@@ -1798,7 +1798,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 4204101,2018,Original,Responde,Ciudades Pequennias,420410,Hombre,30 a 44,Técnica,Soltero,2
 4204101,2019,Original,Responde,Ciudades Pequennias,420410,Hombre,30 a 44,Técnica,Soltero,3
 4204101,2021,Original,No Responde,Ciudades Pequennias,420410,Hombre,30 a 44,Técnica,Soltero,5
-4204101,2022,Original,Responde,Ciudades Pequennias,420410,Hombre,30 a 44,Universitaria,Soltero,6
+4204101,2022,Original,Responde,Ciudades Pequennias,420410,Hombre,30 a 44,Técnica,Soltero,6
 4204102,2016,Original,Responde,Ciudades Pequennias,420410,Mujer,30 a 44,Técnica,En Pareja,0
 4204102,2017,Original,Responde,Ciudades Pequennias,420410,Mujer,30 a 44,Técnica,En Pareja,1
 4204102,2018,Original,Responde,Ciudades Pequennias,420410,Mujer,30 a 44,Media,Soltero,2
@@ -2020,7 +2020,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 4301172,2018,Original,Responde,Ciudades Medianas,430117,Hombre,18 a 29,Media,Soltero,2
 4301172,2019,Original,No Responde,Ciudades Medianas,430117,Hombre,18 a 29,Media,Soltero,3
 4301172,2021,Original,Responde,Ciudades Medianas,430117,Hombre,18 a 29,Media,En Pareja,5
-4301172,2022,Original,Responde,Ciudades Medianas,430117,Hombre,18 a 29,Universitaria,Soltero,6
+4301172,2022,Original,Responde,Ciudades Medianas,430117,Hombre,18 a 29,Media,Soltero,6
 4301173,2016,Original,Responde,Ciudades Medianas,430117,Mujer,18 a 29,Básica,Soltero,0
 4301173,2017,Original,Responde,Ciudades Medianas,430117,Mujer,18 a 29,Básica,Soltero,1
 4301173,2018,Original,Responde,Ciudades Medianas,430117,Mujer,18 a 29,Básica,Soltero,2
@@ -2272,7 +2272,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 5101066,2018,Original,Responde,Gran Valparaiso,510106,Mujer,18 a 29,Media,En Pareja,2
 5101066,2019,Original,Responde,Gran Valparaiso,510106,Mujer,18 a 29,Media,En Pareja,3
 5101066,2021,Original,Responde,Gran Valparaiso,510106,Mujer,18 a 29,Media,En Pareja,5
-5101066,2022,Original,Responde,Gran Valparaiso,510106,Mujer,18 a 29,Universitaria,En Pareja,6
+5101066,2022,Original,Responde,Gran Valparaiso,510106,Mujer,18 a 29,Media,En Pareja,6
 5101067,2016,Original,Responde,Gran Valparaiso,510106,Mujer,45 a 59,Media,Soltero,0
 5101067,2017,Original,Responde,Gran Valparaiso,510106,Mujer,45 a 59,Media,Soltero,1
 5101067,2018,Original,Responde,Gran Valparaiso,510106,Mujer,45 a 59,Media,Soltero,2
@@ -2440,13 +2440,13 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 5101125,2018,Original,Responde,Gran Valparaiso,510112,Mujer,45 a 59,Técnica,En Pareja,2
 5101125,2019,Original,Responde,Gran Valparaiso,510112,Mujer,45 a 59,Media,En Pareja,3
 5101125,2021,Original,Responde,Gran Valparaiso,510112,Mujer,45 a 59,Media,En Pareja,5
-5101125,2022,Original,Responde,Gran Valparaiso,510112,Mujer,45 a 59,Técnica,En Pareja,6
+5101125,2022,Original,Responde,Gran Valparaiso,510112,Mujer,45 a 59,Media,En Pareja,6
 5101126,2016,Original,Responde,Gran Valparaiso,510112,Mujer,30 a 44,Técnica,En Pareja,0
 5101126,2017,Original,Responde,Gran Valparaiso,510112,Mujer,30 a 44,Técnica,En Pareja,1
 5101126,2018,Original,Responde,Gran Valparaiso,510112,Mujer,30 a 44,Técnica,En Pareja,2
 5101126,2019,Original,Responde,Gran Valparaiso,510112,Mujer,30 a 44,Técnica,En Pareja,3
 5101126,2021,Original,Responde,Gran Valparaiso,510112,Mujer,30 a 44,Media,En Pareja,5
-5101126,2022,Original,Responde,Gran Valparaiso,510112,Mujer,30 a 44,Técnica,En Pareja,6
+5101126,2022,Original,Responde,Gran Valparaiso,510112,Mujer,30 a 44,Media,En Pareja,6
 5101131,2016,Original,Responde,Gran Valparaiso,510113,Mujer,60 0 más,Media,En Pareja,0
 5101131,2017,Original,Responde,Gran Valparaiso,510113,Mujer,60 0 más,Básica,En Pareja,1
 5101131,2018,Original,Responde,Gran Valparaiso,510113,Mujer,60 0 más,Básica,En Pareja,2
@@ -2542,7 +2542,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 5101161,2018,Original,Responde,Gran Valparaiso,510116,Mujer,30 a 44,Universitaria,Soltero,2
 5101161,2019,Original,Responde,Gran Valparaiso,510116,Mujer,30 a 44,Universitaria,Soltero,3
 5101161,2021,Original,Responde,Gran Valparaiso,510116,Mujer,30 a 44,Media,Soltero,5
-5101161,2022,Original,Responde,Gran Valparaiso,510116,Mujer,30 a 44,Universitaria,Soltero,6
+5101161,2022,Original,Responde,Gran Valparaiso,510116,Mujer,30 a 44,Técnica,Soltero,6
 5101162,2016,Original,Responde,Gran Valparaiso,510116,Mujer,60 0 más,Media,Soltero,0
 5101162,2017,Original,Responde,Gran Valparaiso,510116,Mujer,60 0 más,Media,Soltero,1
 5101162,2018,Original,Responde,Gran Valparaiso,510116,Mujer,60 0 más,Media,En Pareja,2
@@ -2638,7 +2638,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 5101195,2018,Original,No Responde,Gran Valparaiso,510119,Hombre,18 a 29,Universitaria,Soltero,2
 5101195,2019,Original,No Responde,Gran Valparaiso,510119,Hombre,18 a 29,Universitaria,Soltero,3
 5101195,2021,Original,Responde,Gran Valparaiso,510119,Hombre,18 a 29,Universitaria,En Pareja,5
-5101195,2022,Original,No Responde,Gran Valparaiso,510119,Hombre,18 a 29,Universitaria,En Pareja,6
+5101195,2022,Original,Responde,Gran Valparaiso,510119,Hombre,18 a 29,Universitaria,Soltero,6
 5101196,2016,Original,Responde,Gran Valparaiso,510119,Mujer,18 a 29,Universitaria,Soltero,0
 5101196,2017,Original,Responde,Gran Valparaiso,510119,Mujer,18 a 29,Universitaria,Soltero,1
 5101196,2018,Original,Responde,Gran Valparaiso,510119,Mujer,18 a 29,Media,Soltero,2
@@ -2818,7 +2818,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 5101303,2018,Original,Responde,Ciudades Medianas,510130,Mujer,30 a 44,Universitaria,Soltero,2
 5101303,2019,Original,Responde,Ciudades Medianas,510130,Mujer,30 a 44,Universitaria,Soltero,3
 5101303,2021,Original,Responde,Ciudades Medianas,510130,Mujer,30 a 44,Universitaria,Soltero,5
-5101303,2022,Original,No Responde,Ciudades Medianas,510130,Mujer,30 a 44,Universitaria,Soltero,6
+5101303,2022,Original,Responde,Ciudades Medianas,510130,Mujer,30 a 44,Universitaria,Soltero,6
 5101311,2016,Original,Responde,Ciudades Medianas,510131,Hombre,45 a 59,Media,En Pareja,0
 5101311,2017,Original,No Responde,Ciudades Medianas,510131,Hombre,45 a 59,Media,En Pareja,1
 5101311,2018,Original,Responde,Ciudades Medianas,510131,Hombre,45 a 59,Técnica,En Pareja,2
@@ -2998,7 +2998,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 5101463,2018,Original,Responde,Ciudades Medianas,510146,Mujer,30 a 44,Media,En Pareja,2
 5101463,2019,Original,Responde,Ciudades Medianas,510146,Mujer,30 a 44,Técnica,En Pareja,3
 5101463,2021,Original,Responde,Ciudades Medianas,510146,Mujer,30 a 44,Media,En Pareja,5
-5101463,2022,Original,Responde,Ciudades Medianas,510146,Mujer,30 a 44,Universitaria,En Pareja,6
+5101463,2022,Original,Responde,Ciudades Medianas,510146,Mujer,30 a 44,Media,En Pareja,6
 5101465,2016,Original,Responde,Ciudades Medianas,510146,Hombre,60 0 más,Media,En Pareja,0
 5101465,2017,Original,Responde,Ciudades Medianas,510146,Hombre,60 0 más,Media,En Pareja,1
 5101465,2018,Original,Responde,Ciudades Medianas,510146,Hombre,60 0 más,Media,En Pareja,2
@@ -3718,7 +3718,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 5109281,2018,Original,No Responde,Gran Valparaiso,510928,Mujer,60 0 más,Básica,Soltero,2
 5109281,2019,Original,Responde,Gran Valparaiso,510928,Mujer,60 0 más,Básica,Soltero,3
 5109281,2021,Original,Responde,Gran Valparaiso,510928,Mujer,60 0 más,Básica,Soltero,5
-5109281,2022,Original,Responde,Gran Valparaiso,510928,Mujer,60 0 más,Básica,Soltero,6
+5109281,2022,Original,No Responde,Gran Valparaiso,510928,Mujer,60 0 más,Básica,Soltero,6
 5109282,2016,Original,Responde,Gran Valparaiso,510928,Hombre,18 a 29,Técnica,En Pareja,0
 5109282,2017,Original,Responde,Gran Valparaiso,510928,Hombre,18 a 29,Media,En Pareja,1
 5109282,2018,Original,Responde,Gran Valparaiso,510928,Hombre,18 a 29,Media,Soltero,2
@@ -3730,7 +3730,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 5109283,2018,Original,Responde,Gran Valparaiso,510928,Mujer,45 a 59,Media,En Pareja,2
 5109283,2019,Original,Responde,Gran Valparaiso,510928,Mujer,45 a 59,Media,En Pareja,3
 5109283,2021,Original,No Responde,Gran Valparaiso,510928,Mujer,45 a 59,Media,En Pareja,5
-5109283,2022,Original,Responde,Gran Valparaiso,510928,Mujer,45 a 59,Media,En Pareja,6
+5109283,2022,Original,No Responde,Gran Valparaiso,510928,Mujer,45 a 59,Media,En Pareja,6
 5109284,2016,Original,Responde,Gran Valparaiso,510928,Mujer,18 a 29,Media,Soltero,0
 5109284,2017,Original,Responde,Gran Valparaiso,510928,Mujer,18 a 29,Técnica,Soltero,1
 5109284,2018,Original,Responde,Gran Valparaiso,510928,Mujer,18 a 29,Técnica,Soltero,2
@@ -4102,7 +4102,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 5109394,2018,Original,Responde,Gran Valparaiso,510939,Hombre,18 a 29,Media,En Pareja,2
 5109394,2019,Original,Responde,Gran Valparaiso,510939,Hombre,18 a 29,Media,Soltero,3
 5109394,2021,Original,Responde,Gran Valparaiso,510939,Hombre,18 a 29,Media,Soltero,5
-5109394,2022,Original,Responde,Gran Valparaiso,510939,Hombre,18 a 29,Universitaria,Soltero,6
+5109394,2022,Original,Responde,Gran Valparaiso,510939,Hombre,18 a 29,Media,Soltero,6
 5109395,2016,Original,Responde,Gran Valparaiso,510939,Mujer,18 a 29,Universitaria,Soltero,0
 5109395,2017,Original,Responde,Gran Valparaiso,510939,Mujer,18 a 29,Técnica,Soltero,1
 5109395,2018,Original,Responde,Gran Valparaiso,510939,Mujer,18 a 29,Universitaria,Soltero,2
@@ -5398,7 +5398,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 6101171,2018,Original,Responde,Ciudades Grandes,610117,Hombre,30 a 44,Media,En Pareja,2
 6101171,2019,Original,Responde,Ciudades Grandes,610117,Hombre,30 a 44,Técnica,En Pareja,3
 6101171,2021,Original,Responde,Ciudades Grandes,610117,Hombre,30 a 44,Media,En Pareja,5
-6101171,2022,Original,Responde,Ciudades Grandes,610117,Hombre,30 a 44,Técnica,En Pareja,6
+6101171,2022,Original,Responde,Ciudades Grandes,610117,Hombre,30 a 44,Media,En Pareja,6
 6101172,2016,Original,Responde,Ciudades Grandes,610117,Hombre,45 a 59,Media,En Pareja,0
 6101172,2017,Original,Responde,Ciudades Grandes,610117,Hombre,45 a 59,Media,En Pareja,1
 6101172,2018,Original,No Responde,Ciudades Grandes,610117,Hombre,45 a 59,Media,En Pareja,2
@@ -5536,7 +5536,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 6105073,2018,Original,Responde,Ciudades Pequennias,610507,Hombre,60 0 más,Básica,En Pareja,2
 6105073,2019,Original,No Responde,Ciudades Pequennias,610507,Hombre,60 0 más,Básica,En Pareja,3
 6105073,2021,Original,No Responde,Ciudades Pequennias,610507,Hombre,60 0 más,Básica,En Pareja,5
-6105073,2022,Original,Responde,Ciudades Pequennias,610507,Hombre,60 0 más,Media,En Pareja,6
+6105073,2022,Original,Responde,Ciudades Pequennias,610507,Hombre,60 0 más,Básica,En Pareja,6
 6105074,2016,Original,Responde,Ciudades Pequennias,610507,Hombre,18 a 29,Técnica,En Pareja,0
 6105074,2017,Original,Responde,Ciudades Pequennias,610507,Hombre,18 a 29,Técnica,En Pareja,1
 6105074,2018,Original,Responde,Ciudades Pequennias,610507,Hombre,18 a 29,Universitaria,En Pareja,2
@@ -5596,7 +5596,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 6108031,2018,Original,Responde,Ciudades Grandes,610803,Mujer,18 a 29,Media,Soltero,2
 6108031,2019,Original,Responde,Ciudades Grandes,610803,Mujer,18 a 29,Técnica,Soltero,3
 6108031,2021,Original,Responde,Ciudades Grandes,610803,Mujer,18 a 29,Técnica,Soltero,5
-6108031,2022,Original,Responde,Ciudades Grandes,610803,Mujer,18 a 29,Universitaria,Soltero,6
+6108031,2022,Original,Responde,Ciudades Grandes,610803,Mujer,18 a 29,Media,Soltero,6
 6108033,2016,Original,Responde,Ciudades Grandes,610803,Hombre,60 0 más,Básica,Soltero,0
 6108033,2017,Original,Responde,Ciudades Grandes,610803,Hombre,60 0 más,Básica,Soltero,1
 6108033,2018,Original,Responde,Ciudades Grandes,610803,Hombre,60 0 más,Básica,Soltero,2
@@ -5824,7 +5824,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 7101071,2018,Original,Responde,Ciudades Grandes,710107,Mujer,60 0 más,Básica,En Pareja,2
 7101071,2019,Original,Responde,Ciudades Grandes,710107,Mujer,60 0 más,Básica,En Pareja,3
 7101071,2021,Original,Responde,Ciudades Grandes,710107,Mujer,60 0 más,Básica,En Pareja,5
-7101071,2022,Original,Responde,Ciudades Grandes,710107,Mujer,60 0 más,Media,En Pareja,6
+7101071,2022,Original,Responde,Ciudades Grandes,710107,Mujer,60 0 más,Básica,En Pareja,6
 7101072,2016,Original,Responde,Ciudades Grandes,710107,Hombre,60 0 más,Básica,En Pareja,0
 7101072,2017,Original,Responde,Ciudades Grandes,710107,Hombre,60 0 más,Básica,En Pareja,1
 7101072,2018,Original,Responde,Ciudades Grandes,710107,Hombre,60 0 más,Básica,En Pareja,2
@@ -5848,7 +5848,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 7101092,2018,Original,Responde,Ciudades Grandes,710109,Mujer,60 0 más,Técnica,Soltero,2
 7101092,2019,Original,Responde,Ciudades Grandes,710109,Mujer,60 0 más,Media,Soltero,3
 7101092,2021,Original,Responde,Ciudades Grandes,710109,Mujer,60 0 más,Media,Soltero,5
-7101092,2022,Original,Responde,Ciudades Grandes,710109,Mujer,60 0 más,Técnica,Soltero,6
+7101092,2022,Original,Responde,Ciudades Grandes,710109,Mujer,60 0 más,Media,Soltero,6
 7101093,2016,Original,Responde,Ciudades Grandes,710109,Mujer,45 a 59,Media,Soltero,0
 7101093,2017,Original,Responde,Ciudades Grandes,710109,Mujer,45 a 59,Media,Soltero,1
 7101093,2018,Original,Responde,Ciudades Grandes,710109,Mujer,45 a 59,Media,Soltero,2
@@ -5962,7 +5962,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 7101212,2018,Original,Responde,Ciudades Grandes,710121,Mujer,30 a 44,Media,Soltero,2
 7101212,2019,Original,Responde,Ciudades Grandes,710121,Mujer,30 a 44,Media,Soltero,3
 7101212,2021,Original,Responde,Ciudades Grandes,710121,Mujer,30 a 44,Media,Soltero,5
-7101212,2022,Original,Responde,Ciudades Grandes,710121,Mujer,30 a 44,Técnica,Soltero,6
+7101212,2022,Original,Responde,Ciudades Grandes,710121,Mujer,30 a 44,Media,Soltero,6
 7101213,2016,Original,Responde,Ciudades Grandes,710121,Mujer,45 a 59,Básica,Soltero,0
 7101213,2017,Original,Responde,Ciudades Grandes,710121,Mujer,45 a 59,Básica,Soltero,1
 7101213,2018,Original,Responde,Ciudades Grandes,710121,Mujer,45 a 59,Básica,Soltero,2
@@ -6022,7 +6022,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 7102031,2018,Original,Responde,Ciudades Medianas,710203,Mujer,60 0 más,Técnica,Soltero,2
 7102031,2019,Original,Responde,Ciudades Medianas,710203,Mujer,60 0 más,Media,Soltero,3
 7102031,2021,Original,Responde,Ciudades Medianas,710203,Mujer,60 0 más,Media,Soltero,5
-7102031,2022,Original,Responde,Ciudades Medianas,710203,Mujer,60 0 más,Técnica,Soltero,6
+7102031,2022,Original,Responde,Ciudades Medianas,710203,Mujer,60 0 más,Media,Soltero,6
 7102042,2016,Original,Responde,Ciudades Medianas,710204,Hombre,30 a 44,Universitaria,En Pareja,0
 7102042,2017,Original,Responde,Ciudades Medianas,710204,Hombre,30 a 44,Universitaria,En Pareja,1
 7102042,2018,Original,Responde,Ciudades Medianas,710204,Hombre,30 a 44,Universitaria,En Pareja,2
@@ -6490,7 +6490,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 7401112,2018,Original,Responde,Ciudades Medianas,740111,Mujer,30 a 44,Media,Soltero,2
 7401112,2019,Original,Responde,Ciudades Medianas,740111,Mujer,30 a 44,Media,Soltero,3
 7401112,2021,Original,Responde,Ciudades Medianas,740111,Mujer,30 a 44,Media,Soltero,5
-7401112,2022,Original,Responde,Ciudades Medianas,740111,Mujer,30 a 44,Técnica,En Pareja,6
+7401112,2022,Original,Responde,Ciudades Medianas,740111,Mujer,30 a 44,Media,En Pareja,6
 7401122,2016,Original,Responde,Ciudades Medianas,740112,Mujer,30 a 44,Técnica,En Pareja,0
 7401122,2017,Original,No Responde,Ciudades Medianas,740112,Mujer,30 a 44,Técnica,En Pareja,1
 7401122,2018,Original,No Responde,Ciudades Medianas,740112,Mujer,30 a 44,Técnica,En Pareja,2
@@ -6604,7 +6604,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 7401211,2018,Original,Responde,Ciudades Medianas,740121,Mujer,45 a 59,Básica,En Pareja,2
 7401211,2019,Original,Responde,Ciudades Medianas,740121,Mujer,45 a 59,Básica,En Pareja,3
 7401211,2021,Original,Responde,Ciudades Medianas,740121,Mujer,45 a 59,Básica,En Pareja,5
-7401211,2022,Original,Responde,Ciudades Medianas,740121,Mujer,45 a 59,Media,En Pareja,6
+7401211,2022,Original,Responde,Ciudades Medianas,740121,Mujer,45 a 59,Básica,En Pareja,6
 7401212,2016,Original,Responde,Ciudades Medianas,740121,Mujer,30 a 44,Básica,En Pareja,0
 7401212,2017,Original,Responde,Ciudades Medianas,740121,Mujer,30 a 44,Básica,En Pareja,1
 7401212,2018,Original,No Responde,Ciudades Medianas,740121,Mujer,30 a 44,Básica,En Pareja,2
@@ -7096,7 +7096,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 8101044,2018,Original,Responde,Gran Concepcion,810104,Mujer,30 a 44,Técnica,Soltero,2
 8101044,2019,Original,Responde,Gran Concepcion,810104,Mujer,30 a 44,Técnica,Soltero,3
 8101044,2021,Original,Responde,Gran Concepcion,810104,Mujer,30 a 44,Media,Soltero,5
-8101044,2022,Original,Responde,Gran Concepcion,810104,Mujer,30 a 44,Técnica,Soltero,6
+8101044,2022,Original,Responde,Gran Concepcion,810104,Mujer,30 a 44,Media,Soltero,6
 8101048,2016,Original,Responde,Gran Concepcion,810104,Mujer,30 a 44,Universitaria,Soltero,0
 8101048,2017,Original,Responde,Gran Concepcion,810104,Mujer,30 a 44,Técnica,Soltero,1
 8101048,2018,Original,Responde,Gran Concepcion,810104,Mujer,30 a 44,Media,En Pareja,2
@@ -7216,7 +7216,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 8101078,2018,Original,Responde,Gran Concepcion,810107,Mujer,30 a 44,Media,Soltero,2
 8101078,2019,Original,Responde,Gran Concepcion,810107,Mujer,30 a 44,Técnica,Soltero,3
 8101078,2021,Original,Responde,Gran Concepcion,810107,Mujer,30 a 44,Técnica,Soltero,5
-8101078,2022,Original,Responde,Gran Concepcion,810107,Mujer,30 a 44,Universitaria,Soltero,6
+8101078,2022,Original,Responde,Gran Concepcion,810107,Mujer,30 a 44,Técnica,Soltero,6
 8101079,2016,Original,Responde,Gran Concepcion,810107,Mujer,60 0 más,Básica,Soltero,0
 8101079,2017,Original,Responde,Gran Concepcion,810107,Mujer,60 0 más,Básica,Soltero,1
 8101079,2018,Original,Responde,Gran Concepcion,810107,Mujer,60 0 más,Básica,Soltero,2
@@ -7300,7 +7300,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 8101103,2018,Original,Responde,Gran Concepcion,810110,Hombre,45 a 59,Técnica,Soltero,2
 8101103,2019,Original,Responde,Gran Concepcion,810110,Hombre,45 a 59,Universitaria,Soltero,3
 8101103,2021,Original,Responde,Gran Concepcion,810110,Hombre,45 a 59,Técnica,En Pareja,5
-8101103,2022,Original,Responde,Gran Concepcion,810110,Hombre,45 a 59,Universitaria,En Pareja,6
+8101103,2022,Original,Responde,Gran Concepcion,810110,Hombre,45 a 59,Técnica,En Pareja,6
 8101104,2016,Original,Responde,Gran Concepcion,810110,Mujer,30 a 44,Media,En Pareja,0
 8101104,2017,Original,Responde,Gran Concepcion,810110,Mujer,30 a 44,Media,En Pareja,1
 8101104,2018,Original,Responde,Gran Concepcion,810110,Mujer,30 a 44,Media,En Pareja,2
@@ -7354,7 +7354,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 8101115,2018,Original,Responde,Gran Concepcion,810111,Hombre,30 a 44,Técnica,En Pareja,2
 8101115,2019,Original,Responde,Gran Concepcion,810111,Hombre,30 a 44,Técnica,Soltero,3
 8101115,2021,Original,Responde,Gran Concepcion,810111,Hombre,30 a 44,Técnica,Soltero,5
-8101115,2022,Original,Responde,Gran Concepcion,810111,Hombre,30 a 44,Universitaria,En Pareja,6
+8101115,2022,Original,Responde,Gran Concepcion,810111,Hombre,30 a 44,Técnica,En Pareja,6
 8101116,2016,Original,Responde,Gran Concepcion,810111,Hombre,60 0 más,Básica,Soltero,0
 8101116,2017,Original,Responde,Gran Concepcion,810111,Hombre,60 0 más,Básica,Soltero,1
 8101116,2018,Original,Responde,Gran Concepcion,810111,Hombre,60 0 más,Media,Soltero,2
@@ -7594,7 +7594,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 8101246,2018,Original,Responde,Gran Concepcion,810124,Mujer,60 0 más,Media,En Pareja,2
 8101246,2019,Original,Responde,Gran Concepcion,810124,Mujer,60 0 más,Media,En Pareja,3
 8101246,2021,Original,Responde,Gran Concepcion,810124,Mujer,60 0 más,Media,En Pareja,5
-8101246,2022,Original,Responde,Gran Concepcion,810124,Mujer,60 0 más,Universitaria,En Pareja,6
+8101246,2022,Original,Responde,Gran Concepcion,810124,Mujer,60 0 más,Media,En Pareja,6
 8101247,2016,Original,Responde,Gran Concepcion,810124,Mujer,60 0 más,Técnica,Soltero,0
 8101247,2017,Original,Responde,Gran Concepcion,810124,Mujer,60 0 más,Técnica,Soltero,1
 8101247,2018,Original,Responde,Gran Concepcion,810124,Mujer,60 0 más,Técnica,Soltero,2
@@ -7714,7 +7714,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 8102052,2018,Original,Responde,Gran Concepcion,810205,Mujer,30 a 44,Técnica,En Pareja,2
 8102052,2019,Original,Responde,Gran Concepcion,810205,Mujer,30 a 44,Técnica,En Pareja,3
 8102052,2021,Original,Responde,Gran Concepcion,810205,Mujer,30 a 44,Técnica,En Pareja,5
-8102052,2022,Original,Responde,Gran Concepcion,810205,Mujer,30 a 44,Universitaria,En Pareja,6
+8102052,2022,Original,Responde,Gran Concepcion,810205,Mujer,30 a 44,Técnica,En Pareja,6
 8102054,2016,Original,Responde,Gran Concepcion,810205,Hombre,18 a 29,Técnica,Soltero,0
 8102054,2017,Original,Responde,Gran Concepcion,810205,Hombre,18 a 29,Técnica,Soltero,1
 8102054,2018,Original,Responde,Gran Concepcion,810205,Hombre,18 a 29,Técnica,Soltero,2
@@ -7984,7 +7984,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 8103083,2018,Original,Responde,Gran Concepcion,810308,Hombre,45 a 59,Media,En Pareja,2
 8103083,2019,Original,Responde,Gran Concepcion,810308,Hombre,45 a 59,Media,En Pareja,3
 8103083,2021,Original,Responde,Gran Concepcion,810308,Hombre,45 a 59,Media,En Pareja,5
-8103083,2022,Original,Responde,Gran Concepcion,810308,Hombre,45 a 59,Técnica,Soltero,6
+8103083,2022,Original,Responde,Gran Concepcion,810308,Hombre,45 a 59,Media,Soltero,6
 8103084,2016,Original,Responde,Gran Concepcion,810308,Hombre,30 a 44,Universitaria,Soltero,0
 8103084,2017,Original,Responde,Gran Concepcion,810308,Hombre,30 a 44,Universitaria,Soltero,1
 8103084,2018,Original,Responde,Gran Concepcion,810308,Hombre,30 a 44,Universitaria,Soltero,2
@@ -8434,7 +8434,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 8108056,2018,Original,Responde,Gran Concepcion,810805,Mujer,30 a 44,Técnica,En Pareja,2
 8108056,2019,Original,Responde,Gran Concepcion,810805,Mujer,30 a 44,Media,En Pareja,3
 8108056,2021,Original,Responde,Gran Concepcion,810805,Mujer,30 a 44,Técnica,En Pareja,5
-8108056,2022,Original,Responde,Gran Concepcion,810805,Mujer,30 a 44,Universitaria,En Pareja,6
+8108056,2022,Original,Responde,Gran Concepcion,810805,Mujer,30 a 44,Técnica,En Pareja,6
 8108058,2016,Original,Responde,Gran Concepcion,810805,Mujer,60 0 más,Básica,En Pareja,0
 8108058,2017,Original,Responde,Gran Concepcion,810805,Mujer,60 0 más,Básica,En Pareja,1
 8108058,2018,Original,Responde,Gran Concepcion,810805,Mujer,60 0 más,Básica,En Pareja,2
@@ -8932,7 +8932,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 8110114,2018,Original,Responde,Gran Concepcion,811011,Mujer,45 a 59,Técnica,En Pareja,2
 8110114,2019,Original,Responde,Gran Concepcion,811011,Mujer,45 a 59,Técnica,En Pareja,3
 8110114,2021,Original,Responde,Gran Concepcion,811011,Mujer,45 a 59,Técnica,En Pareja,5
-8110114,2022,Original,Responde,Gran Concepcion,811011,Mujer,45 a 59,Universitaria,En Pareja,6
+8110114,2022,Original,Responde,Gran Concepcion,811011,Mujer,45 a 59,Técnica,En Pareja,6
 8110115,2016,Original,Responde,Gran Concepcion,811011,Mujer,45 a 59,Media,Soltero,0
 8110115,2017,Original,Responde,Gran Concepcion,811011,Mujer,45 a 59,Media,Soltero,1
 8110115,2018,Original,Responde,Gran Concepcion,811011,Mujer,45 a 59,Media,Soltero,2
@@ -9004,7 +9004,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 8110151,2018,Original,Responde,Gran Concepcion,811015,Hombre,45 a 59,Universitaria,En Pareja,2
 8110151,2019,Original,Responde,Gran Concepcion,811015,Hombre,45 a 59,Básica,En Pareja,3
 8110151,2021,Original,No Responde,Gran Concepcion,811015,Hombre,45 a 59,Básica,En Pareja,5
-8110151,2022,Original,Responde,Gran Concepcion,811015,Hombre,45 a 59,Universitaria,En Pareja,6
+8110151,2022,Original,Responde,Gran Concepcion,811015,Hombre,45 a 59,Técnica,En Pareja,6
 8110152,2016,Original,Responde,Gran Concepcion,811015,Mujer,30 a 44,Media,Soltero,0
 8110152,2017,Original,Responde,Gran Concepcion,811015,Mujer,30 a 44,Media,Soltero,1
 8110152,2018,Original,Responde,Gran Concepcion,811015,Mujer,30 a 44,Media,Soltero,2
@@ -9760,7 +9760,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 8404073,2018,Original,Responde,Ciudades Pequennias,840407,Mujer,60 0 más,Media,En Pareja,2
 8404073,2019,Original,Responde,Ciudades Pequennias,840407,Mujer,60 0 más,Media,En Pareja,3
 8404073,2021,Original,Responde,Ciudades Pequennias,840407,Mujer,60 0 más,Media,En Pareja,5
-8404073,2022,Original,Responde,Ciudades Pequennias,840407,Mujer,60 0 más,Técnica,En Pareja,6
+8404073,2022,Original,Responde,Ciudades Pequennias,840407,Mujer,60 0 más,Media,En Pareja,6
 8404081,2016,Original,Responde,Ciudades Pequennias,840408,Mujer,30 a 44,Universitaria,Soltero,0
 8404081,2017,Original,Responde,Ciudades Pequennias,840408,Mujer,30 a 44,Técnica,Soltero,1
 8404081,2018,Original,No Responde,Ciudades Pequennias,840408,Mujer,30 a 44,Técnica,Soltero,2
@@ -9880,7 +9880,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 8413081,2018,Original,Responde,Ciudades Pequennias,841308,Mujer,45 a 59,Media,En Pareja,2
 8413081,2019,Original,Responde,Ciudades Pequennias,841308,Mujer,45 a 59,Media,En Pareja,3
 8413081,2021,Original,Responde,Ciudades Pequennias,841308,Mujer,45 a 59,Media,En Pareja,5
-8413081,2022,Original,Responde,Ciudades Pequennias,841308,Mujer,45 a 59,Técnica,En Pareja,6
+8413081,2022,Original,Responde,Ciudades Pequennias,841308,Mujer,45 a 59,Media,En Pareja,6
 8413082,2016,Original,Responde,Ciudades Pequennias,841308,Hombre,18 a 29,Universitaria,En Pareja,0
 8413082,2017,Original,No Responde,Ciudades Pequennias,841308,Hombre,18 a 29,Universitaria,En Pareja,1
 8413082,2018,Original,No Responde,Ciudades Pequennias,841308,Hombre,18 a 29,Universitaria,En Pareja,2
@@ -9952,7 +9952,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 9101031,2018,Original,Responde,Ciudades Grandes,910103,Hombre,30 a 44,Básica,Soltero,2
 9101031,2019,Original,Responde,Ciudades Grandes,910103,Hombre,30 a 44,Básica,Soltero,3
 9101031,2021,Original,Responde,Ciudades Grandes,910103,Hombre,30 a 44,Básica,Soltero,5
-9101031,2022,Original,Responde,Ciudades Grandes,910103,Hombre,30 a 44,Media,Soltero,6
+9101031,2022,Original,Responde,Ciudades Grandes,910103,Hombre,30 a 44,Básica,Soltero,6
 9101032,2016,Original,Responde,Ciudades Grandes,910103,Hombre,18 a 29,Media,En Pareja,0
 9101032,2017,Original,No Responde,Ciudades Grandes,910103,Hombre,18 a 29,Media,En Pareja,1
 9101032,2018,Original,No Responde,Ciudades Grandes,910103,Hombre,18 a 29,Media,En Pareja,2
@@ -10210,7 +10210,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 9101213,2018,Original,No Responde,Ciudades Grandes,910121,Hombre,18 a 29,Universitaria,Soltero,2
 9101213,2019,Original,No Responde,Ciudades Grandes,910121,Hombre,18 a 29,Universitaria,Soltero,3
 9101213,2021,Original,Responde,Ciudades Grandes,910121,Hombre,18 a 29,Técnica,Soltero,5
-9101213,2022,Original,Responde,Ciudades Grandes,910121,Hombre,18 a 29,Universitaria,En Pareja,6
+9101213,2022,Original,Responde,Ciudades Grandes,910121,Hombre,18 a 29,Técnica,En Pareja,6
 9101221,2016,Original,Responde,Ciudades Grandes,910122,Hombre,18 a 29,Media,Soltero,0
 9101221,2017,Original,Responde,Ciudades Grandes,910122,Hombre,18 a 29,Media,Soltero,1
 9101221,2018,Original,Responde,Ciudades Grandes,910122,Hombre,18 a 29,Media,Soltero,2
@@ -10606,7 +10606,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 9109042,2018,Original,Responde,Ciudades Pequennias,910904,Mujer,45 a 59,Técnica,En Pareja,2
 9109042,2019,Original,Responde,Ciudades Pequennias,910904,Mujer,45 a 59,Técnica,En Pareja,3
 9109042,2021,Original,Responde,Ciudades Pequennias,910904,Mujer,45 a 59,Media,Soltero,5
-9109042,2022,Original,Responde,Ciudades Pequennias,910904,Mujer,45 a 59,Universitaria,En Pareja,6
+9109042,2022,Original,Responde,Ciudades Pequennias,910904,Mujer,45 a 59,Técnica,En Pareja,6
 9109043,2016,Original,Responde,Ciudades Pequennias,910904,Mujer,60 0 más,Media,Soltero,0
 9109043,2017,Original,Responde,Ciudades Pequennias,910904,Mujer,60 0 más,Media,Soltero,1
 9109043,2018,Original,Responde,Ciudades Pequennias,910904,Mujer,60 0 más,Media,Soltero,2
@@ -10894,19 +10894,19 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 9112012,2018,Original,Responde,Ciudades Grandes,911201,Hombre,30 a 44,Media,Soltero,2
 9112012,2019,Original,Responde,Ciudades Grandes,911201,Hombre,30 a 44,Media,Soltero,3
 9112012,2021,Original,No Responde,Ciudades Grandes,911201,Hombre,30 a 44,Media,Soltero,5
-9112012,2022,Original,Responde,Ciudades Grandes,911201,Hombre,30 a 44,Técnica,Soltero,6
+9112012,2022,Original,Responde,Ciudades Grandes,911201,Hombre,30 a 44,Media,Soltero,6
 9112013,2016,Original,Responde,Ciudades Grandes,911201,Mujer,45 a 59,Técnica,En Pareja,0
 9112013,2017,Original,Responde,Ciudades Grandes,911201,Mujer,45 a 59,Técnica,En Pareja,1
 9112013,2018,Original,Responde,Ciudades Grandes,911201,Mujer,45 a 59,Técnica,En Pareja,2
 9112013,2019,Original,Responde,Ciudades Grandes,911201,Mujer,45 a 59,Media,Soltero,3
 9112013,2021,Original,Responde,Ciudades Grandes,911201,Mujer,45 a 59,Media,Soltero,5
-9112013,2022,Original,Responde,Ciudades Grandes,911201,Mujer,45 a 59,Técnica,Soltero,6
+9112013,2022,Original,Responde,Ciudades Grandes,911201,Mujer,45 a 59,Media,Soltero,6
 9112021,2016,Original,Responde,Ciudades Grandes,911202,Mujer,60 0 más,Básica,Soltero,0
 9112021,2017,Original,Responde,Ciudades Grandes,911202,Mujer,60 0 más,Básica,Soltero,1
 9112021,2018,Original,Responde,Ciudades Grandes,911202,Mujer,60 0 más,Básica,Soltero,2
 9112021,2019,Original,Responde,Ciudades Grandes,911202,Mujer,60 0 más,Básica,Soltero,3
 9112021,2021,Original,Responde,Ciudades Grandes,911202,Mujer,60 0 más,Básica,Soltero,5
-9112021,2022,Original,Responde,Ciudades Grandes,911202,Mujer,60 0 más,Media,Soltero,6
+9112021,2022,Original,Responde,Ciudades Grandes,911202,Mujer,60 0 más,Básica,Soltero,6
 9112022,2016,Original,Responde,Ciudades Grandes,911202,Mujer,45 a 59,Básica,En Pareja,0
 9112022,2017,Original,Responde,Ciudades Grandes,911202,Mujer,45 a 59,Media,En Pareja,1
 9112022,2018,Original,No Responde,Ciudades Grandes,911202,Mujer,45 a 59,Media,En Pareja,2
@@ -11518,7 +11518,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 10101162,2018,Original,Responde,Ciudades Grandes,1010116,Mujer,45 a 59,Media,Soltero,2
 10101162,2019,Original,Responde,Ciudades Grandes,1010116,Mujer,45 a 59,Media,Soltero,3
 10101162,2021,Original,No Responde,Ciudades Grandes,1010116,Mujer,45 a 59,Media,Soltero,5
-10101162,2022,Original,Responde,Ciudades Grandes,1010116,Mujer,45 a 59,Media,Soltero,6
+10101162,2022,Original,No Responde,Ciudades Grandes,1010116,Mujer,45 a 59,Media,Soltero,6
 10101163,2016,Original,Responde,Ciudades Grandes,1010116,Hombre,45 a 59,Media,Soltero,0
 10101163,2017,Original,Responde,Ciudades Grandes,1010116,Hombre,45 a 59,Media,Soltero,1
 10101163,2018,Original,Responde,Ciudades Grandes,1010116,Hombre,45 a 59,Media,Soltero,2
@@ -11590,7 +11590,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 10101211,2018,Original,Responde,Ciudades Grandes,1010121,Mujer,45 a 59,Universitaria,Soltero,2
 10101211,2019,Original,Responde,Ciudades Grandes,1010121,Mujer,45 a 59,Universitaria,Soltero,3
 10101211,2021,Original,Responde,Ciudades Grandes,1010121,Mujer,45 a 59,Técnica,Soltero,5
-10101211,2022,Original,Responde,Ciudades Grandes,1010121,Mujer,45 a 59,Universitaria,Soltero,6
+10101211,2022,Original,Responde,Ciudades Grandes,1010121,Mujer,45 a 59,Técnica,Soltero,6
 10101222,2016,Original,Responde,Ciudades Grandes,1010122,Hombre,18 a 29,Básica,En Pareja,0
 10101222,2017,Original,No Responde,Ciudades Grandes,1010122,Hombre,18 a 29,Básica,En Pareja,1
 10101222,2018,Original,No Responde,Ciudades Grandes,1010122,Hombre,18 a 29,Básica,En Pareja,2
@@ -11956,7 +11956,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 13101102,2018,Original,Responde,Gran Santiago,1310110,Mujer,30 a 44,Media,En Pareja,2
 13101102,2019,Original,Responde,Gran Santiago,1310110,Mujer,30 a 44,Media,En Pareja,3
 13101102,2021,Original,Responde,Gran Santiago,1310110,Mujer,30 a 44,Media,Soltero,5
-13101102,2022,Original,Responde,Gran Santiago,1310110,Mujer,30 a 44,Técnica,Soltero,6
+13101102,2022,Original,Responde,Gran Santiago,1310110,Mujer,30 a 44,Media,Soltero,6
 13101103,2016,Original,Responde,Gran Santiago,1310110,Hombre,30 a 44,Universitaria,Soltero,0
 13101103,2017,Original,Responde,Gran Santiago,1310110,Hombre,30 a 44,Universitaria,Soltero,1
 13101103,2018,Original,Responde,Gran Santiago,1310110,Hombre,30 a 44,Universitaria,Soltero,2
@@ -12184,7 +12184,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 13102021,2018,Original,Responde,Gran Santiago,1310202,Hombre,45 a 59,Técnica,En Pareja,2
 13102021,2019,Original,No Responde,Gran Santiago,1310202,Hombre,45 a 59,Técnica,En Pareja,3
 13102021,2021,Original,Responde,Gran Santiago,1310202,Hombre,45 a 59,Técnica,En Pareja,5
-13102021,2022,Original,Responde,Gran Santiago,1310202,Hombre,45 a 59,Universitaria,En Pareja,6
+13102021,2022,Original,Responde,Gran Santiago,1310202,Hombre,45 a 59,Técnica,En Pareja,6
 13102022,2016,Original,Responde,Gran Santiago,1310202,Mujer,45 a 59,Media,Soltero,0
 13102022,2017,Original,No Responde,Gran Santiago,1310202,Mujer,45 a 59,Media,Soltero,1
 13102022,2018,Original,No Responde,Gran Santiago,1310202,Mujer,45 a 59,Media,Soltero,2
@@ -12232,7 +12232,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 13102038,2018,Original,Responde,Gran Santiago,1310203,Mujer,45 a 59,Básica,En Pareja,2
 13102038,2019,Original,Responde,Gran Santiago,1310203,Mujer,45 a 59,Básica,En Pareja,3
 13102038,2021,Original,Responde,Gran Santiago,1310203,Mujer,45 a 59,Básica,Soltero,5
-13102038,2022,Original,Responde,Gran Santiago,1310203,Mujer,45 a 59,Media,En Pareja,6
+13102038,2022,Original,Responde,Gran Santiago,1310203,Mujer,45 a 59,Básica,En Pareja,6
 13103011,2016,Original,Responde,Gran Santiago,1310301,Hombre,30 a 44,Media,En Pareja,0
 13103011,2017,Original,No Responde,Gran Santiago,1310301,Hombre,30 a 44,Media,En Pareja,1
 13103011,2018,Original,Responde,Gran Santiago,1310301,Hombre,30 a 44,Media,En Pareja,2
@@ -12370,7 +12370,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 13104042,2018,Original,Responde,Gran Santiago,1310404,Mujer,30 a 44,Media,En Pareja,2
 13104042,2019,Original,Responde,Gran Santiago,1310404,Mujer,30 a 44,Técnica,En Pareja,3
 13104042,2021,Original,Responde,Gran Santiago,1310404,Mujer,30 a 44,Media,En Pareja,5
-13104042,2022,Original,Responde,Gran Santiago,1310404,Mujer,30 a 44,Universitaria,En Pareja,6
+13104042,2022,Original,Responde,Gran Santiago,1310404,Mujer,30 a 44,Técnica,En Pareja,6
 13104043,2016,Original,Responde,Gran Santiago,1310404,Hombre,60 0 más,Técnica,En Pareja,0
 13104043,2017,Original,Responde,Gran Santiago,1310404,Hombre,60 0 más,Técnica,En Pareja,1
 13104043,2018,Original,Responde,Gran Santiago,1310404,Hombre,60 0 más,Media,En Pareja,2
@@ -12400,7 +12400,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 13105015,2018,Original,Responde,Gran Santiago,1310501,Mujer,45 a 59,Media,En Pareja,2
 13105015,2019,Original,Responde,Gran Santiago,1310501,Mujer,45 a 59,Media,Soltero,3
 13105015,2021,Original,Responde,Gran Santiago,1310501,Mujer,45 a 59,Media,Soltero,5
-13105015,2022,Original,Responde,Gran Santiago,1310501,Mujer,45 a 59,Técnica,Soltero,6
+13105015,2022,Original,Responde,Gran Santiago,1310501,Mujer,45 a 59,Media,Soltero,6
 13105016,2016,Original,Responde,Gran Santiago,1310501,Mujer,30 a 44,Universitaria,En Pareja,0
 13105016,2017,Original,Responde,Gran Santiago,1310501,Mujer,30 a 44,Universitaria,En Pareja,1
 13105016,2018,Original,Responde,Gran Santiago,1310501,Mujer,30 a 44,Universitaria,En Pareja,2
@@ -12437,24 +12437,6 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 13105026,2019,Original,Responde,Gran Santiago,1310502,Hombre,30 a 44,Media,Soltero,3
 13105026,2021,Original,Responde,Gran Santiago,1310502,Hombre,30 a 44,Media,En Pareja,5
 13105026,2022,Original,Responde,Gran Santiago,1310502,Hombre,30 a 44,Media,Soltero,6
-13105027,2016,Original,Responde,Gran Santiago,1310502,Hombre,60 0 más,Media,En Pareja,0
-13105027,2017,Original,Responde,Gran Santiago,1310502,Hombre,60 0 más,Media,En Pareja,1
-13105027,2018,Original,No Responde,Gran Santiago,1310502,Hombre,60 0 más,Media,En Pareja,2
-13105027,2019,Original,No Responde,Gran Santiago,1310502,Hombre,60 0 más,Media,En Pareja,3
-13105027,2021,Original,No Responde,Gran Santiago,1310502,Hombre,60 0 más,Media,En Pareja,5
-13105027,2022,Original,Responde,Gran Santiago,1310502,Hombre,60 0 más,Media,En Pareja,6
-13105027,2016,Original,Responde,Gran Santiago,1310502,Hombre,60 0 más,Media,En Pareja,0
-13105027,2017,Original,Responde,Gran Santiago,1310502,Hombre,60 0 más,Media,En Pareja,1
-13105027,2018,Original,No Responde,Gran Santiago,1310502,Hombre,60 0 más,Media,En Pareja,2
-13105027,2019,Original,No Responde,Gran Santiago,1310502,Hombre,60 0 más,Media,En Pareja,3
-13105027,2021,Original,No Responde,Gran Santiago,1310502,Hombre,60 0 más,Media,En Pareja,5
-13105027,2022,Original,Responde,Gran Santiago,1310502,Hombre,60 0 más,Media,En Pareja,6
-13105027,2016,Original,Responde,Gran Santiago,1310502,Hombre,60 0 más,Media,En Pareja,0
-13105027,2017,Original,Responde,Gran Santiago,1310502,Hombre,60 0 más,Media,En Pareja,1
-13105027,2018,Original,No Responde,Gran Santiago,1310502,Hombre,60 0 más,Media,En Pareja,2
-13105027,2019,Original,No Responde,Gran Santiago,1310502,Hombre,60 0 más,Media,En Pareja,3
-13105027,2021,Original,No Responde,Gran Santiago,1310502,Hombre,60 0 más,Media,En Pareja,5
-13105027,2022,Original,Responde,Gran Santiago,1310502,Hombre,60 0 más,Media,En Pareja,6
 13105027,2016,Original,Responde,Gran Santiago,1310502,Hombre,60 0 más,Media,En Pareja,0
 13105027,2017,Original,Responde,Gran Santiago,1310502,Hombre,60 0 más,Media,En Pareja,1
 13105027,2018,Original,No Responde,Gran Santiago,1310502,Hombre,60 0 más,Media,En Pareja,2
@@ -12526,7 +12508,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 13106012,2018,Original,Responde,Gran Santiago,1310601,Mujer,60 0 más,Básica,Soltero,2
 13106012,2019,Original,Responde,Gran Santiago,1310601,Mujer,60 0 más,Media,Soltero,3
 13106012,2021,Original,Responde,Gran Santiago,1310601,Mujer,60 0 más,Básica,Soltero,5
-13106012,2022,Original,Responde,Gran Santiago,1310601,Mujer,60 0 más,Media,Soltero,6
+13106012,2022,Original,Responde,Gran Santiago,1310601,Mujer,60 0 más,Básica,Soltero,6
 13106014,2016,Original,Responde,Gran Santiago,1310601,Mujer,18 a 29,Universitaria,Soltero,0
 13106014,2017,Original,Responde,Gran Santiago,1310601,Mujer,18 a 29,Técnica,Soltero,1
 13106014,2018,Original,Responde,Gran Santiago,1310601,Mujer,18 a 29,Universitaria,Soltero,2
@@ -13558,7 +13540,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 13116013,2018,Original,Responde,Gran Santiago,1311601,Mujer,30 a 44,Media,En Pareja,2
 13116013,2019,Original,Responde,Gran Santiago,1311601,Mujer,30 a 44,Media,En Pareja,3
 13116013,2021,Original,Responde,Gran Santiago,1311601,Mujer,30 a 44,Media,En Pareja,5
-13116013,2022,Original,Responde,Gran Santiago,1311601,Mujer,30 a 44,Técnica,Soltero,6
+13116013,2022,Original,Responde,Gran Santiago,1311601,Mujer,30 a 44,Media,Soltero,6
 13116014,2016,Original,Responde,Gran Santiago,1311601,Mujer,30 a 44,Media,En Pareja,0
 13116014,2017,Original,Responde,Gran Santiago,1311601,Mujer,30 a 44,Media,En Pareja,1
 13116014,2018,Original,Responde,Gran Santiago,1311601,Mujer,30 a 44,Media,En Pareja,2
@@ -13882,7 +13864,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 13119054,2018,Original,No Responde,Gran Santiago,1311905,Hombre,45 a 59,Media,En Pareja,2
 13119054,2019,Original,Responde,Gran Santiago,1311905,Hombre,45 a 59,Técnica,En Pareja,3
 13119054,2021,Original,Responde,Gran Santiago,1311905,Hombre,45 a 59,Media,En Pareja,5
-13119054,2022,Original,Responde,Gran Santiago,1311905,Hombre,45 a 59,Técnica,En Pareja,6
+13119054,2022,Original,Responde,Gran Santiago,1311905,Hombre,45 a 59,Media,En Pareja,6
 13119055,2016,Original,Responde,Gran Santiago,1311905,Hombre,18 a 29,Media,Soltero,0
 13119055,2017,Original,Responde,Gran Santiago,1311905,Hombre,18 a 29,Media,Soltero,1
 13119055,2018,Original,Responde,Gran Santiago,1311905,Hombre,18 a 29,Media,En Pareja,2
@@ -15184,7 +15166,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 13129016,2018,Original,Responde,Gran Santiago,1312901,Hombre,18 a 29,Universitaria,Soltero,2
 13129016,2019,Original,Responde,Gran Santiago,1312901,Hombre,18 a 29,Técnica,Soltero,3
 13129016,2021,Original,Responde,Gran Santiago,1312901,Hombre,18 a 29,Técnica,Soltero,5
-13129016,2022,Original,Responde,Gran Santiago,1312901,Hombre,18 a 29,Universitaria,Soltero,6
+13129016,2022,Original,Responde,Gran Santiago,1312901,Hombre,18 a 29,Técnica,Soltero,6
 13129021,2016,Original,Responde,Gran Santiago,1312902,Mujer,60 0 más,Media,En Pareja,0
 13129021,2017,Original,Responde,Gran Santiago,1312902,Mujer,60 0 más,Básica,En Pareja,1
 13129021,2018,Original,Responde,Gran Santiago,1312902,Mujer,60 0 más,Media,En Pareja,2
@@ -15562,7 +15544,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 13201096,2018,Original,Responde,Gran Santiago,1320109,Mujer,45 a 59,Técnica,En Pareja,2
 13201096,2019,Original,Responde,Gran Santiago,1320109,Mujer,45 a 59,Técnica,En Pareja,3
 13201096,2021,Original,Responde,Gran Santiago,1320109,Mujer,45 a 59,Técnica,En Pareja,5
-13201096,2022,Original,Responde,Gran Santiago,1320109,Mujer,45 a 59,Universitaria,En Pareja,6
+13201096,2022,Original,Responde,Gran Santiago,1320109,Mujer,45 a 59,Técnica,En Pareja,6
 13201097,2016,Original,Responde,Gran Santiago,1320109,Hombre,45 a 59,Media,En Pareja,0
 13201097,2017,Original,Responde,Gran Santiago,1320109,Hombre,45 a 59,Media,En Pareja,1
 13201097,2018,Original,Responde,Gran Santiago,1320109,Hombre,45 a 59,Media,En Pareja,2
@@ -15808,7 +15790,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 13301013,2018,Original,Responde,Ciudades Medianas,1330101,Mujer,45 a 59,Básica,En Pareja,2
 13301013,2019,Original,Responde,Ciudades Medianas,1330101,Mujer,45 a 59,Básica,En Pareja,3
 13301013,2021,Original,Responde,Ciudades Medianas,1330101,Mujer,45 a 59,Básica,En Pareja,5
-13301013,2022,Original,Responde,Ciudades Medianas,1330101,Mujer,45 a 59,Media,En Pareja,6
+13301013,2022,Original,Responde,Ciudades Medianas,1330101,Mujer,45 a 59,Básica,En Pareja,6
 13301021,2016,Original,Responde,Ciudades Medianas,1330102,Hombre,45 a 59,Media,En Pareja,0
 13301021,2017,Original,Responde,Ciudades Medianas,1330102,Hombre,45 a 59,Media,En Pareja,1
 13301021,2018,Original,Responde,Ciudades Medianas,1330102,Hombre,45 a 59,Media,En Pareja,2
@@ -16300,7 +16282,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 13401061,2018,Original,Responde,Gran Santiago,1340106,Mujer,45 a 59,Media,En Pareja,2
 13401061,2019,Original,Responde,Gran Santiago,1340106,Mujer,45 a 59,Media,En Pareja,3
 13401061,2021,Original,No Responde,Gran Santiago,1340106,Mujer,45 a 59,Media,En Pareja,5
-13401061,2022,Original,Responde,Gran Santiago,1340106,Mujer,45 a 59,Técnica,En Pareja,6
+13401061,2022,Original,Responde,Gran Santiago,1340106,Mujer,45 a 59,Media,En Pareja,6
 13401062,2016,Original,Responde,Gran Santiago,1340106,Mujer,18 a 29,Técnica,Soltero,0
 13401062,2017,Original,Responde,Gran Santiago,1340106,Mujer,18 a 29,Universitaria,Soltero,1
 13401062,2018,Original,No Responde,Gran Santiago,1340106,Mujer,18 a 29,Universitaria,Soltero,2
@@ -16546,7 +16528,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 13603032,2018,Original,Responde,Ciudades Pequennias,1360303,Mujer,45 a 59,Técnica,Soltero,2
 13603032,2019,Original,Responde,Ciudades Pequennias,1360303,Mujer,45 a 59,Media,Soltero,3
 13603032,2021,Original,Responde,Ciudades Pequennias,1360303,Mujer,45 a 59,Media,Soltero,5
-13603032,2022,Original,Responde,Ciudades Pequennias,1360303,Mujer,45 a 59,Técnica,Soltero,6
+13603032,2022,Original,Responde,Ciudades Pequennias,1360303,Mujer,45 a 59,Media,Soltero,6
 13603042,2016,Original,Responde,Ciudades Pequennias,1360304,Mujer,60 0 más,Básica,Soltero,0
 13603042,2017,Original,Responde,Ciudades Pequennias,1360304,Mujer,60 0 más,Básica,Soltero,1
 13603042,2018,Original,Responde,Ciudades Pequennias,1360304,Mujer,60 0 más,Básica,Soltero,2
@@ -16672,7 +16654,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 13603104,2018,Original,Responde,Ciudades Pequennias,1360310,Mujer,30 a 44,Media,Soltero,2
 13603104,2019,Original,Responde,Ciudades Pequennias,1360310,Mujer,30 a 44,Media,En Pareja,3
 13603104,2021,Original,Responde,Ciudades Pequennias,1360310,Mujer,30 a 44,Media,Soltero,5
-13603104,2022,Original,Responde,Ciudades Pequennias,1360310,Mujer,30 a 44,Técnica,En Pareja,6
+13603104,2022,Original,Responde,Ciudades Pequennias,1360310,Mujer,30 a 44,Media,En Pareja,6
 13603111,2016,Original,Responde,Ciudades Pequennias,1360311,Mujer,45 a 59,Media,En Pareja,0
 13603111,2017,Original,Responde,Ciudades Pequennias,1360311,Mujer,45 a 59,Media,En Pareja,1
 13603111,2018,Original,Responde,Ciudades Pequennias,1360311,Mujer,45 a 59,Técnica,En Pareja,2
@@ -16696,7 +16678,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 13603116,2018,Original,Responde,Ciudades Pequennias,1360311,Mujer,30 a 44,Media,En Pareja,2
 13603116,2019,Original,Responde,Ciudades Pequennias,1360311,Mujer,30 a 44,Media,Soltero,3
 13603116,2021,Original,Responde,Ciudades Pequennias,1360311,Mujer,30 a 44,Media,En Pareja,5
-13603116,2022,Original,Responde,Ciudades Pequennias,1360311,Mujer,30 a 44,Técnica,Soltero,6
+13603116,2022,Original,Responde,Ciudades Pequennias,1360311,Mujer,30 a 44,Media,Soltero,6
 13603133,2016,Original,Responde,Ciudades Pequennias,1360313,Mujer,45 a 59,Media,Soltero,0
 13603133,2017,Original,Responde,Ciudades Pequennias,1360313,Mujer,45 a 59,Media,Soltero,1
 13603133,2018,Original,Responde,Ciudades Pequennias,1360313,Mujer,45 a 59,Media,Soltero,2
@@ -16732,7 +16714,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 13603163,2018,Original,Responde,Ciudades Pequennias,1360316,Mujer,45 a 59,Técnica,Soltero,2
 13603163,2019,Original,Responde,Ciudades Pequennias,1360316,Mujer,45 a 59,Técnica,Soltero,3
 13603163,2021,Original,Responde,Ciudades Pequennias,1360316,Mujer,45 a 59,Media,Soltero,5
-13603163,2022,Original,Responde,Ciudades Pequennias,1360316,Mujer,45 a 59,Universitaria,Soltero,6
+13603163,2022,Original,Responde,Ciudades Pequennias,1360316,Mujer,45 a 59,Técnica,Soltero,6
 13603164,2016,Original,Responde,Ciudades Pequennias,1360316,Hombre,45 a 59,Media,En Pareja,0
 13603164,2017,Original,Responde,Ciudades Pequennias,1360316,Hombre,45 a 59,Media,En Pareja,1
 13603164,2018,Original,Responde,Ciudades Pequennias,1360316,Hombre,45 a 59,Media,En Pareja,2
@@ -17682,7 +17664,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 11070722,2018,Refresco,Responde,Ciudades Grandes,110707,Mujer,30 a 44,Media,En Pareja,2
 11070722,2019,Refresco,Responde,Ciudades Grandes,110707,Mujer,30 a 44,Media,Soltero,3
 11070722,2021,Refresco,Responde,Ciudades Grandes,110707,Mujer,30 a 44,Técnica,En Pareja,5
-11070722,2022,Refresco,Responde,Ciudades Grandes,110707,Mujer,30 a 44,Universitaria,En Pareja,6
+11070722,2022,Refresco,Responde,Ciudades Grandes,110707,Mujer,30 a 44,Media,En Pareja,6
 11070723,2018,Refresco,Responde,Ciudades Grandes,110707,Hombre,60 0 más,Media,En Pareja,2
 11070723,2019,Refresco,Responde,Ciudades Grandes,110707,Hombre,60 0 más,Media,En Pareja,3
 11070723,2021,Refresco,Responde,Ciudades Grandes,110707,Hombre,60 0 más,Media,En Pareja,5
@@ -17896,7 +17878,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 31011524,2018,Refresco,Responde,Ciudades Grandes,310115,Mujer,45 a 59,Básica,Soltero,2
 31011524,2019,Refresco,Responde,Ciudades Grandes,310115,Mujer,45 a 59,Media,Soltero,3
 31011524,2021,Refresco,Responde,Ciudades Grandes,310115,Mujer,45 a 59,Básica,Soltero,5
-31011524,2022,Refresco,Responde,Ciudades Grandes,310115,Mujer,45 a 59,Media,En Pareja,6
+31011524,2022,Refresco,Responde,Ciudades Grandes,310115,Mujer,45 a 59,Básica,En Pareja,6
 31011525,2018,Refresco,Responde,Ciudades Grandes,310115,Mujer,18 a 29,Universitaria,Soltero,2
 31011525,2019,Refresco,Responde,Ciudades Grandes,310115,Mujer,18 a 29,Universitaria,Soltero,3
 31011525,2021,Refresco,Responde,Ciudades Grandes,310115,Mujer,18 a 29,Universitaria,Soltero,5
@@ -17924,7 +17906,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 31011722,2018,Refresco,Responde,Ciudades Grandes,310117,Mujer,18 a 29,Básica,Soltero,2
 31011722,2019,Refresco,Responde,Ciudades Grandes,310117,Mujer,18 a 29,Media,Soltero,3
 31011722,2021,Refresco,Responde,Ciudades Grandes,310117,Mujer,18 a 29,Básica,Soltero,5
-31011722,2022,Refresco,Responde,Ciudades Grandes,310117,Mujer,18 a 29,Media,Soltero,6
+31011722,2022,Refresco,Responde,Ciudades Grandes,310117,Mujer,18 a 29,Básica,Soltero,6
 31011723,2018,Refresco,Responde,Ciudades Grandes,310117,Hombre,30 a 44,Media,En Pareja,2
 31011723,2019,Refresco,No Responde,Ciudades Grandes,310117,Hombre,30 a 44,Media,En Pareja,3
 31011723,2021,Refresco,Responde,Ciudades Grandes,310117,Hombre,30 a 44,Media,En Pareja,5
@@ -17948,7 +17930,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 31011923,2018,Refresco,Responde,Ciudades Grandes,310119,Hombre,18 a 29,Media,Soltero,2
 31011923,2019,Refresco,Responde,Ciudades Grandes,310119,Hombre,18 a 29,Universitaria,Soltero,3
 31011923,2021,Refresco,Responde,Ciudades Grandes,310119,Hombre,18 a 29,Técnica,Soltero,5
-31011923,2022,Refresco,Responde,Ciudades Grandes,310119,Hombre,18 a 29,Universitaria,En Pareja,6
+31011923,2022,Refresco,Responde,Ciudades Grandes,310119,Hombre,18 a 29,Técnica,En Pareja,6
 31011924,2018,Refresco,Responde,Ciudades Grandes,310119,Hombre,30 a 44,Media,En Pareja,2
 31011924,2019,Refresco,No Responde,Ciudades Grandes,310119,Hombre,30 a 44,Media,En Pareja,3
 31011924,2021,Refresco,No Responde,Ciudades Grandes,310119,Hombre,30 a 44,Media,En Pareja,5
@@ -18160,7 +18142,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 41011422,2018,Refresco,Responde,Ciudades Grandes,410114,Mujer,30 a 44,Media,En Pareja,2
 41011422,2019,Refresco,Responde,Ciudades Grandes,410114,Mujer,30 a 44,Técnica,En Pareja,3
 41011422,2021,Refresco,Responde,Ciudades Grandes,410114,Mujer,30 a 44,Media,Soltero,5
-41011422,2022,Refresco,Responde,Ciudades Grandes,410114,Mujer,30 a 44,Técnica,En Pareja,6
+41011422,2022,Refresco,Responde,Ciudades Grandes,410114,Mujer,30 a 44,Media,En Pareja,6
 41011423,2018,Refresco,Responde,Ciudades Grandes,410114,Mujer,60 0 más,Media,En Pareja,2
 41011423,2019,Refresco,Responde,Ciudades Grandes,410114,Mujer,60 0 más,Media,En Pareja,3
 41011423,2021,Refresco,Responde,Ciudades Grandes,410114,Mujer,60 0 más,Media,En Pareja,5
@@ -18276,7 +18258,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 41060426,2018,Refresco,Responde,Ciudades Pequennias,410604,Mujer,60 0 más,Básica,En Pareja,2
 41060426,2019,Refresco,Responde,Ciudades Pequennias,410604,Mujer,60 0 más,Básica,En Pareja,3
 41060426,2021,Refresco,Responde,Ciudades Pequennias,410604,Mujer,60 0 más,Básica,En Pareja,5
-41060426,2022,Refresco,Responde,Ciudades Pequennias,410604,Mujer,60 0 más,Media,En Pareja,6
+41060426,2022,Refresco,Responde,Ciudades Pequennias,410604,Mujer,60 0 más,Básica,En Pareja,6
 41060521,2018,Refresco,Responde,Ciudades Pequennias,410605,Mujer,30 a 44,Universitaria,Soltero,2
 41060521,2019,Refresco,Responde,Ciudades Pequennias,410605,Mujer,30 a 44,Universitaria,Soltero,3
 41060521,2021,Refresco,No Responde,Ciudades Pequennias,410605,Mujer,30 a 44,Universitaria,Soltero,5
@@ -18348,7 +18330,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 51010328,2018,Refresco,Responde,Gran Valparaiso,510103,Mujer,60 0 más,Universitaria,Soltero,2
 51010328,2019,Refresco,Responde,Gran Valparaiso,510103,Mujer,60 0 más,Técnica,Soltero,3
 51010328,2021,Refresco,No Responde,Gran Valparaiso,510103,Mujer,60 0 más,Técnica,Soltero,5
-51010328,2022,Refresco,No Responde,Gran Valparaiso,510103,Mujer,60 0 más,Técnica,Soltero,6
+51010328,2022,Refresco,Responde,Gran Valparaiso,510103,Mujer,60 0 más,Técnica,En Pareja,6
 51010521,2018,Refresco,Responde,Gran Valparaiso,510105,Hombre,30 a 44,Media,Soltero,2
 51010521,2019,Refresco,Responde,Gran Valparaiso,510105,Hombre,30 a 44,Media,Soltero,3
 51010521,2021,Refresco,No Responde,Gran Valparaiso,510105,Hombre,30 a 44,Media,Soltero,5
@@ -18460,7 +18442,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 51012125,2018,Refresco,Responde,Gran Valparaiso,510121,Hombre,30 a 44,Técnica,En Pareja,2
 51012125,2019,Refresco,Responde,Gran Valparaiso,510121,Hombre,30 a 44,Técnica,En Pareja,3
 51012125,2021,Refresco,Responde,Gran Valparaiso,510121,Hombre,30 a 44,Técnica,En Pareja,5
-51012125,2022,Refresco,Responde,Gran Valparaiso,510121,Hombre,30 a 44,Universitaria,En Pareja,6
+51012125,2022,Refresco,Responde,Gran Valparaiso,510121,Hombre,30 a 44,Técnica,En Pareja,6
 51012126,2018,Refresco,Responde,Gran Valparaiso,510121,Hombre,30 a 44,Técnica,Soltero,2
 51012126,2019,Refresco,Responde,Gran Valparaiso,510121,Hombre,30 a 44,Técnica,Soltero,3
 51012126,2021,Refresco,Responde,Gran Valparaiso,510121,Hombre,30 a 44,Técnica,En Pareja,5
@@ -19160,7 +19142,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 57010525,2018,Refresco,Responde,Ciudades Medianas,570105,Mujer,60 0 más,Básica,Soltero,2
 57010525,2019,Refresco,Responde,Ciudades Medianas,570105,Mujer,60 0 más,Básica,Soltero,3
 57010525,2021,Refresco,Responde,Ciudades Medianas,570105,Mujer,60 0 más,Básica,Soltero,5
-57010525,2022,Refresco,Responde,Ciudades Medianas,570105,Mujer,60 0 más,Media,Soltero,6
+57010525,2022,Refresco,Responde,Ciudades Medianas,570105,Mujer,60 0 más,Básica,Soltero,6
 57010526,2018,Refresco,Responde,Ciudades Medianas,570105,Mujer,45 a 59,Media,En Pareja,2
 57010526,2019,Refresco,Responde,Ciudades Medianas,570105,Mujer,45 a 59,Media,En Pareja,3
 57010526,2021,Refresco,Responde,Ciudades Medianas,570105,Mujer,45 a 59,Media,En Pareja,5
@@ -19316,7 +19298,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 57012525,2018,Refresco,Responde,Ciudades Medianas,570125,Hombre,30 a 44,Universitaria,Soltero,2
 57012525,2019,Refresco,Responde,Ciudades Medianas,570125,Hombre,30 a 44,Técnica,Soltero,3
 57012525,2021,Refresco,Responde,Ciudades Medianas,570125,Hombre,30 a 44,Técnica,Soltero,5
-57012525,2022,Refresco,Responde,Ciudades Medianas,570125,Hombre,30 a 44,Universitaria,Soltero,6
+57012525,2022,Refresco,Responde,Ciudades Medianas,570125,Hombre,30 a 44,Técnica,Soltero,6
 57012527,2018,Refresco,Responde,Ciudades Medianas,570125,Mujer,18 a 29,Técnica,Soltero,2
 57012527,2019,Refresco,Responde,Ciudades Medianas,570125,Mujer,18 a 29,Técnica,Soltero,3
 57012527,2021,Refresco,Responde,Ciudades Medianas,570125,Mujer,18 a 29,Técnica,Soltero,5
@@ -20668,7 +20650,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 81101526,2018,Refresco,Responde,Gran Concepcion,811015,Hombre,30 a 44,Técnica,En Pareja,2
 81101526,2019,Refresco,Responde,Gran Concepcion,811015,Hombre,30 a 44,Media,En Pareja,3
 81101526,2021,Refresco,Responde,Gran Concepcion,811015,Hombre,30 a 44,Técnica,En Pareja,5
-81101526,2022,Refresco,Responde,Gran Concepcion,811015,Hombre,30 a 44,Universitaria,En Pareja,6
+81101526,2022,Refresco,Responde,Gran Concepcion,811015,Hombre,30 a 44,Técnica,En Pareja,6
 81101527,2018,Refresco,Responde,Gran Concepcion,811015,Mujer,18 a 29,Universitaria,Soltero,2
 81101527,2019,Refresco,Responde,Gran Concepcion,811015,Mujer,18 a 29,Universitaria,Soltero,3
 81101527,2021,Refresco,No Responde,Gran Concepcion,811015,Mujer,18 a 29,Universitaria,Soltero,5
@@ -20772,7 +20754,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 81120525,2018,Refresco,Responde,Gran Concepcion,811205,Hombre,18 a 29,Técnica,En Pareja,2
 81120525,2019,Refresco,Responde,Gran Concepcion,811205,Hombre,18 a 29,Técnica,En Pareja,3
 81120525,2021,Refresco,Responde,Gran Concepcion,811205,Hombre,18 a 29,Técnica,En Pareja,5
-81120525,2022,Refresco,Responde,Gran Concepcion,811205,Hombre,18 a 29,Universitaria,En Pareja,6
+81120525,2022,Refresco,Responde,Gran Concepcion,811205,Hombre,18 a 29,Técnica,En Pareja,6
 81120527,2018,Refresco,Responde,Gran Concepcion,811205,Hombre,30 a 44,Técnica,Soltero,2
 81120527,2019,Refresco,No Responde,Gran Concepcion,811205,Hombre,30 a 44,Técnica,Soltero,3
 81120527,2021,Refresco,No Responde,Gran Concepcion,811205,Hombre,30 a 44,Técnica,Soltero,5
@@ -20876,7 +20858,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 84040423,2018,Refresco,Responde,Ciudades Pequennias,840404,Mujer,60 0 más,Básica,En Pareja,2
 84040423,2019,Refresco,Responde,Ciudades Pequennias,840404,Mujer,60 0 más,Básica,En Pareja,3
 84040423,2021,Refresco,Responde,Ciudades Pequennias,840404,Mujer,60 0 más,Básica,En Pareja,5
-84040423,2022,Refresco,Responde,Ciudades Pequennias,840404,Mujer,60 0 más,Media,En Pareja,6
+84040423,2022,Refresco,Responde,Ciudades Pequennias,840404,Mujer,60 0 más,Básica,En Pareja,6
 84040425,2018,Refresco,Responde,Ciudades Pequennias,840404,Hombre,45 a 59,Media,En Pareja,2
 84040425,2019,Refresco,Responde,Ciudades Pequennias,840404,Hombre,45 a 59,Media,En Pareja,3
 84040425,2021,Refresco,No Responde,Ciudades Pequennias,840404,Hombre,45 a 59,Media,En Pareja,5
@@ -21036,11 +21018,11 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 84131026,2018,Refresco,Responde,Ciudades Pequennias,841310,Mujer,18 a 29,Media,Soltero,2
 84131026,2019,Refresco,Responde,Ciudades Pequennias,841310,Mujer,18 a 29,Universitaria,Soltero,3
 84131026,2021,Refresco,Responde,Ciudades Pequennias,841310,Mujer,18 a 29,Media,Soltero,5
-84131026,2022,Refresco,Responde,Ciudades Pequennias,841310,Mujer,18 a 29,Universitaria,Soltero,6
+84131026,2022,Refresco,Responde,Ciudades Pequennias,841310,Hombre,18 a 29,Universitaria,Soltero,6
 84131028,2018,Refresco,Responde,Ciudades Pequennias,841310,Hombre,45 a 59,Básica,En Pareja,2
 84131028,2019,Refresco,Responde,Ciudades Pequennias,841310,Hombre,45 a 59,Básica,En Pareja,3
 84131028,2021,Refresco,Responde,Ciudades Pequennias,841310,Hombre,45 a 59,Básica,En Pareja,5
-84131028,2022,Refresco,Responde,Ciudades Pequennias,841310,Hombre,45 a 59,Media,Soltero,6
+84131028,2022,Refresco,Responde,Ciudades Pequennias,841310,Hombre,45 a 59,Básica,Soltero,6
 84131124,2018,Refresco,Responde,Ciudades Pequennias,841311,Mujer,60 0 más,Básica,En Pareja,2
 84131124,2019,Refresco,Responde,Ciudades Pequennias,841311,Mujer,60 0 más,Media,En Pareja,3
 84131124,2021,Refresco,No Responde,Ciudades Pequennias,841311,Mujer,60 0 más,Media,En Pareja,5
@@ -21760,7 +21742,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 112010924,2018,Refresco,Responde,Ciudades Pequennias,1120109,Mujer,30 a 44,Básica,En Pareja,2
 112010924,2019,Refresco,Responde,Ciudades Pequennias,1120109,Mujer,30 a 44,Técnica,En Pareja,3
 112010924,2021,Refresco,Responde,Ciudades Pequennias,1120109,Mujer,30 a 44,Media,En Pareja,5
-112010924,2022,Refresco,Responde,Ciudades Pequennias,1120109,Mujer,30 a 44,Técnica,En Pareja,6
+112010924,2022,Refresco,Responde,Ciudades Pequennias,1120109,Mujer,30 a 44,Media,En Pareja,6
 131010729,2018,Refresco,Responde,Gran Santiago,1310107,Mujer,30 a 44,Universitaria,En Pareja,2
 131010729,2019,Refresco,Responde,Gran Santiago,1310107,Mujer,30 a 44,Universitaria,En Pareja,3
 131010729,2021,Refresco,No Responde,Gran Santiago,1310107,Mujer,30 a 44,Universitaria,En Pareja,5
@@ -22212,7 +22194,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 131080232,2018,Refresco,Responde,Gran Santiago,1310802,Mujer,45 a 59,Técnica,Soltero,2
 131080232,2019,Refresco,Responde,Gran Santiago,1310802,Mujer,45 a 59,Técnica,Soltero,3
 131080232,2021,Refresco,Responde,Gran Santiago,1310802,Mujer,45 a 59,Media,Soltero,5
-131080232,2022,Refresco,Responde,Gran Santiago,1310802,Mujer,45 a 59,Universitaria,Soltero,6
+131080232,2022,Refresco,Responde,Gran Santiago,1310802,Mujer,45 a 59,Técnica,Soltero,6
 131080233,2018,Refresco,Responde,Gran Santiago,1310802,Hombre,30 a 44,Básica,Soltero,2
 131080233,2019,Refresco,No Responde,Gran Santiago,1310802,Hombre,30 a 44,Básica,Soltero,3
 131080233,2021,Refresco,No Responde,Gran Santiago,1310802,Hombre,30 a 44,Básica,Soltero,5
@@ -22296,7 +22278,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 131100526,2018,Refresco,Responde,Gran Santiago,1311005,Mujer,45 a 59,Técnica,Soltero,2
 131100526,2019,Refresco,Responde,Gran Santiago,1311005,Mujer,45 a 59,Técnica,Soltero,3
 131100526,2021,Refresco,Responde,Gran Santiago,1311005,Mujer,45 a 59,Media,Soltero,5
-131100526,2022,Refresco,Responde,Gran Santiago,1311005,Mujer,45 a 59,Universitaria,Soltero,6
+131100526,2022,Refresco,Responde,Gran Santiago,1311005,Mujer,45 a 59,Técnica,Soltero,6
 131100823,2018,Refresco,Responde,Gran Santiago,1311008,Hombre,30 a 44,Básica,En Pareja,2
 131100823,2019,Refresco,Responde,Gran Santiago,1311008,Hombre,30 a 44,Básica,Soltero,3
 131100823,2021,Refresco,Responde,Gran Santiago,1311008,Hombre,30 a 44,Básica,En Pareja,5
@@ -22536,7 +22518,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 131160225,2018,Refresco,Responde,Gran Santiago,1311602,Hombre,30 a 44,Media,En Pareja,2
 131160225,2019,Refresco,Responde,Gran Santiago,1311602,Hombre,30 a 44,Media,En Pareja,3
 131160225,2021,Refresco,Responde,Gran Santiago,1311602,Hombre,30 a 44,Media,En Pareja,5
-131160225,2022,Refresco,Responde,Gran Santiago,1311602,Hombre,30 a 44,Técnica,Soltero,6
+131160225,2022,Refresco,Responde,Gran Santiago,1311602,Hombre,30 a 44,Media,Soltero,6
 131160226,2018,Refresco,Responde,Gran Santiago,1311602,Hombre,18 a 29,Técnica,Soltero,2
 131160226,2019,Refresco,Responde,Gran Santiago,1311602,Hombre,18 a 29,Media,Soltero,3
 131160226,2021,Refresco,No Responde,Gran Santiago,1311602,Hombre,18 a 29,Media,Soltero,5
@@ -22624,7 +22606,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 131191227,2018,Refresco,Responde,Gran Santiago,1311912,Mujer,18 a 29,Universitaria,En Pareja,2
 131191227,2019,Refresco,Responde,Gran Santiago,1311912,Mujer,18 a 29,Universitaria,En Pareja,3
 131191227,2021,Refresco,Responde,Gran Santiago,1311912,Mujer,18 a 29,Técnica,En Pareja,5
-131191227,2022,Refresco,Responde,Gran Santiago,1311912,Mujer,18 a 29,Universitaria,En Pareja,6
+131191227,2022,Refresco,Responde,Gran Santiago,1311912,Mujer,18 a 29,Técnica,En Pareja,6
 131191228,2018,Refresco,Responde,Gran Santiago,1311912,Mujer,45 a 59,Técnica,Soltero,2
 131191228,2019,Refresco,Responde,Gran Santiago,1311912,Mujer,45 a 59,Técnica,Soltero,3
 131191228,2021,Refresco,No Responde,Gran Santiago,1311912,Mujer,45 a 59,Técnica,Soltero,5
@@ -22732,7 +22714,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 131210228,2018,Refresco,Responde,Gran Santiago,1312102,Mujer,30 a 44,Media,En Pareja,2
 131210228,2019,Refresco,Responde,Gran Santiago,1312102,Mujer,30 a 44,Media,En Pareja,3
 131210228,2021,Refresco,No Responde,Gran Santiago,1312102,Mujer,30 a 44,Media,En Pareja,5
-131210228,2022,Refresco,Responde,Gran Santiago,1312102,Mujer,30 a 44,Técnica,En Pareja,6
+131210228,2022,Refresco,Responde,Gran Santiago,1312102,Mujer,30 a 44,Media,En Pareja,6
 131210321,2018,Refresco,Responde,Gran Santiago,1312103,Mujer,30 a 44,Técnica,Soltero,2
 131210321,2019,Refresco,Responde,Gran Santiago,1312103,Mujer,30 a 44,Técnica,Soltero,3
 131210321,2021,Refresco,Responde,Gran Santiago,1312103,Mujer,30 a 44,Técnica,Soltero,5
@@ -23280,7 +23262,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 131310324,2018,Refresco,Responde,Gran Santiago,1313103,Mujer,18 a 29,Media,Soltero,2
 131310324,2019,Refresco,Responde,Gran Santiago,1313103,Mujer,18 a 29,Media,Soltero,3
 131310324,2021,Refresco,Responde,Gran Santiago,1313103,Mujer,18 a 29,Media,Soltero,5
-131310324,2022,Refresco,Responde,Gran Santiago,1313103,Mujer,18 a 29,Universitaria,En Pareja,6
+131310324,2022,Refresco,Responde,Gran Santiago,1313103,Mujer,18 a 29,Media,En Pareja,6
 131310325,2018,Refresco,Responde,Gran Santiago,1313103,Hombre,45 a 59,Básica,Soltero,2
 131310325,2019,Refresco,Responde,Gran Santiago,1313103,Hombre,45 a 59,Media,Soltero,3
 131310325,2021,Refresco,Responde,Gran Santiago,1313103,Hombre,45 a 59,Básica,Soltero,5
@@ -23448,7 +23430,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 136040125,2018,Refresco,Responde,Gran Santiago,1360401,Mujer,45 a 59,Básica,Soltero,2
 136040125,2019,Refresco,Responde,Gran Santiago,1360401,Mujer,45 a 59,Básica,Soltero,3
 136040125,2021,Refresco,Responde,Gran Santiago,1360401,Mujer,45 a 59,Básica,Soltero,5
-136040125,2022,Refresco,Responde,Gran Santiago,1360401,Mujer,45 a 59,Media,Soltero,6
+136040125,2022,Refresco,Responde,Gran Santiago,1360401,Mujer,45 a 59,Básica,Soltero,6
 136040126,2018,Refresco,Responde,Gran Santiago,1360401,Hombre,45 a 59,Básica,Soltero,2
 136040126,2019,Refresco,Responde,Gran Santiago,1360401,Hombre,45 a 59,Básica,En Pareja,3
 136040126,2021,Refresco,No Responde,Gran Santiago,1360401,Hombre,45 a 59,Básica,En Pareja,5
@@ -23492,7 +23474,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 136051826,2018,Refresco,Responde,Ciudades Medianas,1360518,Mujer,30 a 44,Técnica,En Pareja,2
 136051826,2019,Refresco,Responde,Ciudades Medianas,1360518,Mujer,30 a 44,Media,En Pareja,3
 136051826,2021,Refresco,Responde,Ciudades Medianas,1360518,Mujer,30 a 44,Media,Soltero,5
-136051826,2022,Refresco,Responde,Ciudades Medianas,1360518,Mujer,30 a 44,Técnica,En Pareja,6
+136051826,2022,Refresco,Responde,Ciudades Medianas,1360518,Mujer,30 a 44,Media,En Pareja,6
 136051921,2018,Refresco,Responde,Ciudades Medianas,1360519,Mujer,30 a 44,Media,En Pareja,2
 136051921,2019,Refresco,Responde,Ciudades Medianas,1360519,Mujer,30 a 44,Técnica,Soltero,3
 136051921,2021,Refresco,Responde,Ciudades Medianas,1360519,Mujer,30 a 44,Media,Soltero,5
@@ -23544,7 +23526,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 142010922,2018,Refresco,Responde,Ciudades Pequennias,1420109,Mujer,18 a 29,Media,Soltero,2
 142010922,2019,Refresco,Responde,Ciudades Pequennias,1420109,Mujer,18 a 29,Técnica,Soltero,3
 142010922,2021,Refresco,Responde,Ciudades Pequennias,1420109,Mujer,18 a 29,Técnica,En Pareja,5
-142010922,2022,Refresco,Responde,Ciudades Pequennias,1420109,Mujer,18 a 29,Universitaria,Soltero,6
+142010922,2022,Refresco,Responde,Ciudades Pequennias,1420109,Mujer,18 a 29,Media,Soltero,6
 142010923,2018,Refresco,Responde,Ciudades Pequennias,1420109,Mujer,45 a 59,Básica,En Pareja,2
 142010923,2019,Refresco,Responde,Ciudades Pequennias,1420109,Mujer,45 a 59,Básica,Soltero,3
 142010923,2021,Refresco,Responde,Ciudades Pequennias,1420109,Mujer,45 a 59,Básica,Soltero,5
@@ -23640,7 +23622,7 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 5701170400,2018,Refresco,Responde,Ciudades Medianas,570117,Mujer,18 a 29,Media,Soltero,2
 5701170400,2019,Refresco,Responde,Ciudades Medianas,570117,Mujer,18 a 29,Media,Soltero,3
 5701170400,2021,Refresco,Responde,Ciudades Medianas,570117,Mujer,18 a 29,Media,En Pareja,5
-5701170400,2022,Refresco,No Responde,Ciudades Medianas,570117,Mujer,18 a 29,Media,En Pareja,6
+5701170400,2022,Refresco,Responde,Ciudades Medianas,570117,Mujer,18 a 29,Media,En Pareja,6
 5701180200,2018,Refresco,Responde,Ciudades Medianas,570118,Hombre,45 a 59,Universitaria,En Pareja,2
 5701180200,2019,Refresco,No Responde,Ciudades Medianas,570118,Hombre,45 a 59,Universitaria,En Pareja,3
 5701180200,2021,Refresco,No Responde,Ciudades Medianas,570118,Hombre,45 a 59,Universitaria,En Pareja,5
@@ -23656,16 +23638,8 @@ idencuesta,ola,muestra,responde,estrato_disenno,segmento_disenno,sexo_imp,edad_i
 5701210400,2018,Refresco,Responde,Ciudades Medianas,570121,Hombre,45 a 59,Media,En Pareja,2
 5701210400,2019,Refresco,Responde,Ciudades Medianas,570121,Hombre,45 a 59,Universitaria,En Pareja,3
 5701210400,2021,Refresco,Responde,Ciudades Medianas,570121,Hombre,45 a 59,Universitaria,En Pareja,5
-5701210400,2022,Refresco,No Responde,Ciudades Medianas,570121,Hombre,45 a 59,Universitaria,En Pareja,6
+5701210400,2022,Refresco,Responde,Ciudades Medianas,570121,Hombre,45 a 59,Universitaria,En Pareja,6
 5701210500,2018,Refresco,Responde,Ciudades Medianas,570121,Mujer,30 a 44,Media,Soltero,2
 5701210500,2019,Refresco,No Responde,Ciudades Medianas,570121,Mujer,30 a 44,Media,Soltero,3
 5701210500,2021,Refresco,No Responde,Ciudades Medianas,570121,Mujer,30 a 44,Media,Soltero,5
 5701210500,2022,Refresco,No Responde,Ciudades Medianas,570121,Mujer,30 a 44,Media,Soltero,6
-57011704,2018,Refresco,No Responde,,,Mujer,18 a 29,Media,En Pareja,2
-57011704,2019,Refresco,No Responde,,,Mujer,18 a 29,Media,En Pareja,3
-57011704,2021,Refresco,No Responde,,,Mujer,18 a 29,Media,En Pareja,5
-57011704,2022,Refresco,No Responde,,,Mujer,18 a 29,Media,En Pareja,6
-57012104,2018,Refresco,No Responde,,,Hombre,45 a 59,Universitaria,En Pareja,2
-57012104,2019,Refresco,No Responde,,,Hombre,45 a 59,Universitaria,En Pareja,3
-57012104,2021,Refresco,No Responde,,,Hombre,45 a 59,Universitaria,En Pareja,5
-57012104,2022,Refresco,No Responde,,,Hombre,45 a 59,Universitaria,En Pareja,6

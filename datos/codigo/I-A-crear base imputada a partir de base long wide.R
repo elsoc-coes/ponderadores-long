@@ -1,6 +1,6 @@
 library(tidyverse)
 
-elsoc_longwide <- readRDS("datos/insumos_ponderadores/elsoc_longwide.RDS")
+elsoc_long <- readRDS("datos/insumos_ponderadores/elsoc_longwide.RDS")
 
 
 impu_edad<- function(valores){
