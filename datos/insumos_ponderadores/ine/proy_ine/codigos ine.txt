@@ -1,0 +1,5 @@
+Sexo
+1=Hombre; 2=Mujer
+
+Area
+1=Urbano; 2=Rural

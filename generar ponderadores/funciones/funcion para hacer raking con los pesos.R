@@ -4,8 +4,9 @@ library(survey)
 
 #DEFINIR TOTALES
 
-#totales_ine_edad <- readRDS("PONDERADOR/INE/totales_ine_edad.RDS")
-#totales_ine_sexo <- readRDS("PONDERADOR/INE/totales_ine_sexo.RDS")
+totales_ine_edad <- read_csv("datos/insumos_ponderadores/ine/totales_ine_edad.csv")
+totales_ine_sexo <- read_csv("datos/insumos_ponderadores/ine/totales_ine_sexo.csv")
+
 
 # CAGAR PESOS ORIGINALES
 
