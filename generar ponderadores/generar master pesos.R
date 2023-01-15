@@ -52,11 +52,11 @@ source("generar ponderadores/funciones/funcion para hacer raking con los pesos.R
 # PONDERADOR POR MUESTRAS -------------------------------------------------
 
 ### RAKING
-pesos_m1 <- rake_pesos(filter(elsoc_long_dv_nr,muestra==1),"pd_atricion_trm", c(2016,2017,2018,2019,2021))%>%
+pesos_m1 <- rake_pesos(filter(elsoc_long_dv_nr,muestra==1),"pd_atricion_trm", c(2016,2017,2018,2019,2021,2022))%>%
   mutate(muestra=1)
 pesos_m1$pd_rk_rs <- rs_pesos(pesos_m1,"pd_rk")
 
-pesos_m2 <- rake_pesos(filter(elsoc_long_dv_nr,muestra==2),"pd_atricion_trm", c(2018,2019,2021))%>%
+pesos_m2 <- rake_pesos(filter(elsoc_long_dv_nr,muestra==2),"pd_atricion_trm", c(2018,2019,2021,2022))%>%
   mutate(muestra=2)
 pesos_m2$pd_rk_rs <- rs_pesos(pesos_m2,"pd_rk")
 
@@ -69,11 +69,11 @@ elsoc_long_dv_nr <-elsoc_long_dv_nr%>%
 
 
 # PONDERADOR POR PANELES --------------------------------------------------
-pesos_panel1 <- rake_pesos(filter(elsoc_long_dv_nr,tipo_atricion==1),"pd_atricion_trm", c(2016,2017,2018,2019,2021))%>%
+pesos_panel1 <- rake_pesos(filter(elsoc_long_dv_nr,tipo_atricion==1,muestra==1),"pd_atricion_trm", c(2016,2017,2018,2019,2021,2022))%>%
   mutate(muestra=1)
 pesos_panel1$pd_rk_rs <- rs_pesos(pesos_panel1,"pd_rk")
 
-pesos_panel2 <- rake_pesos(filter(elsoc_long_dv_nr,tipo_atricion==17),"pd_atricion_trm", c(2018,2019,2021))%>%
+pesos_panel2 <- rake_pesos(filter(elsoc_long_dv_nr,tipo_atricion==1,muestra==2),"pd_atricion_trm", c(2018,2019,2021,2022))%>%
   mutate(muestra=2)
 pesos_panel2$pd_rk_rs <- rs_pesos(pesos_panel2,"pd_rk")
 
@@ -93,6 +93,6 @@ master_pesos <- elsoc_long_dv_nr%>%
 pesos_longitudinales_elsoc <-master_pesos %>%
                               select(idencuesta,ola,ponderadorlong_total,ponderadorlong_panel)
 
-write.csv(master_pesos,file="PONDERADOR/master_pesos.csv",row.names = FALSE)
+write.csv(master_pesos,file="generar ponderadores/resultados/master_pesos.csv",row.names = FALSE)
 
-write.csv(pesos_longitudinales_elsoc,file="PONDERADOR/pesos_longitudinales_elsoc.csv",row.names = FALSE)
+write.csv(pesos_longitudinales_elsoc,file="generar ponderadores/resultados/pesos_longitudinales_elsoc.csv",row.names = FALSE)
