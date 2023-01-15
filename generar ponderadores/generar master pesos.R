@@ -91,7 +91,8 @@ master_pesos <- elsoc_long_dv_nr%>%
          ponderadorlong_panel=pd_atricion_trm_rk_rs_panel)
 
 pesos_longitudinales_elsoc <-master_pesos %>%
-                              select(idencuesta,ola,ponderadorlong_total,ponderadorlong_panel)
+                              select(idencuesta,ola,ponderadorlong_total,ponderadorlong_panel)%>%
+                              mutate(ola=car::recode(ola,"2016=1;2017=2;2018=3;2019=4;2021=5;2022=6"))
 
 write.csv(master_pesos,file="generar ponderadores/resultados/master_pesos.csv",row.names = FALSE)
 
