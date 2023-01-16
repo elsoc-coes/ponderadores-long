@@ -1,4 +1,5 @@
 library(readr)
+library(tidyverse)
 
 master_pesos <- read_csv("generar ponderadores/resultados/master_pesos.csv")
 pesos_longitudinales_elsoc <- read_csv("generar ponderadores/resultados/pesos_longitudinales_elsoc.csv")
@@ -32,3 +33,21 @@ elsoc_merge%>%
   summarise(n=n(),
     across(starts_with("ponderador"),~sum(is.na(.x))),
     panel=sum(tipo_atricion==1,na.rm = TRUE))
+
+
+
+elsoc_merge%>%
+  group_by(muestra,ola)%>%
+  summarise(n=n(),
+            prop_mujer=mean(m0_sexo ==2,na.rm=TRUE),
+            w_prop_mujer=weighted.mean(m0_sexo ==2,w=ponderadorlong_total,na.rm=TRUE))%>%
+  View()
+
+
+
+elsoc_merge%>%
+  group_by(muestra,ola)%>%
+  summarise(n=n(),
+            prop_mujer=mean(m0_sexo ==2,na.rm=TRUE),
+            w_prop_mujer=weighted.mean(m0_sexo ==2,w=ponderadorlong_total,na.rm=TRUE))%>%
+  View()
