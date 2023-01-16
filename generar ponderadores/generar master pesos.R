@@ -88,11 +88,11 @@ elsoc_long_dv_nr <-elsoc_long_dv_nr%>%
 master_pesos <- elsoc_long_dv_nr%>%
                 select(idencuesta,ola,muestra,segmento_disenno,estrato_disenno,m0_sexo,tramo_etario,everything())%>%
   rename(ponderadorlong_total=pd_atricion_trm_rk_rs_total,
-         ponderadorlong_panel=pd_atricion_trm_rk_rs_panel)
+         ponderadorlong_panel=pd_atricion_trm_rk_rs_panel)%>%
+  mutate(ola=car::recode(ola,"2016=1;2017=2;2018=3;2019=4;2021=5;2022=6"))
 
 pesos_longitudinales_elsoc <-master_pesos %>%
-                              select(idencuesta,ola,ponderadorlong_total,ponderadorlong_panel)%>%
-                              mutate(ola=car::recode(ola,"2016=1;2017=2;2018=3;2019=4;2021=5;2022=6"))
+                              select(idencuesta,ola,ponderadorlong_total,ponderadorlong_panel)
 
 write.csv(master_pesos,file="generar ponderadores/resultados/master_pesos.csv",row.names = FALSE)
 
