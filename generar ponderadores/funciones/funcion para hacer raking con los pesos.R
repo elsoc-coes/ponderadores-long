@@ -17,7 +17,7 @@ rake_pesos<- function(base,pesos,años){
                          function(i){
                            data = base%>%filter(ola ==i)
                            
-                           svd_diseno <- svydesign(id=~segmento_disenno, weights =formula(c("~", pesos)),data=data) 
+                           svd_diseno <- svydesign(id=~segmento_disenno, weights =formula(paste0("~",pesos)),data=data) 
                            
                            
                            pop_sexo <- data.frame(m0_sexo=filter(totales_ine_sexo,año==i)$sexo, 

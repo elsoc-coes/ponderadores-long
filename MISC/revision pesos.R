@@ -46,7 +46,7 @@ elsoc_merge%>%
 
 
 elsoc_merge%>%
-  group_by(muestra,ola)%>%
+  group_by(ola)%>%
   summarise(n=n(),
             prop_mujer=mean(m0_sexo ==2,na.rm=TRUE),
             w_prop_mujer=weighted.mean(m0_sexo ==2,w=ponderadorlong_total,na.rm=TRUE))%>%
