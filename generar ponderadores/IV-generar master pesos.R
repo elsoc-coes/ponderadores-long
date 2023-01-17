@@ -1,7 +1,7 @@
 library(tidyverse)
 
 factores_expansion <- readRDS("datos/insumos_ponderadores/factores_expansion.RDS")%>%
-                      select(idencuesta,ola,pd_nr,muestra)
+                      select(idencuesta,ola,pd_diseno,pd_nr,muestra)
 
 #elsoc_preds <- readRDS("PONDERADOR/PREDICCIONES NR/elsoc_preds.RDS")
 elsoc_preds_imp <- readRDS("modelamiento NR/predicciones/elsoc_preds_imp.RDS")
@@ -10,8 +10,8 @@ elsoc_preds_imp <- readRDS("modelamiento NR/predicciones/elsoc_preds_imp.RDS")
 elsoc_nr <- factores_expansion%>%
             left_join(elsoc_preds_imp,by=c("idencuesta","ola"))%>%
             mutate(pd_atricion=ifelse(muestra==1,
-                                      ifelse(ola==1,pd_nr,pd_nr/preds_gee),
-                                      ifelse(ola==3,pd_nr,pd_nr/preds_gee)))%>%
+                                      ifelse(ola==1,pd_nr,pd_diseno/preds_gee),
+                                      ifelse(ola==3,pd_nr,pd_diseno/preds_gee)))%>%
             select(idencuesta,ola,muestra,pd_nr,pd_atricion)
 
 

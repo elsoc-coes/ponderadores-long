@@ -1,0 +1,135 @@
+---
+title: "graficos_presentacion_asis"
+format: html
+jupyter: python3
+---
+
+
+
+```{python}
+import pandas as pd
+import numpy as np
+import plotly.offline as py
+import plotly.express as px
+```
+
+```{python}
+colores_viridis=['#440154','#fde725','#90d743','#3b528b','#21918c','#31688e','#443983']
+```
+
+
+```{python}
+ine_sexo=pd.read_csv('../../datos/insumos_ponderadores/ine/totales_ine_sexo.csv').query('año!=2020')
+ine_sexo['año']=ine_sexo['año'].astype(str)
+ine_sexo['prop']=ine_sexo.groupby(['año'])['total'].transform(lambda x: (100*x/x.sum()).round(4))
+```
+
+```{python}
+py.plot(px.bar(ine_sexo, 
+x='año', y='prop',color='sexo',
+category_orders={'sexo':['Hombre','Mujer']},
+labels={'prop':'Porcentaje','año':'Año','sexo':'Sexo entrevistado','total':'Total'},
+text='prop',
+color_discrete_sequence=colores_viridis,
+hover_data=['prop','total']).update_layout(title_text='Proyección de población INE (2016-2022)<br><sup>Población mayor de 18 años en zonas urbanas</sup>'
+), filename='graficos/gf_ine_proy_sexo.html',auto_open=False)
+```
+
+
+
+
+```{python}
+ine_edad=pd.read_csv('../../datos/insumos_ponderadores/ine/totales_ine_edad.csv').query('año!=2020')
+ine_edad['año']=ine_edad['año'].astype(str)
+ine_edad['prop']=ine_edad.groupby(['año'])['total'].transform(lambda x: (100*x/x.sum()).round(4))
+
+```
+
+```{python}
+py.plot(px.bar(ine_edad, 
+x='año', y='prop',color='tramo_etario',
+category_orders={'tramo_etario':['18 a 29','30 a 39','40 a 49','50 a 59','60 o más']},
+labels={'prop':'Porcentaje','año':'Año','tramo_etario':'Tramo Etario','total':'Total'},
+text='prop',
+color_discrete_sequence=colores_viridis,
+hover_data=['prop','total']).update_layout(title_text='Proyección de población INE (2016-2022)<br><sup>Población mayor de 18 años en zonas urbanas</sup>'
+),filename='graficos/gf_ine_proy_tramo.html',auto_open=False)
+```
+
+
+
+```{python}
+master_pesos=pd.read_csv('../../generar ponderadores/resultados/master_pesos.csv')
+```
+
+```{python}
+def wavg_var(base,var,peso,ambas_muestras=False):
+  unicos = base[var].unique()
+  base['muestral']=1
+  if ambas_muestras:
+    base['muestra']=0
+  else:
+      base
+  def df_wprop_valor(valor):
+    base_prop=(base.assign(prop = lambda x: x[var]== valor))
+    base_group=base_prop.groupby(['muestra','ola'])
+    w_prop= (base_group.apply(lambda x: 100*np.average(x['prop'],
+    weights=x[peso])).
+    round(2)).reset_index()
+      
+    w_prop.columns=['muestra','ola','prop']
+    w_prop['valor']=valor
+    w_prop['ponderador']=peso
+  #  w_prop['ola']=w_prop['ola'].astype(str)
+    return(w_prop)
+  return pd.concat([df_wprop_valor(i) for i in unicos]).sort_values(by=['muestra','ola'])
+```
+
+
+```{python}
+py.plot((px.bar(pd.concat([wavg_var(master_pesos,
+'tramo_etario',i,True) for i in ['muestral','ponderadorlong_total']]).assign(ponderador= lambda x: x.ponderador.map({'muestral': 'Muestra','ponderadorlong_total':'P. longitudinal'})), 
+x='ola', y='prop',color='valor',facet_col='ponderador',
+category_orders={'valor':['18 a 29','30 a 39','40 a 49','50 a 59','60 o más']},
+labels={'prop':'Porcentaje','ola':'Año de Estudio','valor':'Tramo Etario'},
+text='prop',
+color_discrete_sequence=colores_viridis).
+update_layout(legend=dict(
+    orientation="h",
+    yanchor="bottom",
+    y=1.1,
+    xanchor="right",
+    x=1))
+    ).
+    for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1])),
+    filename='graficos/gf_tramo_etario_muestral_ponderado.html',auto_open=False)
+    
+    
+  
+    
+```
+
+```{python}
+py.plot((px.bar(pd.concat([wavg_var(master_pesos,
+'m0_sexo',i,False) for i in ['muestral','ponderadorlong_total']]).assign(ponderador= lambda x: x.ponderador.map({'muestral': 'Muestra','ponderadorlong_total':'P. longitudinal'})), 
+x='ola', y='prop',color='valor',facet_col='ponderador',
+category_orders={'valor':['Hombre','Mujer']},
+labels={'prop':'Porcentaje','ola':'Año de Estudio','valor':'Sexo Entrevistado'},
+text='prop',
+color_discrete_sequence=colores_viridis).
+update_layout(legend=dict(
+    orientation="h",
+    yanchor="bottom",
+    y=1.1,
+    xanchor="right",
+    x=1))).
+    for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1])),
+    filename='graficos/gf_sexo_muestral_ponderado.html',auto_open=False)
+```
+
+# Proporciones ponderadas
+
+```{python}
+#elsoc_long=pd.read_csv('../../elsoc_long_pesos.csv',sep=";")
+```
+
