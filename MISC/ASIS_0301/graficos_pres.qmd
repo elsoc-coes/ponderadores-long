@@ -63,16 +63,19 @@ master_pesos=pd.read_csv('../../generar ponderadores/resultados/master_pesos.csv
 ```
 
 ```{python}
-def wavg_var(base,var,peso,ambas_muestras=False):
-  unicos = base[var].unique()
+def wavg_var(base,var,peso,ambas_muestras=False,sub_dom="nulo"):
+  unicos = base.dropna(subset=var)[var].unique()
   base['muestral']=1
   if ambas_muestras:
     base['muestra']=0
   else:
-      base
+    base
   def df_wprop_valor(valor):
     base_prop=(base.assign(prop = lambda x: x[var]== valor))
-    base_group=base_prop.groupby(['muestra','ola'])
+    if sub_dom!="nulo":
+      base_group=base_prop.groupby(['muestra','ola',sub_dom])
+    else:
+      base_group=base_prop.groupby(['muestra','ola'])
     w_prop= (base_group.apply(lambda x: 100*np.average(x['prop'],
     weights=x[peso])).
     round(2)).reset_index()
@@ -130,6 +133,6 @@ update_layout(legend=dict(
 # Proporciones ponderadas
 
 ```{python}
-#elsoc_long=pd.read_csv('../../elsoc_long_pesos.csv',sep=";")
+elsoc_long=pd.read_csv('../bases/elsoc_merge.csv')
 ```
 
