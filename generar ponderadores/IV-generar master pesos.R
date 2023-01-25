@@ -12,7 +12,7 @@ elsoc_nr <- factores_expansion%>%
             mutate(pd_atricion=ifelse(muestra==1,
                                       ifelse(ola==1,pd_nr,pd_diseno/preds_gee),
                                       ifelse(ola==3,pd_nr,pd_diseno/preds_gee)))%>%
-            select(idencuesta,ola,muestra,pd_nr,pd_atricion)
+            select(idencuesta,ola,muestra,pd_diseno,pd_nr,pd_atricion)
 
 
 # PODAR LOS PESOS ---------------------------------------------------------
