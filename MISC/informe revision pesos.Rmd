@@ -1,0 +1,307 @@
+---
+title: "revision pesos"
+author: "Carlos Delgado"
+date: "2023-01-25"
+output:
+  rmdformats::downcute:
+    code_folding: hide
+    self_contained: true
+    thumbnails: false
+---
+
+
+
+```{r,include=FALSE}
+knitr::opts_chunk$set(warning = FALSE,
+                      message = FALSE)
+
+library(readxl)
+library(tidyverse)
+library(plotly)
+
+```
+
+```{r,include=FALSE}
+bestGEE_QICU <- readRDS("../modelamiento NR/modelos/bestGEE_QICU.RDS")
+bestGEE_QICU_m2 <- readRDS("../modelamiento NR/modelos/bestGEE_QICU_m2.RDS")
+
+
+# CARGAR MODELOS
+
+tabla_m1 <- broom::tidy(bestGEE_QICU)
+tabla_m2 <- broom::tidy(bestGEE_QICU_m2)
+
+unicos_variables<-  c("Intercepto", 
+                      "Soltero",
+                      "Densidad poblacional zc",
+                      "30 a 44 años",
+                      "45 a 59 años", 
+                      "60 o más",
+                      "Educ. Media",
+                      "Educ. Técnica",
+                      "Educ. Universitaria",
+                      "C. Medianas",
+                      "C. Pequeñas",
+                      "G. Concepción",
+                      "G. Santiago",
+                      "G. Valparaiso",
+                      "Escolaridad jh zc",
+                      "NSNR 1ra ola",
+                      "2018",
+                      "2019", 
+                      "2021",
+                      "2022",
+                      "P. Viviendas precarias zc",
+                      "Mujer",
+                      "Tamaño hogar prom. zc",
+                      "Visitas ola anterior")
+
+
+
+names(unicos_variables) <-  c(tabla_m2$term,tabla_m1$term)%>%
+                 unique()%>%
+                 sort()
+
+tabla_m1$term <- dplyr::recode(tabla_m1$term,!!!unicos_variables)
+tabla_m2$term <- dplyr::recode(tabla_m2$term,!!!unicos_variables)
+
+# REVISION DE PREDICCIONES
+
+elsoc_preds_imp = readRDS("../modelamiento NR/predicciones/elsoc_preds_imp.RDS")
+
+load("../datos/oficiales/ELSOC_Long_2016_2022_v1.00_R.RData")
+
+
+
+elsoc_long_2016_2022=elsoc_long_2016_2022%>%
+  sjmisc::set_na(na=c(-666,-777,-888,-999))%>%
+  mutate(phq=Reduce('+',across(starts_with("s11_0"),
+                               ~ car::recode(.x, "1=0;2=1;3=2;c(4,5)=3"))),
+         phq_s10=as.numeric(phq>9),
+         satis_demo=as.numeric(c01 %in% c(4,5)),
+         educ= factor(car::recode(m01, "c(1,2,3)=1;c(4,5)=2;c(6,7)=3;c(8,9,10)=4"),
+                      labels = c("Básica","Media","Técnica","Universitaria")),
+         tramo_etario= factor(case_when(
+           m0_edad< 30~1,
+           m0_edad >29&m0_edad <40~2,
+           m0_edad>39& m0_edad < 50~3,
+           m0_edad>49 &m0_edad <60~4,
+           m0_edad >59 ~5),
+           labels = c("18 a 29","30 a 39","40 a 49","50 a 59","60 o más")))
+
+
+
+pesos_elsoc= read_csv("../generar ponderadores/resultados/pesos_longitudinales_elsoc.csv")
+
+elsoc_pesos =elsoc_long_2016_2022%>%
+  left_join(pesos_elsoc,by=c("idencuesta","ola"))
+
+
+elsoc_merge=elsoc_long_2016_2022%>%
+            left_join(elsoc_preds_imp,by=c("idencuesta","ola"))
+
+```
+
+```{r,include=FALSE}
+
+## FUNCION PARA GRAFICAR PREDICCIONES
+grafo_preds<- function(var){
+  elsoc_merge%>%
+    ggplot(aes(x=preds_gee,color=factor(!!rlang::sym(var))))+
+    geom_density()+
+    facet_wrap(~ola)
+  
+}
+
+
+grafo_box_var<- function(var){
+  
+  elsoc_pesos%>%
+    select(ola,!!rlang::sym(var),starts_with("ponderador"),-ponderadorlong_panel)%>%
+    gather("pond","valor",-c(ola,!!rlang::sym(var)))%>%
+    ggplot(aes(x=factor(ola),y=valor,color=pond))+
+    geom_boxplot()+
+    facet_wrap(formula(paste0("~",var)))+
+    scale_y_continuous(limits = c(0,10))
+  
+  
+  
+}
+
+grafo_pesos <- function(var){
+tabla=  elsoc_pesos%>%
+    select(ola,phq_s10,!!rlang::sym(var),starts_with("ponderador"),-ponderadorlong_panel)%>%
+    mutate(muestral=1)%>%
+    gather("pond","valor",-c(ola,phq_s10,!!rlang::sym(var)))%>%
+    drop_na()%>%
+  group_by(ola,pond,!!rlang::sym(var))%>%
+  summarise(prom=weighted.mean(phq_s10,w=valor))
+    
+grafico= tabla%>%
+    ggplot(aes(x=factor(ola),y=prom,color=pond,group=pond))+
+    geom_line()+
+    geom_point()+
+    facet_wrap( formula(paste0("~",var)))  
+
+return(grafico)
+}
+
+
+
+grafo_pond_var<- function(pond,var){
+  elsoc_pesos%>%
+    ggplot(aes(x=!!rlang::sym(pond),color=factor(!!rlang::sym(var))))+
+    geom_density()+
+    facet_wrap(~ola) 
+}
+
+
+resumen_pesos<- function(var){
+  
+  elsoc_pesos%>%
+    group_by(muestra,ola)%>%
+    summarise(n_año=n(),
+              peso=var,
+              across({{var}},
+                     list(nas=~sum(is.na(.x)),
+                          suma=sum,
+                          min=min,
+                          max=max,
+                          sd=sd),
+                     .names = "{fn}"),
+              .groups = "drop")%>%
+    mutate(across(-c(muestra,ola,n_año,peso), ~round(.x,4)))
+  
+  
+}
+
+
+```
+
+# Distribución empírica de los pesos
+
+## Distribución de los pesos según variables {.tabset}
+
+
+```{r,include=FALSE}
+vars_pred <- c("muestra","m0_sexo","estrato_disenno","tramo_etario","educ")
+template_distribucion_pesos <- c(
+    "### {{nm}}\n",
+    "```{r, distribucion pesos {{nm}} }\n",
+    "grafo_box_var('{{nm}}')\n",
+    "```\n",
+    "\n"
+  )
+
+plots_distribucion_pesos <- lapply(
+  vars_pred, 
+  function(nm) knitr::knit_expand(text = template_distribucion_pesos)
+)
+```
+
+`r knitr::knit(text = unlist(plots_distribucion_pesos))`
+
+
+## Descriptivos pesos {.tabset}
+
+```{r,include=FALSE}
+pesos_desc <- c("ponderador01","ponderador02","ponderadorlong_total")
+template_desc_pesos <- c(
+    "### {{nm}}\n",
+    "```{r, desc pesos {{nm}} }\n",
+    "resumen_pesos('{{nm}}')%>%DT::datatable() \n",
+    "```\n",
+    "\n"
+  )
+
+plots_desc_pesos <- lapply(
+  pesos_desc, 
+  function(nm) knitr::knit_expand(text = template_desc_pesos)
+)
+```
+
+`r knitr::knit(text = unlist(plots_desc_pesos))`
+
+
+
+
+## Porcentaje síntomas depresivos según variables y pesos {.tabset}
+
+```{r,include=FALSE}
+vars_pred <- c("muestra","m0_sexo","estrato_disenno","tramo_etario","educ")
+template_s10_pond <- c(
+    "### {{nm}}\n",
+    "```{r, s10_pond {{nm}} }\n",
+    "grafo_pesos('{{nm}}')\n",
+    "```\n",
+    "\n"
+  )
+
+plots_s10_pond<- lapply(
+  vars_pred, 
+  function(nm) knitr::knit_expand(text = template_s10_pond)
+)
+```
+
+`r knitr::knit(text = unlist(plots_s10_pond))`
+
+
+# Modelamiento
+
+## Modelos Estimados {.tabset}
+
+Los modelos estimados son glm estimados vía gee. La forma de estimación mediante gee permiten tomar en cuenta en las estimaciones la correlación entre las observaciones. Como desventaja frente a los modelos jerarquicos, los anteriores no pueden considerar más de un nivel de anidamiento, 
+
+Una nota al pie, es que la estimación de los modelos generó objetos de R de alta cantidad (más de 100 mb), esto incluso excedía el limite para subirlos al repositorio de github. Pero con un método de compresión . Sin embargo, el gran tamaño de los modelos podría deberse a una gran cantidad de iteraciones necesarias para garantizar
+
+### Muestra Original 
+
+```{r}
+tabla_m1%>%
+  select(-statistic)%>%
+  mutate(across(c(estimate,std.error), ~round(.x,4)),
+         sig=case_when(p.value <0.01 ~ '***',
+                       p.value >0.01 & p.value <0.05 ~'**',
+                       p.value >0.05 & p.value <0.1 ~'*',
+                       p.value >.1 ~''))%>%
+  select(-p.value)%>%
+            rename(Variable=term,Coeficiente=estimate,`Err. Estándar`=std.error,Significancia=sig)%>%
+DT::datatable()
+```
+
+### Muestra Refresco
+
+
+```{r}
+tabla_m2%>%
+  select(-statistic)%>%
+  mutate(across(c(estimate,std.error), ~round(.x,4)),
+         sig=case_when(p.value <0.01 ~ '***',
+                       p.value >0.01 & p.value <0.05 ~'**',
+                       p.value >0.05 & p.value <0.1 ~'*',
+                       p.value >.1 ~''))%>%
+  select(-p.value)%>%
+            rename(Variable=term,Coeficiente=estimate,`Err. Estándar`=std.error,Significancia=sig)%>%
+DT::datatable()
+```
+
+## Predicciones de los modelos según categorias {.tabset}
+
+
+```{r,include=FALSE}
+vars_pred <- c("muestra","m0_sexo","estrato_disenno","tramo_etario","educ")
+template_predicciones <- c(
+    "### {{nm}}\n",
+    "```{r, predicciones {{nm}} }\n",
+    "grafo_preds('{{nm}}')\n",
+    "```\n",
+    "\n"
+  )
+
+plots_predicciones <- lapply(
+  vars_pred, 
+  function(nm) knitr::knit_expand(text = template_predicciones)
+)
+```
+
+`r knitr::knit(text = unlist(plots_predicciones))`

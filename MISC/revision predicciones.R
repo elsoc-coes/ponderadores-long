@@ -14,7 +14,18 @@ elsoc_merge%>%
 
 
 
-elsoc_merge%>%
-  ggplot(aes(x=preds_gee,color=factor(estrato_disenno)))+
-  geom_density()+
-  facet_wrap(~ola)
+
+
+
+grafo_preds<- function(var){
+  elsoc_merge%>%
+    ggplot(aes(x=preds_gee,color=factor(!!rlang::sym(var))))+
+    geom_density()+
+    facet_wrap(~ola)
+  
+}
+
+
+grafo_preds("estrato_disenno")
+
+library(tidyverse)

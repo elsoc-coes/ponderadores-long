@@ -56,64 +56,6 @@ elsoc_merge=elsoc_long_2016_2022%>%
 
 
 
-grafo_box_var<- function(var){
-  
-  elsoc_pesos%>%
-    select(ola,s10,!!rlang::sym(var),starts_with("ponderador"),-ponderadorlong_panel)%>%
-    gather("pond","valor",-c(ola,s10,!!rlang::sym(var)))%>%
-    ggplot(aes(x=factor(ola),y=valor,color=pond))+
-    geom_boxplot()+
-    facet_wrap(formula(paste0("~",var)))+
-    scale_y_continuous(limits = c(0,10))
-  
-  
-  
-}
-
-
-
-grafo_pesos <- function(var){
-  elsoc_pesos%>%
-    select(ola,s10,!!rlang::sym(var),starts_with("ponderador"),-ponderadorlong_panel)%>%
-    mutate(muestral=1)%>%
-    gather("pond","valor",-c(ola,s10,!!rlang::sym(var)))%>%
-    drop_na()%>%
-    group_by(ola,pond,!!rlang::sym(var))%>%
-    summarise(prom=weighted.mean(s10,w=valor))%>%
-    ggplot(aes(x=factor(ola),y=prom,color=pond,group=pond))+
-    geom_line()+
-    geom_point()+
-    facet_wrap( formula(paste0("~",var)))  
-}
-
-
-
-grafo_pond_var<- function(pond,var){
-  elsoc_merge%>%
-    ggplot(aes(x=!!rlang::sym(pond),color=factor(!!rlang::sym(var))))+
-    geom_density()+
-    facet_wrap(~ola) 
-}
-
-
-resumen_peso<- function(var){
-  
-  elsoc_pesos%>%
-    group_by(muestra,ola)%>%
-    summarise(n_año=n(),
-              peso=var,
-              across({{var}},
-                     list(nas=~sum(is.na(.x)),
-                          suma=sum,
-                          min=min,
-                          max=max,
-                          sd=sd),
-                     .names = "{fn}"),
-              .groups = "drop")
-  
-  
-}
-
 
 
 
