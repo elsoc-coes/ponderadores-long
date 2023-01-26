@@ -153,17 +153,19 @@ grafo_pesos <- function(var,resp){
     gather("pond","valor",-c(ola,!!rlang::sym(resp),!!rlang::sym(var)))%>%
     drop_na()%>%
     group_by(ola,pond,!!rlang::sym(var))%>%
-    summarise(prom=round(100*weighted.mean(!!rlang::sym(resp),w=valor),2),.groups = "drop")
+    summarise(prom = weighted.mean(!!rlang::sym(resp), w = valor),.groups = "drop")
   
   grafico= tabla%>%
-    ggplot(aes(x=factor(ola),y=prom,color=pond,group=pond))+
-    geom_line()+
-    geom_point()+
+    ggplot(aes(x = sjlabelled::as_label(ola),y = prom, color = pond, group = pond))+
+    geom_line() +
+    geom_point() +
     labs(x="Año del Estudio",
          y="Proporción",
          color="Ponderador")+
-    facet_wrap( formula(paste0("~",var)),scales="free")+
-    theme(legend.position = "top")
+    facet_wrap( formula(paste0("~",var)))+
+    theme(legend.position = "top") +
+    scale_y_continuous(labels = scales::percent,
+                       limits = c(0, NA))
   
   return(grafico)
 }
