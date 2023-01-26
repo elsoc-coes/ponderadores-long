@@ -65,6 +65,10 @@ names(unicos_variables) <-  c(tabla_m2$term,tabla_m1$term)%>%
 tabla_m1$term <- dplyr::recode(tabla_m1$term,!!!unicos_variables)
 tabla_m2$term <- dplyr::recode(tabla_m2$term,!!!unicos_variables)
 
+
+```
+
+```{r,include=FALSE}
 # REVISION DE PREDICCIONES
 
 elsoc_preds_imp = readRDS("../modelamiento NR/predicciones/elsoc_preds_imp.RDS")
@@ -87,7 +91,18 @@ elsoc_long_2016_2022=elsoc_long_2016_2022%>%
            m0_edad>39& m0_edad < 50~3,
            m0_edad>49 &m0_edad <60~4,
            m0_edad >59 ~5),
-           labels = c("18 a 29","30 a 39","40 a 49","50 a 59","60 o más")))
+           labels = c("18 a 29","30 a 39","40 a 49","50 a 59","60 o más")),
+         interes_poli=as.numeric(c13 %in% c(4,5)),
+         confianza=as.numeric(c02 ==1),
+         autori=as.numeric(c25==2),
+         estatus_sub=as.numeric(d01_01 %in% c(4:6)),
+         satis_vida=as.numeric(s01 %in% c(4,5)),
+         seguridad=as.numeric(t10 %in% c(4,5)),
+         contacto=as.numeric(r06 %in% c(4,5)),
+         muestra=factor(muestra,labels=c("Original","Refresco")),
+         m0_sexo=factor(m0_sexo,labels=c("Hombre","Mujer")),
+         estrato_disenno=factor(estrato_disenno,
+                               labels = c( names(attr(getElement(.,"estrato_disenno"),"labels")))))
 
 
 
@@ -99,6 +114,7 @@ elsoc_pesos =elsoc_long_2016_2022%>%
 
 elsoc_merge=elsoc_long_2016_2022%>%
             left_join(elsoc_preds_imp,by=c("idencuesta","ola"))
+
 
 ```
 
@@ -128,22 +144,28 @@ grafo_box_var<- function(var){
   
 }
 
-grafo_pesos <- function(var){
-tabla=  elsoc_pesos%>%
-    select(ola,phq_s10,!!rlang::sym(var),starts_with("ponderador"),-ponderadorlong_panel)%>%
+
+
+grafo_pesos <- function(var,resp){
+  tabla=  elsoc_pesos%>%
+    select(ola,!!rlang::sym(resp),!!rlang::sym(var),starts_with("ponderador"),-ponderadorlong_panel)%>%
     mutate(muestral=1)%>%
-    gather("pond","valor",-c(ola,phq_s10,!!rlang::sym(var)))%>%
+    gather("pond","valor",-c(ola,!!rlang::sym(resp),!!rlang::sym(var)))%>%
     drop_na()%>%
-  group_by(ola,pond,!!rlang::sym(var))%>%
-  summarise(prom=weighted.mean(phq_s10,w=valor))
-    
-grafico= tabla%>%
+    group_by(ola,pond,!!rlang::sym(var))%>%
+    summarise(prom=round(100*weighted.mean(!!rlang::sym(resp),w=valor),2),.groups = "drop")
+  
+  grafico= tabla%>%
     ggplot(aes(x=factor(ola),y=prom,color=pond,group=pond))+
     geom_line()+
     geom_point()+
-    facet_wrap( formula(paste0("~",var)))  
-
-return(grafico)
+    labs(x="Año del Estudio",
+         y="Proporción",
+         color="Ponderador")+
+    facet_wrap( formula(paste0("~",var)),scales="free")+
+    theme(legend.position = "top")
+  
+  return(grafico)
 }
 
 
@@ -222,8 +244,7 @@ plots_desc_pesos <- lapply(
 
 `r knitr::knit(text = unlist(plots_desc_pesos))`
 
-
-
+# Aplicación de los pesos a variables
 
 ## Porcentaje síntomas depresivos según variables y pesos {.tabset}
 
@@ -232,7 +253,7 @@ vars_pred <- c("muestra","m0_sexo","estrato_disenno","tramo_etario","educ")
 template_s10_pond <- c(
     "### {{nm}}\n",
     "```{r, s10_pond {{nm}} }\n",
-    "grafo_pesos('{{nm}}')\n",
+    "grafo_pesos('{{nm}}','phq_s10')\n",
     "```\n",
     "\n"
   )
@@ -244,6 +265,175 @@ plots_s10_pond<- lapply(
 ```
 
 `r knitr::knit(text = unlist(plots_s10_pond))`
+
+
+
+## Porcentaje de satisfacción con la democracia según variables y pesos {.tabset}
+
+Se consideran los valor 4 y 5
+
+```{r,include=FALSE}
+vars_pred <- c("muestra","m0_sexo","estrato_disenno","tramo_etario","educ")
+template_satis_pond <- c(
+    "### {{nm}}\n",
+    "```{r, satis_pond {{nm}} }\n",
+    "grafo_pesos('{{nm}}','satis_demo')\n",
+    "```\n",
+    "\n"
+  )
+
+plots_satis_pond<- lapply(
+  vars_pred, 
+  function(nm) knitr::knit_expand(text = template_satis_pond)
+)
+```
+
+`r knitr::knit(text = unlist(plots_satis_pond))`
+
+
+
+## Interés en política según variables y pesos {.tabset}
+
+Se consideran los valor 4 y 5
+
+```{r,include=FALSE}
+vars_pred <- c("muestra","m0_sexo","estrato_disenno","tramo_etario","educ")
+template_interes_pond <- c(
+    "### {{nm}}\n",
+    "```{r, interes_pond {{nm}} }\n",
+    "grafo_pesos('{{nm}}','interes_poli')\n",
+    "```\n",
+    "\n"
+  )
+
+plots_interes_pond<- lapply(
+  vars_pred, 
+  function(nm) knitr::knit_expand(text = template_interes_pond)
+)
+```
+
+`r knitr::knit(text = unlist(plots_interes_pond))`
+
+
+## Confianza social generalizada según variables y pesos {.tabset}
+
+Se consideran el valor 2
+
+```{r,include=FALSE}
+vars_pred <- c("muestra","m0_sexo","estrato_disenno","tramo_etario","educ")
+template_confianza_pond <- c(
+    "### {{nm}}\n",
+    "```{r, confianza_pond {{nm}} }\n",
+    "grafo_pesos('{{nm}}','confianza')\n",
+    "```\n",
+    "\n"
+  )
+
+plots_confianza_pond<- lapply(
+  vars_pred, 
+  function(nm) knitr::knit_expand(text = template_confianza_pond)
+)
+```
+
+`r knitr::knit(text = unlist(plots_confianza_pond))`
+
+
+
+## Autoritarismo según variables y pesos {.tabset}
+
+Se consideran los valor 4 y 5
+
+```{r,include=FALSE}
+vars_pred <- c("muestra","m0_sexo","estrato_disenno","tramo_etario","educ")
+template_autori_pond <- c(
+    "### {{nm}}\n",
+    "```{r, autori_pond {{nm}} }\n",
+    "grafo_pesos('{{nm}}','autori')\n",
+    "```\n",
+    "\n"
+  )
+
+plots_autori_pond<- lapply(
+  vars_pred, 
+  function(nm) knitr::knit_expand(text = template_autori_pond)
+)
+```
+
+`r knitr::knit(text = unlist(plots_autori_pond))`
+
+
+## Estatus social subjetivo según variables y pesos {.tabset}
+
+Se consideran los valores entre 4 y 6
+
+```{r,include=FALSE}
+vars_pred <- c("muestra","m0_sexo","estrato_disenno","tramo_etario","educ")
+template_estatus_pond <- c(
+    "### {{nm}}\n",
+    "```{r, estatus_pond {{nm}} }\n",
+    "grafo_pesos('{{nm}}','estatus_sub')\n",
+    "```\n",
+    "\n"
+  )
+
+plots_estatus_pond<- lapply(
+  vars_pred, 
+  function(nm) knitr::knit_expand(text = template_estatus_pond)
+)
+```
+
+`r knitr::knit(text = unlist(plots_estatus_pond))`
+
+
+
+## Satisfacción con la vida según variables y pesos {.tabset}
+
+Se consideran los valor 4 y 5
+
+```{r,include=FALSE}
+vars_pred <- c("muestra","m0_sexo","estrato_disenno","tramo_etario","educ")
+template_satis_vida_pond <- c(
+    "### {{nm}}\n",
+    "```{r, satis_vida_pond {{nm}} }\n",
+    "grafo_pesos('{{nm}}','satis_vida')\n",
+    "```\n",
+    "\n"
+  )
+
+plots_satis_vida_pond<- lapply(
+  vars_pred, 
+  function(nm) knitr::knit_expand(text = template_satis_vida_pond)
+)
+```
+
+`r knitr::knit(text = unlist(plots_satis_vida_pond))`
+
+
+
+## Percepción seguridad del barrio según variables y pesos {.tabset}
+
+Se consideran los valor 4 y 5
+
+```{r,include=FALSE}
+vars_pred <- c("muestra","m0_sexo","estrato_disenno","tramo_etario","educ")
+template_seguridad_pond <- c(
+    "### {{nm}}\n",
+    "```{r, seguridad_pond {{nm}} }\n",
+    "grafo_pesos('{{nm}}','seguridad')\n",
+    "```\n",
+    "\n"
+  )
+
+plots_seguridad_pond<- lapply(
+  vars_pred, 
+  function(nm) knitr::knit_expand(text = template_seguridad_pond)
+)
+```
+
+`r knitr::knit(text = unlist(plots_seguridad_pond))`
+
+
+
 
 
 # Modelamiento
