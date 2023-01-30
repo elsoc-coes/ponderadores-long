@@ -242,7 +242,7 @@ plots_distribucion_pesos <- lapply(
 ## Descriptivos pesos {.tabset}
 
 ```{r,include=FALSE}
-pesos_desc <- c("ponderador01","ponderador02","ponderadorlong_total","ponderadorlong_nr")
+pesos_desc <-names(select(elsoc_pesos,starts_with("ponderador")))
 template_desc_pesos <- c(
     "### {{nm}}\n",
     "```{r, desc pesos {{nm}} }\n",
