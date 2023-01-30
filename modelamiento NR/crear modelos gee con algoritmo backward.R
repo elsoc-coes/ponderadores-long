@@ -13,14 +13,14 @@ m2 <- readRDS("datos/insumos_ponderadores/m2.RDS")%>%
   mutate(ola_fac=factor(ola_fac))%>%
   drop_na()
 
-covariables <- c("ola_fac","estrato_disenno","sexo_imp","edad_imp_tramo","edu_imp","civil_imp",
+covariables <- c("ola_fac","sexo_imp","estrato_disenno","edad_imp_tramo","edu_imp","civil_imp",
                 "nsnr_prom_mod_1ra_c","visitas_lag_c","densidad_pob_km2_c","jh_esc_m_c",
                 "prop_hacina_c","tamagno_hog_c","cant_pers_prom_c","prop_precaria_c")
 
 
 
 
-back_gee <-function(base,vars,metrica){
+back_gee <-function(base,vars,metrica,fijas=NULL){
   
   name_covs <- vars
   
@@ -33,7 +33,13 @@ back_gee <-function(base,vars,metrica){
     
     combis <- combinations(length(name_covs),length(name_covs)-1,name_covs)
     
-    ecuaciones <- lapply(1:nrow(combis),function(i){reformulate(response="responde",combis[i,])})
+    if(is.null(fijas)){
+      ecuaciones <- lapply(1:nrow(combis),function(i){reformulate(response="responde",combis[i,])})
+      
+    }else{
+      covariables[!covariables %in% fijas]
+      ecuaciones <- lapply(1:nrow(combis),function(i){reformulate(response="responde",c(fijas,combis[i,]))})
+    }
     
     
     modelos <- lapply(1:length(ecuaciones),function(j){geeglm(ecuaciones[[j]],
@@ -75,8 +81,20 @@ saveRDS(bestGEE_QICU,file = "modelamiento NR/modelos/bestGEE_QICU.RDS",
 
 
 bestGEE_QICU_m2 <- back_gee(m2,covariables,"QICu")
-
 saveRDS(bestGEE_QICU_m2,
         file = "modelamiento NR/modelos/bestGEE_QICU_m2.RDS",
         compress = "bzip2")
+
+
+
+bestGEE_QICU_estrato <- back_gee(m1,covariables,"QICu","estrato_disenno")
+bestGEE_QICU_estrato_m2 <- back_gee(m2,covariables,"QICu","estrato_disenno")
+
+saveRDS(bestGEE_QICU_estrato,file = "modelamiento NR/modelos/bestGEE_QICU_estrato.RDS",
+        compress = "bzip2")
+saveRDS(bestGEE_QICU_estrato_m2,file = "modelamiento NR/modelos/bestGEE_QICU_estrato_m2.RDS",
+        compress = "bzip2")
+
+
+
 

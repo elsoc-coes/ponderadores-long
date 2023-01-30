@@ -11,8 +11,11 @@ elsoc_nr <- factores_expansion%>%
             left_join(elsoc_preds_imp,by=c("idencuesta","ola"))%>%
             mutate(pd_atricion=ifelse(muestra==1,
                                       ifelse(ola==1,pd_nr,pd_diseno/preds_gee),
-                                      ifelse(ola==3,pd_nr,pd_diseno/preds_gee)))%>%
-            select(idencuesta,ola,muestra,pd_diseno,pd_nr,pd_atricion)
+                                      ifelse(ola==3,pd_nr,pd_diseno/preds_gee)),
+                   pd_modelob=ifelse(muestra==1,
+                                     ifelse(ola==1,pd_nr,pd_diseno/preds_gee_estrato),
+                                     ifelse(ola==3,pd_nr,pd_diseno/preds_gee_estrato)))%>%
+            select(idencuesta,ola,muestra,pd_diseno,pd_nr,pd_atricion,pd_modelob)
 
 
 # PODAR LOS PESOS ---------------------------------------------------------
@@ -25,6 +28,7 @@ elsoc_nr$pd_atricion_trm <- trimpesos(elsoc_nr,90,"pd_atricion")$pd_trimmed
 
 elsoc_nr$pd_nr_trm<-trimpesos(elsoc_nr,90,"pd_nr")$pd_trimmed
 
+elsoc_nr$pd_modelob_trm=trimpesos(elsoc_nr,90,"pd_modelob")$pd_trimmed
 
 # RAKING ------------------------------------------------------------------
 load("datos/oficiales/ELSOC_Long_2016_2022_v1.00_R.RData")
@@ -76,12 +80,30 @@ pesos_nr_m2 = rake_pesos(filter(elsoc_long_dv_nr,muestra==2),"pd_nr_trm", c(2018
   mutate(muestra=2)
 pesos_nr_m2$pd_nr_rk_rs= rs_pesos(pesos_nr_m2,"pd_rk")
 
+### MODELO ALTERNATIVO
+pesos_modelob_m1 =rake_pesos(filter(elsoc_long_dv_nr,muestra==1),"pd_modelob_trm", c(2016,2017,2018,2019,2021,2022))%>%
+  mutate(muestra=1)
+pesos_modelob_m1$pd_modelob_rk_rs = rs_pesos(pesos_modelob_m1,"pd_rk")
+
+pesos_modelob_m2 = rake_pesos(filter(elsoc_long_dv_nr,muestra==2),"pd_modelob_trm", c(2018,2019,2021,2022))%>%
+  mutate(muestra=2)
+pesos_modelob_m2$pd_modelob_rk_rs= rs_pesos(pesos_modelob_m2,"pd_rk")
+
+
+
+
+
+
+
+
 elsoc_long_dv_nr=list(elsoc_long_dv_nr,
      select(bind_rows(pesos_m1,pesos_m2),-pd_rk),
+         select(bind_rows(pesos_modelob_m1,pesos_modelob_m2),-pd_rk),
      select(bind_rows(pesos_nr_m1,pesos_nr_m2),-pd_rk))%>%
     reduce(left_join,by=c("idencuesta","ola","muestra"))%>%
   rename(pd_atricion_trm_rk_rs_total=pd_rk_rs,
-         pd_nr_trm_rk_rs=pd_nr_rk_rs)
+         pd_nr_trm_rk_rs=pd_nr_rk_rs,
+         pd_modelob_trm_rk_rs=pd_modelob_rk_rs)
 
 
 
@@ -107,11 +129,12 @@ master_pesos <- elsoc_long_dv_nr%>%
                 select(idencuesta,ola,muestra,segmento_disenno,estrato_disenno,m0_sexo,tramo_etario,everything())%>%
   rename(ponderadorlong_total=pd_atricion_trm_rk_rs_total,
          ponderadorlong_panel=pd_atricion_trm_rk_rs_panel,
-         ponderadorlong_nr=pd_nr_trm_rk_rs)%>%
+         ponderadorlong_nr=pd_nr_trm_rk_rs,
+         ponderadorlong_modelob=pd_modelob_trm_rk_rs)%>%
   mutate(ola=car::recode(ola,"2016=1;2017=2;2018=3;2019=4;2021=5;2022=6"))
 
 pesos_longitudinales_elsoc <-master_pesos %>%
-                              select(idencuesta,ola,ponderadorlong_total,ponderadorlong_panel,ponderadorlong_nr)
+                              select(idencuesta,ola,starts_with("ponderador"))
 
 write.csv(master_pesos,file="generar ponderadores/resultados/master_pesos.csv",row.names = FALSE)
 
