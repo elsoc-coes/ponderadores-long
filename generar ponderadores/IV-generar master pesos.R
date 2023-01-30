@@ -77,7 +77,7 @@ pesos_nr_m2 = rake_pesos(filter(elsoc_long_dv_nr,muestra==2),"pd_nr_trm", c(2018
 pesos_nr_m2$pd_nr_rk_rs= rs_pesos(pesos_nr_m2,"pd_rk")
 
 elsoc_long_dv_nr=list(elsoc_long_dv_nr,
-     select(bind_rows(pesos_m1,pesos_m1),-pd_rk),
+     select(bind_rows(pesos_m1,pesos_m2),-pd_rk),
      select(bind_rows(pesos_nr_m1,pesos_nr_m2),-pd_rk))%>%
     reduce(left_join,by=c("idencuesta","ola","muestra"))%>%
   rename(pd_atricion_trm_rk_rs_total=pd_rk_rs,

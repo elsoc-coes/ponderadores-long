@@ -137,8 +137,12 @@ grafo_box_var<- function(var){
     gather("pond","valor",-c(ola,!!rlang::sym(var)))%>%
     ggplot(aes(x=factor(ola),y=valor,color=pond))+
     geom_boxplot()+
-    facet_wrap(formula(paste0("~",var)))+
-    scale_y_continuous(limits = c(0,10))
+    labs(x="Ola del Estudio",
+         y="Valor ponderador",
+         color="Ponderador")+
+    facet_wrap(formula(paste0("~",var)),scales = "free")+
+    scale_y_continuous(limits = c(0,10))+
+        theme(legend.position = "top") 
   
   
   
@@ -229,7 +233,7 @@ plots_distribucion_pesos <- lapply(
 ## Descriptivos pesos {.tabset}
 
 ```{r,include=FALSE}
-pesos_desc <- c("ponderador01","ponderador02","ponderadorlong_total")
+pesos_desc <- c("ponderador01","ponderador02","ponderadorlong_total","ponderadorlong_nr")
 template_desc_pesos <- c(
     "### {{nm}}\n",
     "```{r, desc pesos {{nm}} }\n",
