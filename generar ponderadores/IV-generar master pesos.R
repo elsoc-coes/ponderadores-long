@@ -21,6 +21,10 @@ source("generar ponderadores/funciones/funcion para podar los pesos.R")
 
 elsoc_nr$pd_atricion_trm <- trimpesos(elsoc_nr,90,"pd_atricion")$pd_trimmed
 
+# PODER PESOS NR
+
+elsoc_nr$pd_nr_trm<-trimpesos(elsoc_nr,90,"pd_nr")$pd_trimmed
+
 
 # RAKING ------------------------------------------------------------------
 load("datos/oficiales/ELSOC_Long_2016_2022_v1.00_R.RData")
@@ -61,10 +65,24 @@ pesos_m2 <- rake_pesos(filter(elsoc_long_dv_nr,muestra==2),"pd_atricion_trm", c(
 pesos_m2$pd_rk_rs <- rs_pesos(pesos_m2,"pd_rk")
 
 
-elsoc_long_dv_nr <-elsoc_long_dv_nr%>%
-  left_join(select(bind_rows(pesos_m1,pesos_m2),-pd_rk),
-            by=c("idencuesta","ola","muestra"))%>%
-            rename(pd_atricion_trm_rk_rs_total=pd_rk_rs)
+
+### RAKING PESOS NR
+
+pesos_nr_m1 =rake_pesos(filter(elsoc_long_dv_nr,muestra==1),"pd_nr_trm", c(2016,2017,2018,2019,2021,2022))%>%
+  mutate(muestra=1)
+pesos_nr_m1$pd_nr_rk_rs = rs_pesos(pesos_nr_m1,"pd_rk")
+
+pesos_nr_m2 = rake_pesos(filter(elsoc_long_dv_nr,muestra==2),"pd_nr_trm", c(2018,2019,2021,2022))%>%
+  mutate(muestra=2)
+pesos_nr_m2$pd_nr_rk_rs= rs_pesos(pesos_nr_m2,"pd_rk")
+
+elsoc_long_dv_nr=list(elsoc_long_dv_nr,
+     select(bind_rows(pesos_m1,pesos_m1),-pd_rk),
+     select(bind_rows(pesos_nr_m1,pesos_nr_m2),-pd_rk))%>%
+    reduce(left_join,by=c("idencuesta","ola","muestra"))%>%
+  rename(pd_atricion_trm_rk_rs_total=pd_rk_rs,
+         pd_nr_trm_rk_rs=pd_nr_rk_rs)
+
 
 
 
@@ -88,11 +106,12 @@ elsoc_long_dv_nr <-elsoc_long_dv_nr%>%
 master_pesos <- elsoc_long_dv_nr%>%
                 select(idencuesta,ola,muestra,segmento_disenno,estrato_disenno,m0_sexo,tramo_etario,everything())%>%
   rename(ponderadorlong_total=pd_atricion_trm_rk_rs_total,
-         ponderadorlong_panel=pd_atricion_trm_rk_rs_panel)%>%
+         ponderadorlong_panel=pd_atricion_trm_rk_rs_panel,
+         ponderadorlong_nr=pd_nr_trm_rk_rs)%>%
   mutate(ola=car::recode(ola,"2016=1;2017=2;2018=3;2019=4;2021=5;2022=6"))
 
 pesos_longitudinales_elsoc <-master_pesos %>%
-                              select(idencuesta,ola,ponderadorlong_total,ponderadorlong_panel)
+                              select(idencuesta,ola,ponderadorlong_total,ponderadorlong_panel,ponderadorlong_nr)
 
 write.csv(master_pesos,file="generar ponderadores/resultados/master_pesos.csv",row.names = FALSE)
 
