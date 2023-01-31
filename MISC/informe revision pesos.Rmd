@@ -122,7 +122,7 @@ elsoc_pesos =elsoc_long_2016_2022%>%
 
 
 elsoc_merge=elsoc_long_2016_2022%>%
-            left_join(elsoc_preds_imp,by=c("idencuesta","ola"))
+            left_join(select(elsoc_preds_imp,-estrato_disenno),by=c("idencuesta","ola"))
 
 
 ```

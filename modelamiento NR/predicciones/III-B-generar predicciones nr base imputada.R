@@ -33,7 +33,7 @@ m2$preds_gee <- predict(bestGEE_QICU_m2,newdata = m2,type="response")
 m2$preds_gee_estrato <-predict(bestGEE_QICU_estrato_m2,newdata = m2,type="response")
 
 preds_imp <- bind_rows(m1,m2)%>%
-       select(idencuesta,ola,responde,preds_gee,preds_gee_estrato)
+       select(idencuesta,ola,responde,estrato_disenno,preds_gee,preds_gee_estrato)
 
 
 saveRDS(preds_imp,file="modelamiento NR/predicciones/elsoc_preds_imp.RDS")
