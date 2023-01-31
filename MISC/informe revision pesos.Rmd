@@ -24,12 +24,16 @@ library(plotly)
 ```{r,include=FALSE}
 bestGEE_QICU <- readRDS("../modelamiento NR/modelos/bestGEE_QICU.RDS")
 bestGEE_QICU_m2 <- readRDS("../modelamiento NR/modelos/bestGEE_QICU_m2.RDS")
+bestGEE_QICU_estrato <- readRDS("../modelamiento NR/modelos/bestGEE_QICU_estrato.RDS")
+bestGEE_QICU_estrato_m2 <- readRDS("../modelamiento NR/modelos/bestGEE_QICU_estrato_m2.RDS")
 
 
 # CARGAR MODELOS
 
 tabla_m1 <- broom::tidy(bestGEE_QICU)
 tabla_m2 <- broom::tidy(bestGEE_QICU_m2)
+tabla_m1_estrato=broom::tidy(bestGEE_QICU_estrato)
+tabla_m2_estrato=broom::tidy(bestGEE_QICU_estrato_m2)
 
 unicos_variables<-  c("Intercepto", 
                       "Soltero",
@@ -51,6 +55,7 @@ unicos_variables<-  c("Intercepto",
                       "2019", 
                       "2021",
                       "2022",
+                      "P. Viviendas hacinadas zc",
                       "P. Viviendas precarias zc",
                       "Mujer",
                       "Tamaño hogar prom. zc",
@@ -58,12 +63,16 @@ unicos_variables<-  c("Intercepto",
 
 
 
-names(unicos_variables) <-  c(tabla_m2$term,tabla_m1$term)%>%
+names(unicos_variables) <-  c(tabla_m2$term,tabla_m1$term,tabla_m1_estrato$term,tabla_m2_estrato$term)%>%
                  unique()%>%
                  sort()
+  
 
 tabla_m1$term <- dplyr::recode(tabla_m1$term,!!!unicos_variables)
 tabla_m2$term <- dplyr::recode(tabla_m2$term,!!!unicos_variables)
+
+tabla_m1_estrato$term <- dplyr::recode(tabla_m1_estrato$term,!!!unicos_variables)
+tabla_m2_estrato$term <- dplyr::recode(tabla_m2_estrato$term,!!!unicos_variables)
 
 
 ```
@@ -113,7 +122,7 @@ elsoc_pesos =elsoc_long_2016_2022%>%
 
 
 elsoc_merge=elsoc_long_2016_2022%>%
-            left_join(elsoc_preds_imp,by=c("idencuesta","ola"))
+            left_join(select(elsoc_preds_imp,-estrato_disenno),by=c("idencuesta","ola"))
 
 
 ```
@@ -137,8 +146,12 @@ grafo_box_var<- function(var){
     gather("pond","valor",-c(ola,!!rlang::sym(var)))%>%
     ggplot(aes(x=factor(ola),y=valor,color=pond))+
     geom_boxplot()+
-    facet_wrap(formula(paste0("~",var)))+
-    scale_y_continuous(limits = c(0,10))
+    labs(x="Ola del Estudio",
+         y="Valor ponderador",
+         color="Ponderador")+
+    facet_wrap(formula(paste0("~",var)),scales = "free")+
+    scale_y_continuous(limits = c(0,10))+
+        theme(legend.position = "top") 
   
   
   
@@ -229,7 +242,7 @@ plots_distribucion_pesos <- lapply(
 ## Descriptivos pesos {.tabset}
 
 ```{r,include=FALSE}
-pesos_desc <- c("ponderador01","ponderador02","ponderadorlong_total")
+pesos_desc <-names(select(elsoc_pesos,starts_with("ponderador")))
 template_desc_pesos <- c(
     "### {{nm}}\n",
     "```{r, desc pesos {{nm}} }\n",
@@ -446,7 +459,7 @@ Los modelos estimados son glm estimados vía gee. La forma de estimación median
 
 Una nota al pie, es que la estimación de los modelos generó objetos de R de alta cantidad (más de 100 mb), esto incluso excedía el limite para subirlos al repositorio de github. Pero con un método de compresión . Sin embargo, el gran tamaño de los modelos podría deberse a una gran cantidad de iteraciones necesarias para garantizar
 
-### Muestra Original 
+### Muestra Original a
 
 ```{r}
 tabla_m1%>%
@@ -461,11 +474,43 @@ tabla_m1%>%
 DT::datatable()
 ```
 
-### Muestra Refresco
+### Muestra Refresco a
 
 
 ```{r}
 tabla_m2%>%
+  select(-statistic)%>%
+  mutate(across(c(estimate,std.error), ~round(.x,4)),
+         sig=case_when(p.value <0.01 ~ '***',
+                       p.value >0.01 & p.value <0.05 ~'**',
+                       p.value >0.05 & p.value <0.1 ~'*',
+                       p.value >.1 ~''))%>%
+  select(-p.value)%>%
+            rename(Variable=term,Coeficiente=estimate,`Err. Estándar`=std.error,Significancia=sig)%>%
+DT::datatable()
+```
+
+
+### Muestra Original b
+
+```{r}
+tabla_m1_estrato%>%
+  select(-statistic)%>%
+  mutate(across(c(estimate,std.error), ~round(.x,4)),
+         sig=case_when(p.value <0.01 ~ '***',
+                       p.value >0.01 & p.value <0.05 ~'**',
+                       p.value >0.05 & p.value <0.1 ~'*',
+                       p.value >.1 ~''))%>%
+  select(-p.value)%>%
+            rename(Variable=term,Coeficiente=estimate,`Err. Estándar`=std.error,Significancia=sig)%>%
+DT::datatable()
+```
+
+### Muestra Refresco b
+
+
+```{r}
+tabla_m2_estrato%>%
   select(-statistic)%>%
   mutate(across(c(estimate,std.error), ~round(.x,4)),
          sig=case_when(p.value <0.01 ~ '***',
