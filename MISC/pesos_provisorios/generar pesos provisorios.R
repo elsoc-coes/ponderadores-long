@@ -49,13 +49,10 @@ source("generar ponderadores/funciones/funcion para hacer raking con los pesos.R
 # PONDERADOR POR MUESTRAS -------------------------------------------------
 
 ### RAKING
-pesos_m1 <- rake_pesos(filter(elsoc_long_dv_nr,muestra==1),"pd_atricion_trm", c(2016,2017,2018,2019,2021,2022))%>%
-  mutate(muestra=1)
-pesos_m1$pd_rk_rs <- rs_pesos(pesos_m1,"pd_rk")
+pesos_total <- rake_pesos(elsoc_long_dv_nr,"pd_atricion_trm", c(2016,2017,2018,2019,2021,2022))
 
-pesos_m2 <- rake_pesos(filter(elsoc_long_dv_nr,muestra==2),"pd_atricion_trm", c(2018,2019,2021,2022))%>%
-  mutate(muestra=2)
-pesos_m2$pd_rk_rs <- rs_pesos(pesos_m2,"pd_rk")
+pesos_total$pd_rk_rs <- rs_pesos(pesos_total,"pd_rk")
+
 
 
 
@@ -64,30 +61,30 @@ pesos_m2$pd_rk_rs <- rs_pesos(pesos_m2,"pd_rk")
 
 
 # PONDERADOR POR PANELES --------------------------------------------------
-pesos_panel1 <- rake_pesos(filter(elsoc_long_dv_nr,tipo_atricion==1,muestra==1),"pd_atricion_trm", c(2016,2017,2018,2019,2021,2022))%>%
-  mutate(muestra=1)
-pesos_panel1$pd_rk_rs_panel <- rs_pesos(pesos_panel1,"pd_rk")
+pesos_panel <- rake_pesos(filter(elsoc_long_dv_nr,tipo_atricion==1),"pd_atricion_trm", c(2016,2017,2018,2019,2021,2022))%>%
+  rename(pd_rk_panel=pd_rk)
 
-pesos_panel2 <- rake_pesos(filter(elsoc_long_dv_nr,tipo_atricion==1,muestra==2),"pd_atricion_trm", c(2018,2019,2021,2022))%>%
-  mutate(muestra=2)
-pesos_panel2$pd_rk_rs_panel <- rs_pesos(pesos_panel2,"pd_rk")
+pesos_panel$pd_rk_panel_rs <- rs_pesos(pesos_panel,"pd_rk_panel")
 
 
 
 
 master_pesos=list(elsoc_long_dv_nr,
-                      select(bind_rows(pesos_m1,pesos_m2),-pd_rk),
-                      select(bind_rows(pesos_panel1,pesos_panel2),-pd_rk))%>%
-  reduce(left_join,by=c("idencuesta","ola","muestra"))%>%
-  rename(ponderadorlong_total=pd_rk_rs,
-         ponderadorlong_panel=pd_rk_rs_panel)%>%
+                      pesos_total,
+                  pesos_panel)%>%
+  reduce(left_join,by=c("idencuesta","ola"))%>%
+  rename(ponderadorlong_total=pd_rk,
+         ponderadorlong_panel=pd_rk_panel,
+         ponderadorlong_total_rs=pd_rk_rs,
+         ponderadorlong_panel_rs=pd_rk_panel_rs)%>%
   select(idencuesta,ola,muestra,segmento_disenno,m0_sexo,tramo_etario,everything())%>%
   mutate(ola=car::recode(ola,"2016=1;2017=2;2018=3;2019=4;2021=5;2022=6"))
 
 
 
+
 pesos_longitudinales_elsoc <-master_pesos %>%
-                              select(idencuesta,ola,starts_with("ponderador"))
+  select(idencuesta,ola,starts_with("ponderador"))
 
 write.csv(master_pesos,file="MISC/pesos_provisorios/master_pesos_beta.csv",row.names = FALSE)
 
