@@ -78,26 +78,28 @@ class: inverse,middle,center
 ---
 <h1> .morado[Resumen ejecutivo] </h1>
 
-Los ponderadores longitudinales toman los pesos originales y se le aplican una serie de transformaciones: 
+Los ponderadores longitudinales toman los pesos originales y aplican una serie de transformaciones: 
 
-Ajuste en base a la probabilidad de participación de un individuo en un año en particular a  a partir de la segunda ola de cada muestra. 
+1.    Ajuste en base a la probabilidad de participación de un individuo en un año en particular a partir de la segunda ola de cada muestra. 
 
-Recorte de los valores extremos considerando el  90% central de la distribución empírica de los pesos. 
+2.    Recorte de los valores extremos considerando el  90% central de la distribución empírica de los pesos. 
 
-Los ajustes a totales poblacionales: Proyecciones poblaciones de sexo y tramos etarios
+3.    Ajustes a totales poblacionales: Proyecciones poblacionales de sexo y tramos etarios.
 
-Se construyen dos ponderadores:  1) Total de observaciones, 2) Uso con paneles balanceados.
+Se construyen dos ponderadores:  a) Total de observaciones. b) Uso con paneles balanceados.
 ---
 
 <h1> .morado[Resumen ejecutivo] </h1>
 
-Para modelar la probabilidad de respuesta se ocupa una regresión logística mediante GEE.También se hacen dos modelos distintos para cada muestra. Para escoger las variables relevantes a incluir en el modelo se hace un algoritmo de selección backward. 
+Modelamiento de NR: a) Glm vía GEE. b) Se hace un modelo distinto para cada cada muestra. c) Selección backward sobre variables de diseño muestral, geográficas, del cuestionario y del proceso de recolección de datos.
 
-El ajuste a totales poblacionales se hace vía raking: Solución iterativa que permite ajustar totales marginales de sexo y tramos etarios. Al mismo tiempo se limita la población urbana mayor de 18 años. 
+Celdas de ajuste: a) Se agrupan los cuartiles de la distribución de los valores predichos del modelo, b) el ajuste final es la tasa de respuesta dentro de cada grupo.
 
-Se hace un re-escalamiento de los pesos para que puedan reproducir totales poblacionales.
+Ajuste a totales poblacionales: a) Raking, b) Ajuste a totales marginales de sexo y tramos de edad, c) Limitación a la población urbana mayor de 18 años. 
 
-Las limitaciones más importantes de los pesos tenen que ver con no considerar la elegibilidad de la persona a la hora de hacer un ajuste de no respuesta. 
+Se aplica también un re-escalamiento para dejar los pesos a niveles muestrales. 
+
+Las limitaciones más importantes de los pesos tienen que ver con no considerar la elegibilidad de la persona a la hora de hacer un ajuste de no respuesta. 
 
 ---
 <h1> .morado[¿Qué son los ponderadores longitudinales?] </h1>
@@ -117,6 +119,7 @@ Son transformaciones de los pesos originales de ELSOC.
       <li>Inverso P. Selección</li>
       <li>Ajuste de NR (2016 y 2018)</li>
       <li>Ajuste NR (2017 hasta 2022)</li>
+      <li>Celdas de ajuste</li>
       <li>Recorte a los pesos</li>
       <li>Calibración Edad y Sexo</li>
       <li>Re-escalamientos</li>
@@ -145,17 +148,17 @@ El ajuste por atrición consiste utilizar las probabilidades predichas por un mo
 
 La probabilidad que una persona responda en un año particular es modelada separadamente para la muestra original y la muestra de refresco.
 
-Se asume que la muestra original y la muestra de refresco tienen procesos de atrición distintos. Esto además evita imputar valores para la muestra de refresco en los años 2016 y 2027
+Se asume que la muestra original y la muestra de refresco tienen procesos de atrición distintos. Esto además evita imputar valores para la muestra de refresco en los años 2016 y 2017
 ---
 <h1> .morado[Técnica de modelamiento de la no respuesta] </h1>
 
 Glm vía GEE: Permiten trabajar con observaciones correlacionadas.
 
-Ventajas: 1) Permiten dar estructura autorregresiva a las observaciones dentro de un mismo individuo. 2) Son rápidos de calcular y usualmente no presentan problemas de convergencia como los glmmm.
+Ventajas: 1) Permiten dar estructura autorregresiva a las observaciones dentro de un mismo individuo. 2) Son rápidos de calcular y usualmente no presentan problemas de convergencia como los glmm.
 
 Desventajas: Estos modelos se limitan a un único nivel de anidamiento. Es decir, sólo  podemos considerar la correlación entre observaciones de un mismo individuo en distintos puntos del tiempo, pero no entre individuos dentro de un mismo barrio, o entre individuos dentro de una misma ciudad. 
 
-Para escoger el mejor subconjunto de covariables se utilizó un método de selección backward, y cómo criterio de ajuste, se utilizó un análogo del AIC para los GEE (QICu).
+Para escoger el mejor subconjunto de covariables se utilizó un método de selección backward, y como criterio de ajuste, se utilizó un análogo del AIC para los GEE (QICu).
 ---
 <h1> .morado[Covariables del modelo] </h1>
 
@@ -268,46 +271,58 @@ DT::datatable()
 
 
 ---
+
+class: inverse,middle,center
+<h1> Celdas de ajuste </h1>
+---
+h1> .morado[Sobre las celdas de ajuste] </h1>
+
+Buscan evitar tener pesos sobre dispersos. 
+
+Hace más robusto a los pesos respecto a errores en la especificación de la función de medias. 
+
+
+---
 <h1> .morado[Recorte de los pesos] </h1>
 
-Un problema de los pesos originales es que posee valores extremos importantes, especialmente luego del ajuste de no respuesta, dichos valores se dan en ambas colas de la distribución. 
+Un problema de los pesos originales es que poseen valores extremos importantes, especialmente luego del ajuste de no respuesta, dichos valores se dan en ambas colas de la distribución. 
 
 Se toma la decisión de recortar el 10% más extremo de la distribución de los pesos.
 
-Es decir, los valores que sean inferiores al percentil 5 o que sean mayores al 95 son reemplazados el valor de dichos percentiles respectivamente. De esta manera se evita tener pesos con observaciones perdidas. 
+Es decir, los valores que sean inferiores al percentil 5 o que sean mayores al 95 son reemplazados por el valor de dichos percentiles respectivamente. De esta manera se evita tener pesos con observaciones perdidas. 
 
 ---
 
 <h1> .morado[Calibración] </h1>
 
-Es una de las formas de hacer coincidir las estimaciones muestrales con valores totales conocidos para la población. 
+Es una de las formas de hacer coincidir las estimaciones muestrales con valores totales conocidos para la población objetivo. 
 
 
-Los pesos transversales se post-estratifican según totales por región y por sexo. Los pesos longitudinales se calibran respecto a los totales poblacionales para las variables de sexo y tramo etario.
+Los pesos transversales se post-estratifican según totales cruzados por región y por sexo. Los pesos longitudinales se calibran respecto a los totales poblacionales marginales para las variables de sexo y tramo etario.
 
 Estos totales corresponden a las proyecciones hechas por el INE para la población mayor de 18 años de zonas urbanas.
 
 ---
 <h1> .morado[Raking] </h1>
 
-Puede pensarse como una post-estratificación iterativa sobre cada una de las variables auxiliares de interes. 
+Puede pensarse como una post-estratificación iterativa sobre cada una de las variables auxiliares de interés. 
 
 Como ventaja respecto a la post-estratificación es que no se requiere de valores para todos las combinaciones posibles de categorías de las variables auxiliares, y también se evitan valores extremos debido a combinaciones con pocas observaciones. 
 
 El ponderador longitudinal total calibra las proporciones muestrales de todas las observaciones del estudio a los totales poblacionales conocidos. El ponderador longitudinal panel hace lo mismo pero para el subconjunto de observaciones que responden a todas olas. 
 
-Se ocupa la funcion `rake()` de la librería `survey` para cada año 
+Se ocupa la funcion `rake()` de la librería `survey` para cada año.
 
 ---
 <h1> .morado[Re-escalamientos] </h1>
 
 Re-escalar los pesos hace que la suma de los ponderadores sea equivalente al tamaño muestral. 
 
-Esto permite darle una interpretación al valor del peso de una observación
+Esto permite darle una interpretación al valor del peso de una observación.
 
 Se hace un re-escalamiento para cada año, y cada peso longitudinal reproduce tamaños muestrales distintos. 
 
-`ponderadorlg_total` reproduce por año el tamaño muestral total de ELSOC, mientras que  `ponderadorlg_panel` reproduce el tamaño muestral del panel balanceado, para cada muestra.
+`ponderadorlg_total` reproduce por año el tamaño muestral de todas las observaciones de ELSOC, mientras que  `ponderadorlg_panel` reproduce el tamaño muestral del panel balanceado, para cada muestra.
 
 ---
 class: inverse,middle,center
