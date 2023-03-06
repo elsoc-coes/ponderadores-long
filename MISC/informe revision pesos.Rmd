@@ -24,16 +24,13 @@ library(plotly)
 ```{r,include=FALSE}
 bestGEE_QICU <- readRDS("../modelamiento NR/modelos/bestGEE_QICU.RDS")
 bestGEE_QICU_m2 <- readRDS("../modelamiento NR/modelos/bestGEE_QICU_m2.RDS")
-bestGEE_QICU_estrato <- readRDS("../modelamiento NR/modelos/bestGEE_QICU_estrato.RDS")
-bestGEE_QICU_estrato_m2 <- readRDS("../modelamiento NR/modelos/bestGEE_QICU_estrato_m2.RDS")
 
 
 # CARGAR MODELOS
 
 tabla_m1 <- broom::tidy(bestGEE_QICU)
 tabla_m2 <- broom::tidy(bestGEE_QICU_m2)
-tabla_m1_estrato=broom::tidy(bestGEE_QICU_estrato)
-tabla_m2_estrato=broom::tidy(bestGEE_QICU_estrato_m2)
+
 
 unicos_variables<-  c("Intercepto", 
                       "Soltero",
@@ -55,7 +52,6 @@ unicos_variables<-  c("Intercepto",
                       "2019", 
                       "2021",
                       "2022",
-                      "P. Viviendas hacinadas zc",
                       "P. Viviendas precarias zc",
                       "Mujer",
                       "Tamaño hogar prom. zc",
@@ -63,7 +59,7 @@ unicos_variables<-  c("Intercepto",
 
 
 
-names(unicos_variables) <-  c(tabla_m2$term,tabla_m1$term,tabla_m1_estrato$term,tabla_m2_estrato$term)%>%
+names(unicos_variables) <-  c(tabla_m2$term,tabla_m1$term)%>%
                  unique()%>%
                  sort()
   
@@ -71,8 +67,6 @@ names(unicos_variables) <-  c(tabla_m2$term,tabla_m1$term,tabla_m1_estrato$term,
 tabla_m1$term <- dplyr::recode(tabla_m1$term,!!!unicos_variables)
 tabla_m2$term <- dplyr::recode(tabla_m2$term,!!!unicos_variables)
 
-tabla_m1_estrato$term <- dplyr::recode(tabla_m1_estrato$term,!!!unicos_variables)
-tabla_m2_estrato$term <- dplyr::recode(tabla_m2_estrato$term,!!!unicos_variables)
 
 
 ```
@@ -118,7 +112,8 @@ elsoc_long_2016_2022=elsoc_long_2016_2022%>%
 pesos_elsoc= read_csv("../generar ponderadores/resultados/pesos_longitudinales_elsoc.csv")
 
 elsoc_pesos =elsoc_long_2016_2022%>%
-  left_join(pesos_elsoc,by=c("idencuesta","ola"))
+  left_join(pesos_elsoc,by=c("idencuesta","ola"))%>%
+  select(-c(ponderadorlong_modelob,ponderadorlong_celdas,ponderadorlong_nr))
 
 
 elsoc_merge=elsoc_long_2016_2022%>%
@@ -493,36 +488,7 @@ DT::datatable()
 ```
 
 
-### Muestra Original b
 
-```{r}
-tabla_m1_estrato%>%
-  select(-statistic)%>%
-  mutate(across(c(estimate,std.error), ~round(.x,4)),
-         sig=case_when(p.value <0.01 ~ '***',
-                       p.value >0.01 & p.value <0.05 ~'**',
-                       p.value >0.05 & p.value <0.1 ~'*',
-                       p.value >.1 ~''))%>%
-  select(-p.value)%>%
-            rename(Variable=term,Coeficiente=estimate,`Err. Estándar`=std.error,Significancia=sig)%>%
-DT::datatable()
-```
-
-### Muestra Refresco b
-
-
-```{r}
-tabla_m2_estrato%>%
-  select(-statistic)%>%
-  mutate(across(c(estimate,std.error), ~round(.x,4)),
-         sig=case_when(p.value <0.01 ~ '***',
-                       p.value >0.01 & p.value <0.05 ~'**',
-                       p.value >0.05 & p.value <0.1 ~'*',
-                       p.value >.1 ~''))%>%
-  select(-p.value)%>%
-            rename(Variable=term,Coeficiente=estimate,`Err. Estándar`=std.error,Significancia=sig)%>%
-DT::datatable()
-```
 
 ## Predicciones de los modelos según categorias {.tabset}
 
