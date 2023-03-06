@@ -77,27 +77,27 @@ class: inverse,middle,center
 
 ---
 <h1> .morado[Resumen ejecutivo] </h1>
-Los ponderadores longitudinales toman los pesos originales con un ajuste de no respuesta para la primera ola de cada muestra. 
 
-Luego se hace un modelamiento de la probabilidad que un individuo responda al estudio en un año particular, a partir de la segunda ola de cada muestra. 
+Los ponderadores longitudinales toman los pesos originales y se le aplican una serie de transformaciones: 
 
-En el modelamiento se consideran covariables fijas en el tiempo, y para las cuales es  seguro asumir valores para los entrevistados que no participan en un año en particular. El resultado del ajuste de no respuesta es que damos más importancia a las observaciones que comparten características con los individuos que dejaron de participar del estudio.
+Ajuste en base a la probabilidad de participación de un individuo en un año en particular a  a partir de la segunda ola de cada muestra. 
 
-Para lidiar con los valores extremos que se arrastran desde los ponderadores originales, se hace un recorte de los pesos considerando el  90% central de la distribución empírica de los pesos. 
+Recorte de los valores extremos considerando el  90% central de la distribución empírica de los pesos. 
 
-Los ajustes a totales poblacionales y los re-escalamientos dependen de proporciones y tamaños muestrales que son diferentes para distintas sub-muestras de olas del estudio elsoc, por esto se construyen dos ponderadores longitudinales distintos: Uno para el total de observaciones en todas las olas, y otro para el uso con los paneles balanceados. 
+Los ajustes a totales poblacionales: Proyecciones poblaciones de sexo y tramos etarios
+
+Se construyen dos ponderadores:  1) Total de observaciones, 2) Uso con paneles balanceados.
 ---
 
 <h1> .morado[Resumen ejecutivo] </h1>
 
-Se escoge la calibración vía raking como forma de ajustar los pesos a totales poblacionales. 
+Para modelar la probabilidad de respuesta se ocupa una regresión logística mediante GEE.También se hacen dos modelos distintos para cada muestra. Para escoger las variables relevantes a incluir en el modelo se hace un algoritmo de selección backward. 
 
-Se ocupan las proyecciones realizadas por el INE para los años 2016 hasta 2022, considerando sólo la población mayor a 18 años dentro de áreas urbanas. Las variables electas para la calibración son el sexo y el tramo etario del entrevistado.
+El ajuste a totales poblacionales se hace vía raking: Solución iterativa que permite ajustar totales marginales de sexo y tramos etarios. Al mismo tiempo se limita la población urbana mayor de 18 años. 
 
+Se hace un re-escalamiento de los pesos para que puedan reproducir totales poblacionales.
 
-Re-escalar los pesos  implica hacer que la suma de estos pesos reproduzca el tamaño de la muestra en un año particular. Esto da la interpretabilidad del peso como una medida de cuantas personas de la muestra representa un individuo en particular. 
-
-La limitación  más importante de los pesos es  la no consideración de la elegibilidad de la persona a la hora de hacer un ajuste de no respuesta.
+Las limitaciones más importantes de los pesos tenen que ver con no considerar la elegibilidad de la persona a la hora de hacer un ajuste de no respuesta. 
 
 ---
 <h1> .morado[¿Qué son los ponderadores longitudinales?] </h1>

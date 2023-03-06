@@ -1,7 +1,7 @@
 ---
 title: "revision pesos"
-author: "Carlos Delgado"
-date: "2023-01-25"
+author: "Equipo ELSOC"
+date: "Marzo 2023"
 output:
   rmdformats::downcute:
     code_folding: hide
@@ -214,6 +214,8 @@ resumen_pesos<- function(var){
 
 
 ```
+
+# Resumen ejecutivo
 
 # Distribución empírica de los pesos
 
