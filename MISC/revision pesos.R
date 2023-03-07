@@ -36,29 +36,6 @@ elsoc_pesos =elsoc_long_2016_2022%>%
 elsoc_merge=elsoc_long_2016_2022%>%
   left_join(pesos_longitudinales_elsoc,by=c("idencuesta","ola"))
 
-
-
-
-
-
-
-
-grafo_box_var("muestra")
-grafo_box_var("m0_sexo")
-grafo_box_var("educ")
-grafo_box_var("tramo_etario")
-
-
-grafo_pesos("muestra")
-grafo_pesos("m0_sexo")
-grafo_pesos("educ")
-grafo_pesos("tramo_etario")
-
-
-
-
-
-
 elsoc_merge%>%
   group_by(muestra,ola)%>%
   summarise(n=n(),
@@ -66,13 +43,22 @@ elsoc_merge%>%
     panel=sum(tipo_atricion==1,na.rm = TRUE))
 
 
-
 elsoc_merge%>%
   group_by(muestra,ola)%>%
   summarise(n=n(),
             prop_mujer=mean(m0_sexo ==2,na.rm=TRUE),
-            w_prop_mujer=weighted.mean(m0_sexo ==2,w=ponderadorlong_total,na.rm=TRUE))%>%
+            w_prop_mujer=weighted.mean(m0_sexo ==2,w=ponderadorlong_total,na.rm=TRUE))
+
+
+
+
+elsoc_merge%>%
+  filter(tipo_atricion==1)%>%
+  group_by(muestra,ola)%>%
+  summarise(n=n(),
+            suma=sum(ponderadorlong_panel),
+            prop_mujer=mean(m0_sexo ==2,na.rm=TRUE),
+            w_prop_mujer=weighted.mean(m0_sexo ==2,
+                                       w=ponderadorlong_panel,na.rm=TRUE))%>%
   View()
-
-
 
