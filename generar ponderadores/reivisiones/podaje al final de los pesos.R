@@ -5,6 +5,20 @@ load("datos/oficiales/ELSOC_Long_2016_2022_v1.00_R.RData")
 pesos_longitudinales_elsoc <- read_csv("generar ponderadores/resultados/pesos_longitudinales_elsoc.csv")
 
 
+afectados<-elsoc_long_2016_2022%>%
+  left_join(pesos_longitudinales_elsoc,by=c("ola","idencuesta"))%>%
+  group_by(muestra,ola)%>%
+  reframe(n=sum(ponderadorlong_total>=6))
+
+
+elsoc_long_2016_2022%>%
+  left_join(pesos_longitudinales_elsoc,by=c("ola","idencuesta"))%>%
+  group_by(muestra,ola)%>%
+  reframe(enframe(quantile(ponderadorlong_total, probs=seq(0,1,.1))))%>%
+  mutate(name=factor(name,levels=c("0%","10%","20%", "30%","40%","50%", "60%","70%","80%","90%","100%")))%>%
+  spread(name,value)
+
+mean(afectados$n)
 peso_1_91<- generar_pesos(1,91)
 
 peso_2_92<- generar_pesos(2,92)
