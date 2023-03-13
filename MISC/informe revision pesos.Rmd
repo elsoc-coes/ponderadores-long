@@ -112,8 +112,7 @@ elsoc_long_2016_2022=elsoc_long_2016_2022%>%
 pesos_elsoc= read_csv("../generar ponderadores/resultados/pesos_longitudinales_elsoc.csv")
 
 elsoc_pesos =elsoc_long_2016_2022%>%
-  left_join(pesos_elsoc,by=c("idencuesta","ola"))%>%
-  select(-c(ponderadorlong_modelob,ponderadorlong_celdas,ponderadorlong_nr))
+  left_join(pesos_elsoc,by=c("idencuesta","ola"))
 
 
 elsoc_merge=elsoc_long_2016_2022%>%
@@ -212,6 +211,69 @@ resumen_pesos<- function(var){
 
 # Resumen ejecutivo
 
+# Modelamiento
+
+## Modelos Estimados {.tabset}
+
+Los modelos estimados son glm estimados vía gee. La forma de estimación mediante gee permiten tomar en cuenta en las estimaciones la correlación entre las observaciones. Como desventaja frente a los modelos jerarquicos, los anteriores no pueden considerar más de un nivel de anidamiento, 
+
+Una nota al pie, es que la estimación de los modelos generó objetos de R de alta cantidad (más de 100 mb), esto incluso excedía el limite para subirlos al repositorio de github. Pero con un método de compresión . Sin embargo, el gran tamaño de los modelos podría deberse a una gran cantidad de iteraciones necesarias para garantizar
+
+### Muestra Original a
+
+```{r}
+tabla_m1%>%
+  select(-statistic)%>%
+  mutate(across(c(estimate,std.error), ~round(.x,4)),
+         sig=case_when(p.value <0.01 ~ '***',
+                       p.value >0.01 & p.value <0.05 ~'**',
+                       p.value >0.05 & p.value <0.1 ~'*',
+                       p.value >.1 ~''))%>%
+  select(-p.value)%>%
+            rename(Variable=term,Coeficiente=estimate,`Err. Estándar`=std.error,Significancia=sig)%>%
+DT::datatable()
+```
+
+### Muestra Refresco a
+
+
+```{r}
+tabla_m2%>%
+  select(-statistic)%>%
+  mutate(across(c(estimate,std.error), ~round(.x,4)),
+         sig=case_when(p.value <0.01 ~ '***',
+                       p.value >0.01 & p.value <0.05 ~'**',
+                       p.value >0.05 & p.value <0.1 ~'*',
+                       p.value >.1 ~''))%>%
+  select(-p.value)%>%
+            rename(Variable=term,Coeficiente=estimate,`Err. Estándar`=std.error,Significancia=sig)%>%
+DT::datatable()
+```
+
+
+
+
+## Predicciones de los modelos según categorias {.tabset}
+
+
+```{r,include=FALSE}
+vars_pred <- c("muestra","m0_sexo","estrato_disenno","tramo_etario","educ")
+template_predicciones <- c(
+    "### {{nm}}\n",
+    "```{r, predicciones {{nm}} }\n",
+    "grafo_preds('{{nm}}')\n",
+    "```\n",
+    "\n"
+  )
+
+plots_predicciones <- lapply(
+  vars_pred, 
+  function(nm) knitr::knit_expand(text = template_predicciones)
+)
+```
+
+`r knitr::knit(text = unlist(plots_predicciones))`
+
 # Distribución empírica de los pesos
 
 ## Distribución de los pesos según variables {.tabset}
@@ -255,6 +317,10 @@ plots_desc_pesos <- lapply(
 ```
 
 `r knitr::knit(text = unlist(plots_desc_pesos))`
+
+
+
+
 
 # Aplicación de los pesos a variables
 
@@ -444,69 +510,3 @@ plots_seguridad_pond<- lapply(
 
 `r knitr::knit(text = unlist(plots_seguridad_pond))`
 
-
-
-
-
-# Modelamiento
-
-## Modelos Estimados {.tabset}
-
-Los modelos estimados son glm estimados vía gee. La forma de estimación mediante gee permiten tomar en cuenta en las estimaciones la correlación entre las observaciones. Como desventaja frente a los modelos jerarquicos, los anteriores no pueden considerar más de un nivel de anidamiento, 
-
-Una nota al pie, es que la estimación de los modelos generó objetos de R de alta cantidad (más de 100 mb), esto incluso excedía el limite para subirlos al repositorio de github. Pero con un método de compresión . Sin embargo, el gran tamaño de los modelos podría deberse a una gran cantidad de iteraciones necesarias para garantizar
-
-### Muestra Original a
-
-```{r}
-tabla_m1%>%
-  select(-statistic)%>%
-  mutate(across(c(estimate,std.error), ~round(.x,4)),
-         sig=case_when(p.value <0.01 ~ '***',
-                       p.value >0.01 & p.value <0.05 ~'**',
-                       p.value >0.05 & p.value <0.1 ~'*',
-                       p.value >.1 ~''))%>%
-  select(-p.value)%>%
-            rename(Variable=term,Coeficiente=estimate,`Err. Estándar`=std.error,Significancia=sig)%>%
-DT::datatable()
-```
-
-### Muestra Refresco a
-
-
-```{r}
-tabla_m2%>%
-  select(-statistic)%>%
-  mutate(across(c(estimate,std.error), ~round(.x,4)),
-         sig=case_when(p.value <0.01 ~ '***',
-                       p.value >0.01 & p.value <0.05 ~'**',
-                       p.value >0.05 & p.value <0.1 ~'*',
-                       p.value >.1 ~''))%>%
-  select(-p.value)%>%
-            rename(Variable=term,Coeficiente=estimate,`Err. Estándar`=std.error,Significancia=sig)%>%
-DT::datatable()
-```
-
-
-
-
-## Predicciones de los modelos según categorias {.tabset}
-
-
-```{r,include=FALSE}
-vars_pred <- c("muestra","m0_sexo","estrato_disenno","tramo_etario","educ")
-template_predicciones <- c(
-    "### {{nm}}\n",
-    "```{r, predicciones {{nm}} }\n",
-    "grafo_preds('{{nm}}')\n",
-    "```\n",
-    "\n"
-  )
-
-plots_predicciones <- lapply(
-  vars_pred, 
-  function(nm) knitr::knit_expand(text = template_predicciones)
-)
-```
-
-`r knitr::knit(text = unlist(plots_predicciones))`
