@@ -217,10 +217,6 @@ resumen_pesos<- function(var){
   
 }
 
-
-```
-
-```{r}
 vars_pred <- c("muestra","m0_sexo","estrato_disenno","tramo_etario","educ")
 names(vars_pred) <- c("Muestras","Sexo","Estratos","Tramo Etario","Educación")
 pesos_desc <-names(select(elsoc_pesos,starts_with("ponderador")))
@@ -229,6 +225,8 @@ names(pesos_desc)<- c("PTV Sexo", "PTV Sexo Región","PLG")
 
 llaves_pesos <- c("Muestra","PTV Sexo", "PTV Sexo Región","PLG")
 names(llaves_pesos)<- c("muestral", "ponderador01","ponderador02","ponderadorlong_total")
+
+
 ```
 
 # Parte I: Introducción
@@ -324,8 +322,6 @@ Hasta esta etapa, la suma de los pesos se corresponde con el total de la poblaci
 
 # Parte III: Distribución empírica de los pesos
 
-
-
 ## Distribución de los pesos según variables {.tabset}
 
 
@@ -369,6 +365,7 @@ plots_desc_pesos <- lapply(
 `r knitr::knit(text = unlist(plots_desc_pesos))`
 
 ## Aplicación de los pesos a variables
+
 
 ### Porcentaje síntomas depresivos según variables y pesos {.tabset}
 
@@ -556,7 +553,6 @@ plots_seguridad_pond<- lapply(
 
 `r knitr::knit(text = unlist(plots_seguridad_pond))`
 
-
 ## Modelamiento
 
 ### Modelos Estimados {.tabset}
@@ -619,3 +615,4 @@ plots_predicciones <- lapply(
 ```
 
 `r knitr::knit(text = unlist(plots_predicciones))`
+
