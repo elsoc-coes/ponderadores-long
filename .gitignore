@@ -37,3 +37,5 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+modelamiento NR/modelos/bestGEE_QICU_estrato.RDS
+modelamiento NR/modelos/bestGEE_QICU_estrato_m2.RDS

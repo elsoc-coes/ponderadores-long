@@ -45,9 +45,9 @@ style_mono_accent(
 
 <h1> .morado[Ponderadores longitudinales] </h1>
 
-<img src="../../IMG/ELSOC.jpeg" width="px"/>
 
-**.large[ Version BETA | COES | Enero 2023]**
+
+**.large[ COES | Marzo 2023]**
 ---
 <h1> .morado[Estructura presentación] </h1>
 
@@ -269,19 +269,6 @@ DT::datatable()
 ```
 
 
-
----
-
-class: inverse,middle,center
-<h1> Celdas de ajuste </h1>
----
-h1> .morado[Sobre las celdas de ajuste] </h1>
-
-Buscan evitar tener pesos sobre dispersos. 
-
-Hace más robusto a los pesos respecto a errores en la especificación de la función de medias. 
-
-
 ---
 <h1> .morado[Recorte de los pesos] </h1>
 
@@ -290,6 +277,18 @@ Un problema de los pesos originales es que poseen valores extremos importantes, 
 Se toma la decisión de recortar el 10% más extremo de la distribución de los pesos.
 
 Es decir, los valores que sean inferiores al percentil 5 o que sean mayores al 95 son reemplazados por el valor de dichos percentiles respectivamente. De esta manera se evita tener pesos con observaciones perdidas. 
+
+---
+
+class: inverse,middle,center
+<h1> Celdas de ajuste </h1>
+---
+<h1> .morado[Sobre las celdas de ajuste] </h1>
+
+Buscan evitar tener pesos sobre dispersos. 
+
+Hace más robustos
+a los pesos respecto a errores en la especificación de la función de medias. 
 
 ---
 
