@@ -232,7 +232,7 @@ pesos_desc <-names(select(elsoc_pesos,starts_with("ponderador")))
 names(pesos_desc)<- c("TRV Sexo", "TRV Sexo Región","LG Total","LG Panel")
 
 
-llaves_pesos <- c("Muestra","PTV Sexo", "PTV Sexo Región","PLG")
+llaves_pesos <- c("Muestra","TRV Sexo", "TRV Sexo Región","LG Total")
 names(llaves_pesos)<- c("muestral", "ponderador01","ponderador02","ponderadorlong_total")
 
 
@@ -331,6 +331,107 @@ Hasta esta etapa, la suma de los pesos se corresponde con el total de la poblaci
 
 # Parte III: Distribución empírica de los pesos
 
+La presente sección busca dar una mirada empírica a los pesos. En un primer momento se muestran los modelos utilizados en el ajuste de la no respuesta descritos en la sección anterior. Luego se ofrecen gráficos sobre la distribución de las predicciones de los valores predichos de ambos modelos. 
+
+Posterior a esto se ofrecen estadísticos de resumen a los distintos pesos que existen en el estudio ELSOC.
+
+Las nomenclaturas de esta sección son las siguientes:  *TRV Sexo* se refiere al peso transversal que ajusta solo por sexo, en la base ELSOC este el ponderador con el nombre `ponderador01`. *TRV Sexo Región* se refiere al peso transversal que ajusta por Sexo y Región, este es el ponderador que en la base ELSOC lleva el nombre `ponderador02`. *LG Total* corresponde al ponderador longitudinal pensado para el uso con el total de las observaciones de ELSOC. *LG Panel* corresponde al ponderador longitudinal pensado para el uso con cualquiera de los paneles balanceados. 
+
+## Modelamiento
+
+### Modelos Estimados {.tabset}
+
+En las siguientes pestañas se muestran los modelos estimados para hacer el ajuste de no respuesta.
+
+Las variables son las siguientes:
+
+Por lo mismo, en lo que respecta al cuestionario, hemos elegido las variables: *Género del entrevistado*, *Nivel Educacional del Entrevistado*, *Tramo Etario del entrevistado al inicio del estudio*,y *Estado Civil del Entrevistado*. 
+
+La variable *Género del entrevistado* toma los valores "Hombre" y "Mujer", donde "Hombre" es la categoría base. La variable *Nivel Educacional del Entrevistado* toma los valores "Básica","Media","Técnica" y "Universitaria", donde "Básica" es la categoría base. Para el año 2016 la moda fue la categoría "Media". La variable *Tramo Etario del entrevistado al inicio del estudio* toma los valores "18 a 29","30 a 44","45 a 59" y  "60 o más", siendo la primera la categoría de base. Para el año 2016 la moda fue la categoría "45 a 59". Finalmente la variable *Estado Civil del Entrevistado* toma los valores "En Pareja" y "Soltero" donde la primera categoría es la de base.
+
+
+Otra fuente importante de información para ELSOC es la información territorial con la que cuenta el estudio. El Centro de Inteligencia Territorial perteneciente a la Universidad Adolfo Ibañez recopiló información geográfica de las zonas censales de los entrevistados en base a los resultados del Censo 2017. Una característica importante de estas variables es que son fijas para todos lo años del estudio y estas están agregadas a nivel de la zona censal de los entrevistados. Todas estas variables son continuas.
+
+La variable *Densidad poblacional en km2* . La variable *Nivel de Escolaridad Promedio del jefe de Hogar* . La variable *Proporción de vivendas en condiciones de hacinamiento*  La variable *Tamaño promedio de personas por hogar*  La variable *Proporción de viviendas en condiciones precarias*.
+
+Adicionalmente, se evaluaron otras variables que provienen del proceso de recolección de datos. La variable *Número de visitas previo a la entrevista*. La variable *Número de items promedio sin respuesta por módulo* .
+
+#### Muestra Original
+
+```{r}
+tabla_m1%>%
+  select(-statistic)%>%
+  mutate(across(c(estimate,std.error), ~round(.x,4)),
+         sig=case_when(p.value <0.01 ~ '***',
+                       p.value >0.01 & p.value <0.05 ~'**',
+                       p.value >0.05 & p.value <0.1 ~'*',
+                       p.value >.1 ~''))%>%
+  select(-p.value)%>%
+            rename(Variable=term,Coeficiente=estimate,`Err. Estándar`=std.error,Significancia=sig)%>%
+DT::datatable()
+```
+
+#### Muestra Refresco
+
+
+```{r}
+tabla_m2%>%
+  select(-statistic)%>%
+  mutate(across(c(estimate,std.error), ~round(.x,4)),
+         sig=case_when(p.value <0.01 ~ '***',
+                       p.value >0.01 & p.value <0.05 ~'**',
+                       p.value >0.05 & p.value <0.1 ~'*',
+                       p.value >.1 ~''))%>%
+  select(-p.value)%>%
+            rename(Variable=term,Coeficiente=estimate,`Err. Estándar`=std.error,Significancia=sig)%>%
+DT::datatable()
+```
+
+
+
+
+### Predicciones de los modelos según categorias {.tabset}
+
+
+```{r,include=FALSE}
+
+template_predicciones <- c(
+    "#### {{nm}}\n",
+    "```{r, predicciones {{nm}} }\n",
+    "grafo_preds(vars_pred[names(vars_pred)=='{{nm}}'])\n",
+    "```\n",
+    "\n"
+  )
+
+plots_predicciones <- lapply(
+  names(vars_pred), 
+  function(nm) knitr::knit_expand(text = template_predicciones)
+)
+```
+
+`r knitr::knit(text = unlist(plots_predicciones))`
+
+## Descriptivos pesos {.tabset}
+
+```{r,include=FALSE}
+
+template_desc_pesos <- c(
+    "### {{nm}}\n",
+    "```{r, desc pesos {{nm}} }\n",
+    "resumen_pesos(pesos_desc[names(pesos_desc)=='{{nm}}'])%>%DT::datatable() \n",
+    "```\n",
+    "\n"
+  )
+
+plots_desc_pesos <- lapply(
+  names(pesos_desc), 
+  function(nm) knitr::knit_expand(text = template_desc_pesos)
+)
+```
+
+`r knitr::knit(text = unlist(plots_desc_pesos))`
+
+
 ## Distribución de los pesos según variables {.tabset}
 
 
@@ -353,25 +454,7 @@ plots_distribucion_pesos <- lapply(
 `r knitr::knit(text = unlist(plots_distribucion_pesos))`
 
 
-## Descriptivos pesos {.tabset}
 
-```{r,include=FALSE}
-
-template_desc_pesos <- c(
-    "### {{nm}}\n",
-    "```{r, desc pesos {{nm}} }\n",
-    "resumen_pesos(pesos_desc[names(pesos_desc)=='{{nm}}'])%>%DT::datatable() \n",
-    "```\n",
-    "\n"
-  )
-
-plots_desc_pesos <- lapply(
-  names(pesos_desc), 
-  function(nm) knitr::knit_expand(text = template_desc_pesos)
-)
-```
-
-`r knitr::knit(text = unlist(plots_desc_pesos))`
 
 ## Aplicación de los pesos a variables
 
@@ -561,67 +644,4 @@ plots_seguridad_pond<- lapply(
 ```
 
 `r knitr::knit(text = unlist(plots_seguridad_pond))`
-
-## Modelamiento
-
-### Modelos Estimados {.tabset}
-
-Los modelos estimados son glm estimados vía gee. La forma de estimación mediante gee permiten tomar en cuenta en las estimaciones la correlación entre las observaciones. Como desventaja frente a los modelos jerarquicos, los anteriores no pueden considerar más de un nivel de anidamiento, 
-
-Una nota al pie, es que la estimación de los modelos generó objetos de R de alta cantidad (más de 100 mb), esto incluso excedía el limite para subirlos al repositorio de github. Pero con un método de compresión . Sin embargo, el gran tamaño de los modelos podría deberse a una gran cantidad de iteraciones necesarias para garantizar
-
-#### Muestra Original
-
-```{r}
-tabla_m1%>%
-  select(-statistic)%>%
-  mutate(across(c(estimate,std.error), ~round(.x,4)),
-         sig=case_when(p.value <0.01 ~ '***',
-                       p.value >0.01 & p.value <0.05 ~'**',
-                       p.value >0.05 & p.value <0.1 ~'*',
-                       p.value >.1 ~''))%>%
-  select(-p.value)%>%
-            rename(Variable=term,Coeficiente=estimate,`Err. Estándar`=std.error,Significancia=sig)%>%
-DT::datatable()
-```
-
-#### Muestra Refresco
-
-
-```{r}
-tabla_m2%>%
-  select(-statistic)%>%
-  mutate(across(c(estimate,std.error), ~round(.x,4)),
-         sig=case_when(p.value <0.01 ~ '***',
-                       p.value >0.01 & p.value <0.05 ~'**',
-                       p.value >0.05 & p.value <0.1 ~'*',
-                       p.value >.1 ~''))%>%
-  select(-p.value)%>%
-            rename(Variable=term,Coeficiente=estimate,`Err. Estándar`=std.error,Significancia=sig)%>%
-DT::datatable()
-```
-
-
-
-
-### Predicciones de los modelos según categorias {.tabset}
-
-
-```{r,include=FALSE}
-
-template_predicciones <- c(
-    "#### {{nm}}\n",
-    "```{r, predicciones {{nm}} }\n",
-    "grafo_preds(vars_pred[names(vars_pred)=='{{nm}}'])\n",
-    "```\n",
-    "\n"
-  )
-
-plots_predicciones <- lapply(
-  names(vars_pred), 
-  function(nm) knitr::knit_expand(text = template_predicciones)
-)
-```
-
-`r knitr::knit(text = unlist(plots_predicciones))`
 
