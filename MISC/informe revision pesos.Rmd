@@ -18,6 +18,7 @@ knitr::opts_chunk$set(warning = FALSE,
 
 library(readxl)
 library(tidyverse)
+library(viridis)
 library(plotly)
 
 ```
@@ -113,11 +114,13 @@ elsoc_long_2016_2022=elsoc_long_2016_2022%>%
 pesos_elsoc= read_csv("../generar ponderadores/resultados/pesos_longitudinales_elsoc.csv")
 
 elsoc_pesos =elsoc_long_2016_2022%>%
-  left_join(pesos_elsoc,by=c("idencuesta","ola"))
+  left_join(pesos_elsoc,by=c("idencuesta","ola"))%>%
+  mutate(ola=factor(ola, labels = c("2016","2017","2018","2019","2021","2022")))
 
 
 elsoc_merge=elsoc_long_2016_2022%>%
-            left_join(select(elsoc_preds_imp,-estrato_disenno),by=c("idencuesta","ola"))
+            left_join(select(elsoc_preds_imp,-estrato_disenno),by=c("idencuesta","ola"))%>%
+  mutate(ola=factor(ola, labels = c("2016","2017","2018","2019","2021","2022")))
 
 
 ```
@@ -136,7 +139,8 @@ grafo_preds<- function(var){
     labs(x="Valores Predichos",
          y="Densidad",
          color=names(vars_pred)[vars_pred==var])+
-    facet_wrap(~ola)
+    facet_wrap(~ola)+
+  scale_colour_viridis_d()
   
 }
 
@@ -155,8 +159,8 @@ grafo_box_var<- function(var){
          color="Ponderador")+
     facet_wrap(formula(paste0("~",var)),scales = "free")+
     scale_y_continuous(limits = c(0,10))+
-        theme(legend.position = "top") 
-  
+        theme(legend.position = "top")+ 
+  scale_colour_viridis_d()
   
   
 }
@@ -180,10 +184,11 @@ grafo_pesos <- function(var,resp){
     labs(x="Año del Estudio",
          y="Proporción",
          color="Ponderador")+
-    facet_wrap( formula(paste0("~",var)))+
+    facet_wrap( formula(paste0("~",var)),scales = "free")+
     theme(legend.position = "top") +
     scale_y_continuous(labels = scales::percent,
-                       limits = c(0, NA))
+                       limits = c(0, NA))+
+  scale_colour_viridis_d()
   
   return(grafico)
 }
@@ -199,17 +204,21 @@ grafo_pond_var<- function(pond,var){
 
 
 resumen_pesos<- function(var){
+  base <- elsoc_pesos
+  if(var=="ponderadorlong_panel"){
+    base <- filter(elsoc_pesos,tipo_atricion==1)
+  }
   
-  elsoc_pesos%>%
+base%>%
     group_by(muestra,ola)%>%
     summarise(n_año=n(),
               peso=var,
               across({{var}},
                      list(nas=~sum(is.na(.x)),
-                          suma=sum,
-                          min=min,
-                          max=max,
-                          sd=sd),
+                          suma=~sum(.x,na.rm=TRUE),
+                          min=~min(.x,na.rm=TRUE),
+                          max=~max(.x,na.rm=TRUE),
+                          sd=~sd(.x,na.rm=TRUE)),
                      .names = "{fn}"),
               .groups = "drop")%>%
     mutate(across(-c(muestra,ola,n_año,peso), ~round(.x,4)))
@@ -220,7 +229,7 @@ resumen_pesos<- function(var){
 vars_pred <- c("muestra","m0_sexo","estrato_disenno","tramo_etario","educ")
 names(vars_pred) <- c("Muestras","Sexo","Estratos","Tramo Etario","Educación")
 pesos_desc <-names(select(elsoc_pesos,starts_with("ponderador")))
-names(pesos_desc)<- c("PTV Sexo", "PTV Sexo Región","PLG")
+names(pesos_desc)<- c("TRV Sexo", "TRV Sexo Región","LG Total","LG Panel")
 
 
 llaves_pesos <- c("Muestra","PTV Sexo", "PTV Sexo Región","PLG")
@@ -330,13 +339,13 @@ Hasta esta etapa, la suma de los pesos se corresponde con el total de la poblaci
 template_distribucion_pesos <- c(
     "### {{nm}}\n",
     "```{r, distribucion pesos {{nm}} }\n",
-    "grafo_box_var('{{nm}}')\n",
+    "grafo_box_var(vars_pred[names(vars_pred)=='{{nm}}'])\n",
     "```\n",
     "\n"
   )
 
 plots_distribucion_pesos <- lapply(
-  vars_pred, 
+  names(vars_pred), 
   function(nm) knitr::knit_expand(text = template_distribucion_pesos)
 )
 ```
@@ -351,13 +360,13 @@ plots_distribucion_pesos <- lapply(
 template_desc_pesos <- c(
     "### {{nm}}\n",
     "```{r, desc pesos {{nm}} }\n",
-    "resumen_pesos('{{nm}}')%>%DT::datatable() \n",
+    "resumen_pesos(pesos_desc[names(pesos_desc)=='{{nm}}'])%>%DT::datatable() \n",
     "```\n",
     "\n"
   )
 
 plots_desc_pesos <- lapply(
-  pesos_desc, 
+  names(pesos_desc), 
   function(nm) knitr::knit_expand(text = template_desc_pesos)
 )
 ```
@@ -374,13 +383,13 @@ plots_desc_pesos <- lapply(
 template_s10_pond <- c(
     "#### {{nm}}\n",
     "```{r, s10_pond {{nm}} }\n",
-    "grafo_pesos('{{nm}}','phq_s10')\n",
+    "grafo_pesos(vars_pred[names(vars_pred)=='{{nm}}'],'phq_s10')\n",
     "```\n",
     "\n"
   )
 
 plots_s10_pond<- lapply(
-  vars_pred, 
+  names(vars_pred), 
   function(nm) knitr::knit_expand(text = template_s10_pond)
 )
 ```
@@ -398,13 +407,13 @@ Se consideran los valor 4 y 5
 template_satis_pond <- c(
     "#### {{nm}}\n",
     "```{r, satis_pond {{nm}} }\n",
-    "grafo_pesos('{{nm}}','satis_demo')\n",
+    "grafo_pesos(vars_pred[names(vars_pred)=='{{nm}}'],'satis_demo')\n",
     "```\n",
     "\n"
   )
 
 plots_satis_pond<- lapply(
-  vars_pred, 
+  names(vars_pred), 
   function(nm) knitr::knit_expand(text = template_satis_pond)
 )
 ```
@@ -422,13 +431,13 @@ Se consideran los valor 4 y 5
 template_interes_pond <- c(
     "#### {{nm}}\n",
     "```{r, interes_pond {{nm}} }\n",
-    "grafo_pesos('{{nm}}','interes_poli')\n",
+    "grafo_pesos(vars_pred[names(vars_pred)=='{{nm}}'],'interes_poli')\n",
     "```\n",
     "\n"
   )
 
 plots_interes_pond<- lapply(
-  vars_pred, 
+  names(vars_pred), 
   function(nm) knitr::knit_expand(text = template_interes_pond)
 )
 ```
@@ -445,13 +454,13 @@ Se consideran el valor 2
 template_confianza_pond <- c(
     "#### {{nm}}\n",
     "```{r, confianza_pond {{nm}} }\n",
-    "grafo_pesos('{{nm}}','confianza')\n",
+    "grafo_pesos(vars_pred[names(vars_pred)=='{{nm}}'],'confianza')\n",
     "```\n",
     "\n"
   )
 
 plots_confianza_pond<- lapply(
-  vars_pred, 
+  names(vars_pred), 
   function(nm) knitr::knit_expand(text = template_confianza_pond)
 )
 ```
@@ -469,13 +478,13 @@ Se consideran los valor 4 y 5
 template_autori_pond <- c(
     "#### {{nm}}\n",
     "```{r, autori_pond {{nm}} }\n",
-    "grafo_pesos('{{nm}}','autori')\n",
+    "grafo_pesos(vars_pred[names(vars_pred)=='{{nm}}'],'autori')\n",
     "```\n",
     "\n"
   )
 
 plots_autori_pond<- lapply(
-  vars_pred, 
+  names(vars_pred), 
   function(nm) knitr::knit_expand(text = template_autori_pond)
 )
 ```
@@ -492,13 +501,13 @@ Se consideran los valores entre 4 y 6
 template_estatus_pond <- c(
     "#### {{nm}}\n",
     "```{r, estatus_pond {{nm}} }\n",
-    "grafo_pesos('{{nm}}','estatus_sub')\n",
+    "grafo_pesos(vars_pred[names(vars_pred)=='{{nm}}'],'estatus_sub')\n",
     "```\n",
     "\n"
   )
 
 plots_estatus_pond<- lapply(
-  vars_pred, 
+  names(vars_pred), 
   function(nm) knitr::knit_expand(text = template_estatus_pond)
 )
 ```
@@ -516,13 +525,13 @@ Se consideran los valor 4 y 5
 template_satis_vida_pond <- c(
     "#### {{nm}}\n",
     "```{r, satis_vida_pond {{nm}} }\n",
-    "grafo_pesos('{{nm}}','satis_vida')\n",
+    "grafo_pesos(vars_pred[names(vars_pred)=='{{nm}}'],'satis_vida')\n",
     "```\n",
     "\n"
   )
 
 plots_satis_vida_pond<- lapply(
-  vars_pred, 
+  names(vars_pred), 
   function(nm) knitr::knit_expand(text = template_satis_vida_pond)
 )
 ```
@@ -540,13 +549,13 @@ Se consideran los valor 4 y 5
 template_seguridad_pond <- c(
     "#### {{nm}}\n",
     "```{r, seguridad_pond {{nm}} }\n",
-    "grafo_pesos('{{nm}}','seguridad')\n",
+    "grafo_pesos(vars_pred[names(vars_pred)=='{{nm}}'],'seguridad')\n",
     "```\n",
     "\n"
   )
 
 plots_seguridad_pond<- lapply(
-  vars_pred, 
+  names(vars_pred), 
   function(nm) knitr::knit_expand(text = template_seguridad_pond)
 )
 ```
@@ -603,13 +612,13 @@ DT::datatable()
 template_predicciones <- c(
     "#### {{nm}}\n",
     "```{r, predicciones {{nm}} }\n",
-    "grafo_preds('{{nm}}')\n",
+    "grafo_preds(vars_pred[names(vars_pred)=='{{nm}}'])\n",
     "```\n",
     "\n"
   )
 
 plots_predicciones <- lapply(
-  vars_pred, 
+  names(vars_pred), 
   function(nm) knitr::knit_expand(text = template_predicciones)
 )
 ```
