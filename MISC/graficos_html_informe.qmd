@@ -19,7 +19,7 @@ colores_viridis=['#440154','#fde725','#90d743','#3b528b','#21918c','#31688e','#4
 
 
 ```{python}
-ine_sexo=pd.read_csv('../datos/insumos_ponderadores/ine/totales_ine_sexo.csv').query('año!=2020')
+ine_sexo=pd.read_csv().query('año!=2020')
 ine_sexo['año']=ine_sexo['año'].astype(str)
 ine_sexo['prop']=ine_sexo.groupby(['año'])['total'].transform(lambda x: (100*x/x.sum()).round(4))
 ```
