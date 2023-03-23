@@ -260,7 +260,7 @@ El ponderador más básico se calcula considerando únicamente el inverso de la 
 
 La idea general de los ponderadores longitudinales elaborados es tomar los pesos de diseño y aplicarles las siguientes transformaciones: 1) Un ajuste de no respuesta que considera la probabilidad de participación de un individuo en un año en particular; 2) Recortar las colas más extremas de la distribución empírica de los pesos; 3) Ajuste que considera totales poblacionales; y finalmente 4) Re-escalamiento de los pesos a cantidades muestrales. 
 
-Los ponderadores longitudinales que entrega ELSOC a la comunidad no son un reemplazo de los ponderadores transversales, sino más bien un complemento, y una herramienta útil para los investigadores preocupados de tomar en cuenta la atrición y la información disponible sobre la población objetivo en sus análisis. En concreto, estos consisten en dos columnas de pesos: Por un lado ponderadorlong_total, que tiene como propósito ser empleado con todas las observaciones disponibles de ELSOC, ya sea con ambas muestras juntas o cada muestra por separado; y el ponderadorlong_panel, que busca ser utilizado con el subconjunto de observaciones de ELSOC de personas que han respondido a todas las olas, ya sea para la muestra original o la muestra de refresco.
+Los ponderadores longitudinales que entrega ELSOC a la comunidad no son un reemplazo de los ponderadores transversales, sino más bien un complemento, y una herramienta útil para los investigadores preocupados de tomar en cuenta la atrición y la información disponible sobre la población objetivo en sus análisis. En concreto, estos consisten en dos columnas de pesos: Por un lado `ponderador_long_total`, que tiene como propósito ser empleado con todas las observaciones disponibles de ELSOC, ya sea con ambas muestras juntas o cada muestra por separado; y el `ponderador_long_panel`, que busca ser utilizado con el subconjunto de observaciones de ELSOC de personas que han respondido a todas las olas, ya sea para la muestra original o la muestra de refresco.
 
 En las secciones siguientes del documento se detallan los pasos y decisiones tomadas en cada etapa de la construcción de ambos pesos.
 
@@ -286,7 +286,7 @@ En términos prácticos, no existen diferencias  importantes en la utilización 
 
 El lugar donde más impactan las diferencias importantes en la distribución de distintas sub-muestras para variables auxiliares como sexo y tramo etario es respecto a los ajustes que se realizan en torno a los totales poblacionales conocidos. Por ejemplo: Si se busca que los ponderadores sean capaces de reproducir la proporción poblacional de sexo, es notorio que debe ser diferente el ajuste necesario para una muestra cuya composición es de  60% de mujeres, respecto a otra muestra con un 50% de mujeres.    Por lo mismo, un análisis que quiera ser cauteloso respecto a la capacidad de sus estimadores de reproducir la información poblacional disponible en variables auxiliares debe considerar las proporciones de dichas variables en su muestra y considerar un ajuste específico a las proporciones efectivamente observadas.
 
-De este modo, la recomendación es utilizar el ponderador longitudinal de panel cuando se utilicen cualquiera de los dos paneles, mientras que cuando se utilice el total de las observaciones de ELSOC, el usuario puede elegir libremente entre los ponderadores transversales y los ponderadores longitudinales.    En ese sentido, la diferencia más importante entre uno y otro ponderador longitudinal es realmente respecto al conjunto de observaciones con las que se quiere trabajar: El ponderadorlong_panel, está pensado para el investigador que quiera trabajar con la muestra sin atrición. También, no está de más recordar que el uso recomendado de estos ponderadores es con más de una ola de estudio, esto porque el ajuste de no respuesta considera un modelamiento con todos los años de aplicación de ESLOC, lo cual podría significar incorporar información innecesaria para un investigador interesado sólo en un año de estudio.
+De este modo, la recomendación es utilizar el ponderador longitudinal de panel cuando se utilicen cualquiera de los dos paneles, mientras que cuando se utilice el total de las observaciones de ELSOC, el usuario puede elegir libremente entre los ponderadores transversales y los ponderadores longitudinales.    En ese sentido, la diferencia más importante entre uno y otro ponderador longitudinal es realmente respecto al conjunto de observaciones con las que se quiere trabajar: El `ponderador_long_panel`, está pensado para el investigador que quiera trabajar con la muestra sin atrición. También, no está de más recordar que el uso recomendado de estos ponderadores es con más de una ola de estudio, esto porque el ajuste de no respuesta considera un modelamiento con todos los años de aplicación de ESLOC, lo cual podría significar incorporar información innecesaria para un investigador interesado sólo en un año de estudio.
 
 Ahora bien, lo expresado hasta el momento se limita a dos casos extremos del uso de las observaciones disponibles del estudio ELSOC.  Es evidente que existen investigadores interesados en hacer análisis con una combinación de olas y muestras distintas en lo que se ha expuesto hasta el momento. De ser este el caso, y si el analista no está dispuesto a implementar una ponderación longitudinal específico para su análisis, la recomendación es revisar la composición por año del conjunto de observaciones disponibles para el análisis de interés y evaluar si la composición de variables claves como sexo y tramos etarios son más similares a las encontradas en el total de observaciones ELSOC, o si es más similar a los paneles balanceados y utilizar el ponderador correspondiente.  Por ejemplo, se puede pensar en un investigador que quisiera indagar en las diferencias entre la proporción de interesados en política según niveles educacionales, pero sólo entre los años 2016 y 2022.  Esto último es importante ya que este investigador sólo está interesado en las observaciones que responden conjuntamente el año 2016 y el año 2019, sin importar la respuesta a los años 2016 y 2017. En este sentido, se debiese filtrar por las observaciones que responden en dicho periodo (2016 y 2019) y obtener las proporciones en las variables de sexo y edad, a partir de esto, evaluar si dicha composición es más similar a las proporciones del grupo de observaciones que responden todas las olas del estudio, que con respecto a las proporciones del total de observaciones disponibles de ELSOC.
 
@@ -319,13 +319,49 @@ Como paso final se re-escalan los pesos correspondientes para que la suma de est
 
 En los siguientes apartados se busca ahondar en los detalles de los pasos anteriores. Para hacer explícito cada paso en la construcción de los pesos longitudinales cada uno de estos tiene su sección particular, sin embargo, las secciones más extensas corresponden a los ajustes de no respuesta y los ajustes respecto a proporciones poblacionales conocidas. 
 
-## Pesos de diseño
-Un punto de partida es recordar los pesos de diseño y los ajustes de no respuesta que se hacen en los pesos transversales. El detalle se encuentra en el manual de usuario ELSOC. Este informe se limita a reproducir el cálculo de la probabilidad de selección (cuyo inverso es el peso de diseño) y el ajuste por no respuesta.
+## Pesos transversales
+Una consideración importante para entender la construcción de los ponderadores longitudinales es recordar los pesos de diseño y los ajustes de no respuesta de los pesos transversales. 
+El detalle se encuentra en el manual de usuario ELSOC. Este informe se limita a reproducir el cálculo de la probabilidad de selección (cuyo inverso es el peso de diseño) y el ajuste por no respuesta.
 
+### Pesos de diseño
 
+$$P_{ijlk} = \pi_{i|jlk}\pi_{j|lk}\pi_{lk}$$
+
+Donde:
+
+* $\pi_{i|jlk}$ es la probabilidad de que el individuo $i$ sea seleccionado en la muestra dado que la vivienda dónde vive y la manzana dónde se localiza fueron seleccionadas,dentro del estrato $k$.
+* $\pi_{_j|lk}$ es la probabilidad de que la vivienda $j$ sea seleccionada en la muestra dado que la manzana $l$ (que contiene a la vivienda $j$) fue seleccionada.
+* $\pi_{lk}$ es la probabilidad de que lamanzana $l$ del estrato $k$ sea seleccionada en la muestra.
+
+Se define el ponderador de diseño $w_{ijlk}$ como el inverso de la probabilidad de selección de cada individuo en la muestra:
+
+$$w_{ijlk}=\frac{1}{ P_{ijlk}}$$
+
+Las probabilidades que componen la probabilidad de selección son calculadas mediante:
+
+$$\pi_{lk} = n_k\frac{M_{lk}}{M_k}$$
+
+$$\pi_{j|lk} = \frac{m_{lk}}{M'_{lk}}$$
+
+$$\pi_{i|jlk} = \frac{1}{N_{jlk}}$$
+
+Donde se tiene que $n_k$ es el número de manzanas a seleccionar del estrato $k$, $M_{lk}$ es el número de viviendas de la manzana $l$ del estrato $k$, $M_k$ es el número total de viviendas del estrato $k$. $m_{lk}$ es el número de viviendas a encuestar dentro de la manzana $l$, $M'_k$ es el número actualizado de viviendas de la manzana $l$ post-empadronamiento, y $N_{jlk}$ es el número de personas de la
+población objetivo que vive en la vivienda $j$ de la manzana $l$ del estrato $k$.
+
+### Ajuste de no respuesta (Pesos transversales)
+
+Los ponderadores transversales luego modifican los pesos de diseño en base a la no respuesta inicial de la manzana en la que se encuentra cada individuo. De este modo, damos más peso a las observaciones que están en manzanas donde pocas personas responden. 
+
+Este ajuste se realiza en base a un factor de no respuesta para la manzana $f_l$, y se estima como el inverso de la proporción de viviendas dentro de la manzana $l$ que responden la encuesta.
+
+$$f_l=\frac{m_l}{resp_l}$$
+
+Donde $m_l$ es el número de viviendas seleccionadas para estar en la muestra, y $resp_l$ es el número de viviendas seleccionadas que participan en ELSOC.
+
+Cabe recordar que los pesos longitudinales toman a los pesos de diseño con el ajuste de no respuesta transversal para la primera ola de cada muestra, para las olas siguientes se modifican los pesos de diseño directamente considerando un ajuste de no respuesta que toma en cuenta todos los años de aplicación del estudio (a excepción de la primera ola de cada muestra). 
 
 ## Ajuste de no respuesta
-El primer paso en las transformaciones de los pesos es el ajuste de no respuesta. Este se realiza en dos pasos: Primero se hace una estimación de la probabilidad de participación en el estudio para una persona en un año en particular, y como segundo paso se modifican los pesos de diseño mediante celdas de ajuste a partir de los valores predichos del modelo y los estratos del diseño muestral del estudio. 
+Ahora bien, el primer paso propiamente longitudinal en la construcción de los ponderadores longitudinales es el ajuste por no respuesta a partir de la segunda ola de cada muestra. Este se realiza en dos pasos: Primero se hace una estimación de la probabilidad de participación en el estudio para una persona en un año en particular, y como segundo paso se modifican los pesos de diseño mediante celdas de ajuste a partir de los valores predichos del modelo y los estratos del diseño muestral del estudio. 
 Para estimar la probabilidad de participación de una persona en el estudio para un año particular se ocupa como técnica estadística una regresión logística estimada vía ecuaciones de estimación generalizadas (GEE). Esta última permite la estimación de probabilidades para observaciones correlacionadas mediante el empleo de una estructura autorregresiva para la matriz de covarianza de las observaciones de una misma unidad de análisis.
 
 Para obtener valores predichos de todos los individuos, se hace un modelo distinto para cada muestra. Esto principalmente por la ausencia de información para los años 2016 y 2017 de las personas de la muestra de refresco. Esto puede interpretarse como asumir que la muestra original y la muestra refresco poseen un proceso de atrición diferente. Ahora bien, ambos modelos estimados se obtienen vía un algoritmo de selección backward sobre un mismo conjunto de covariables. Estas covariables provienen de tres fuentes principales: a) De las respuestas al cuestionario de la primera ola de cada muestra, b) Información geográfica en base al censo 2017 sobre las manzanas de las personas, c) Sobre el proceso de recolección de datos. Al mismo tiempo, el modelamiento sólo se hace sobre la base de las observaciones que participaron en la primera ola del estudio.
@@ -379,7 +415,7 @@ El insumo para obtener dichos totales poblacionales es la base de proyecciones p
 
 Otro aspecto novedoso con respecto a los pesos transversales es la técnica utilizada para hacer dichos ajustes, si en los primeros se hacía una post-estratificación, en los pesos longitudinales se hace un raking  (Lumley, 2012, Capítulo 7) (Wu, Thompson, 2020, Capítulo 6) (Lohr, 2010, Capítulo 8). El cual permite que simultáneamente los estimadores ponderados reproduzcan los totales poblacionales para las variables de tramo etario y sexo.
 
-Este ajuste se implementa de modo que los pesos son capaces de reproducir las proporciones poblacionales deseadas ya sea usando ambas muestras juntas o cada muestra por separado. Es en este punto donde se toma la decisión de elaborar dos ponderadores distintos, considerando los usos descritos al inicio del documento: El ponderador de nombre ponderadorlong_total, reproduce las proporciones poblacionales de las variables sexo y tramo etario para ambas muestras, o cada muestra por separado pero cuando se usan todas las observaciones. Mientras que el ponderadorlong_panel es capaz de reproducir las proporciones poblacionales de dichas variables, pero para el subconjunto de observaciones que responden todas las olas, tanto para la muestra original como la muestra de refresco.
+Este ajuste se implementa de modo que los pesos son capaces de reproducir las proporciones poblacionales deseadas ya sea usando ambas muestras juntas o cada muestra por separado. Es en este punto donde se toma la decisión de elaborar dos ponderadores distintos, considerando los usos descritos al inicio del documento: El ponderador de nombre `ponderador_long_total`, reproduce las proporciones poblacionales de las variables sexo y tramo etario para ambas muestras, o cada muestra por separado pero cuando se usan todas las observaciones. Mientras que el `ponderador_long_panel` es capaz de reproducir las proporciones poblacionales de dichas variables, pero para el subconjunto de observaciones que responden todas las olas, tanto para la muestra original como la muestra de refresco.
 
 Uno de los aspectos más importantes de los pesos que usualmente se encuentran en las encuestas es incorporar información conocida sobre la población objetivo para corregir la distribución de estimadores ponderados de variables auxiliares claves. 
  
@@ -393,6 +429,10 @@ Hasta esta etapa, la suma de los pesos se corresponde con el total de la poblaci
 Chen Q, Gelman A, Tracy M, Norris FH, Galea S. Incorporating the sampling design in weighting adjustments for panel attrition. Stat Med. 2015 Dec 10;34(28):3637-47.
 
 Fitzmauirce G, Laird N, Ware J (2011) Applied Longitudinal Analysis, Second Edition, Wiley Series in Probability and Statistics.
+
+McCulloch C, Searle S, Neuhaus J, (2008) Generalized, linear, and Mixed Models, Second Edition, Wiley Series on Applied Probability and Statistics.
+
+Diggle P, Liang K, Zeger S (1994) Analysis of longitudinal data, Oxford Statistical Science.  
 
 Lumley,T  (2011) Complex Surveys: A guide to Analysis Using R, Wiley Series in Survey Methodology.
 
