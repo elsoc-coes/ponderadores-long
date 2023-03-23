@@ -107,6 +107,6 @@ master_pesos <- elsoc_long_dv_nr%>%
 pesos_longitudinales_elsoc <-master_pesos %>%
                               select(idencuesta,ola,starts_with("ponderador"))
 
-write.csv(master_pesos,file="generar ponderadores/resultados/master_pesos.csv",row.names = FALSE)
+write_csv(master_pesos,file="generar ponderadores/resultados/master_pesos.csv",row.names = FALSE)
 
-write.csv(pesos_longitudinales_elsoc,file="generar ponderadores/resultados/pesos_longitudinales_elsoc.csv",row.names = FALSE)
+write_csv(pesos_longitudinales_elsoc,file="generar ponderadores/resultados/pesos_longitudinales_elsoc.csv",row.names = FALSE)
