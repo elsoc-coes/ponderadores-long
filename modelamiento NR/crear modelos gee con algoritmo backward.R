@@ -86,7 +86,7 @@ saveRDS(bestGEE_QICU_m2,
         compress = "bzip2")
 
 
-
+#############################LA GRAN LINEA############################################
 bestGEE_QICU_estrato <- back_gee(m1,covariables,"QICu","estrato_disenno")
 bestGEE_QICU_estrato_m2 <- back_gee(m2,covariables,"QICu","estrato_disenno")
 

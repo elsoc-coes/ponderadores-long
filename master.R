@@ -7,8 +7,11 @@ source("datos/codigo/I-C-crear bases CIT.R")
 
 # MODELAMIENTO NR ---------------------------------------------------------
 
-
 source("datos/codigo/II-crear base modelo.R")
+
+# La construccion misma del modelo está dentro:
+#modelamiento NR/crear modelos gee con algoritmo backward.R
+
 
 
 # IMPUTAR VALORES EN BASE MODELO

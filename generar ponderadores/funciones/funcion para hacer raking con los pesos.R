@@ -25,7 +25,7 @@ rake_pesos<- function(base,pesos,años){
                            
                            pop_edad <- data.frame(tramo_etario=filter(totales_ine_edad,año==i)$tramo_etario, 
                                                   Freq=filter(totales_ine_edad,año==i)$total)
-                           
+                        # Revisar funcion rake() del paquete survey (Tambien revisar capitulo 7 del lumley 2012)   
                            svd_diseno_rk <-rake(svd_diseno, list(~m0_sexo,~tramo_etario), list(pop_sexo,pop_edad))
                            
                            

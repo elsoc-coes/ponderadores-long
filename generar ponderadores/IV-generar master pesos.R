@@ -1,7 +1,12 @@
 library(tidyverse)
 
+#Base oficial longitudinal
 load("datos/oficiales/ELSOC_Long_2016_2022_v1.00_R.RData")
+
+# Ponderadores desde microdatos:
 factores_expansion <- readRDS("datos/insumos_ponderadores/factores_expansion.RDS")%>%
+#pd_diseno= Inverso de probabilidad de seleccion
+  #pd_nr= Ajuste de no respuesta
                       select(idencuesta,ola,pd_diseno,pd_nr,muestra)
 
 
@@ -9,9 +14,10 @@ factores_expansion <- readRDS("datos/insumos_ponderadores/factores_expansion.RDS
 # GENERAR CELDAS DE AJUSTE ------------------------------------------------
 
 
-
+#Hacemos merge de las predicciones del modelo escogido con la base long oficiales
 elsoc_preds_imp <- readRDS("modelamiento NR/predicciones/elsoc_preds_imp.RDS")%>%
   left_join(select(elsoc_long_2016_2022,idencuesta,ola),by=c("idencuesta","ola"))%>%
+#Agrupamos por ola y estrato para obtener las tasas de respuesta al interior de cada celda
   group_by(ola,estrato_disenno)%>%
   mutate("cat_pred_estrato"=cut(preds_gee,
                         quantile(preds_gee),
@@ -21,12 +27,14 @@ elsoc_preds_imp <- readRDS("modelamiento NR/predicciones/elsoc_preds_imp.RDS")%>
   mutate(across(responde,~sum(responde)/length(responde),.names = "tasa_resp_estrato"))%>%
   ungroup()
 
-
+#Haces merge un merge de lo anterior con los pesos originales de microdatos
 elsoc_nr <- factores_expansion%>%
             left_join(elsoc_preds_imp,by=c("idencuesta","ola"))%>%
+  #Hacer ajuste en base a la tasa de respuesta del estrato para los años posteriores a cada muestra
             mutate(pd_celdas_estrato=ifelse(muestra==1,
                                     ifelse(ola==1,pd_nr,pd_diseno/tasa_resp_estrato),
-                                    ifelse(ola==3,pd_nr,pd_diseno/tasa_resp_estrato)),
+                        # Dentro de la muestra 2 (Refresco) ver si es la primera ola.   
+                                      ifelse(ola==3,pd_nr,pd_diseno/tasa_resp_estrato)),
                    responde=ifelse(muestra==1,
                                    ifelse(ola==1,1,responde),
                                    ifelse(ola==3,1,responde)))%>%
@@ -37,10 +45,12 @@ elsoc_nr <- factores_expansion%>%
 
 source("generar ponderadores/funciones/funcion para podar los pesos.R")
 
-#CELDAS ESTRATO
+#Se hace un trim en los percentilers 5 y 95
 elsoc_nr$pd_celdas_estrato_trm=trimpesos_unev(elsoc_nr,5,95,"pd_celdas_estrato")$pd_trimmed
 # RAKING ------------------------------------------------------------------
 
+# Se crean las categorias de las variables de tramo etario y sexo 
+# para garantizar que sean las mismas que las de las bases del INE
 elsoc_long_dv_nr <- elsoc_long_2016_2022%>%
   select(idencuesta,ola, muestra,tipo_atricion,m0_sexo,m0_edad,segmento_disenno)%>%
   mutate( tramo_etario= factor(case_when(
@@ -59,19 +69,21 @@ elsoc_long_dv_nr <- elsoc_long_2016_2022%>%
 source("generar ponderadores/funciones/funcion para re escalar los pesos.R")
 source("generar ponderadores/funciones/funcion para hacer raking con los pesos.R")
 
-# PONDERADOR POR MUESTRAS -------------------------------------------------
+# PONDERADOR PARA EL TOTAL DE OBSERVACIONES-------------------------------------------------
 
+#Se hace un raking en base al peso con la no respuesta y con un trim
+# Notar que se hace un rake para cada año, y para cada muestra 
 
-# CELDAS DE AJUSTE ESTRATO
 pesos_celdas_estrato_m1 =rake_pesos(filter(elsoc_long_dv_nr,muestra==1),"pd_celdas_estrato_trm", c(2016,2017,2018,2019,2021,2022))%>%
   mutate(muestra=1)
+#Se re-escalan los pesos para que 
 pesos_celdas_estrato_m1$pd_celdas_estrato_rk_rs = rs_pesos(pesos_celdas_estrato_m1,"pd_rk")
 
 pesos_celdas_estrato_m2 = rake_pesos(filter(elsoc_long_dv_nr,muestra==2),"pd_celdas_estrato_trm", c(2018,2019,2021,2022))%>%
   mutate(muestra=2)
 pesos_celdas_estrato_m2$pd_celdas_estrato_rk_rs= rs_pesos(pesos_celdas_estrato_m2,"pd_rk")
 
-
+# Se juntan las dos  bases anteriores.
 
 
 elsoc_long_dv_nr=list(elsoc_long_dv_nr,
@@ -82,7 +94,9 @@ elsoc_long_dv_nr=list(elsoc_long_dv_nr,
 
 
 # PONDERADOR POR PANELES --------------------------------------------------
-pesos_panel1 <- rake_pesos(filter(elsoc_long_dv_nr,tipo_atricion==1,muestra==1),"pd_celdas_estrato_trm", c(2016,2017,2018,2019,2021,2022))%>%
+pesos_panel1 <- rake_pesos(filter(elsoc_long_dv_nr,tipo_atricion==1,muestra==1),
+                           "pd_celdas_estrato_trm", 
+                           c(2016,2017,2018,2019,2021,2022))%>%
   mutate(muestra=1)
 pesos_panel1$pd_rk_rs <- rs_pesos(pesos_panel1,"pd_rk")
 
