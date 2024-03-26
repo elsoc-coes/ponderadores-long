@@ -18,6 +18,68 @@ covariables <- c("ola_fac","sexo_imp","estrato_disenno","edad_imp_tramo","edu_im
                 "prop_hacina_c","tamagno_hog_c","cant_pers_prom_c","prop_precaria_c")
 
 
+qic_elsoc=function (object, ..., tol = .Machine$double.eps, env = parent.frame()) 
+{
+  if (!("geeglm" %in% class(object))) {
+    stop("QIC requires a geeglm object as input")
+  }
+  invert <- if ("MASS" %in% loadedNamespaces()) {
+    MASS::ginv
+  }
+  else {
+    solve
+  }
+  computeqic <- function(object) {
+    mu <- object$fitted.values
+    y <- object$y
+    type <- family(object)$family
+    quasi <- switch(type, poisson = sum((y * log(mu)) - mu), 
+                    gaussian = sum(((y - mu)^2)/-2), binomial = sum(y * 
+                                                                      log(mu/(1 - mu)) + log(1 - mu)), Gamma = sum(-y/(mu - 
+                                                                                                                         log(mu))), stop("Error: distribution not recognized"))
+    object$call$corstr <- "independence"
+    object$call$zcor <- NULL
+    object$call$formula <-object$formula
+    base <- object$data
+    object$call$data<- base
+    
+    model.indep <- eval(object$call, envir = env)
+    AIinverse <- invert(model.indep$geese$vbeta.naiv, tol = tol)
+    Vr <- object$geese$vbeta
+    trace <- sum(diag(AIinverse %*% Vr))
+    params <- length(coef(object))
+    kpm <- params + length(object$geese$alpha)
+    QIC <- -2 * (quasi - trace)
+    QICu <- -2 * (quasi - params)
+    QICC <- QIC + (2 * kpm * (kpm + 1))/(length(unique(object$id)) - 
+                                           kpm - 1)
+    output <- c(QIC, QICu, quasi, trace, params, QICC)
+    names(output) <- c("QIC", "QICu", "Quasi Lik", "CIC", 
+                       "params", "QICC")
+    output
+  }
+  if (length(list(...))) {
+    results <- lapply(list(object, ...), computeqic)
+    check <- sapply(list(object, ...), function(x) {
+      length(x$y)
+    })
+    if (any(check != check[1])) 
+      warning("models are not all fitted to the same number of observations")
+    res <- do.call("rbind", results)
+    Call <- match.call()
+    Call$k <- NULL
+    row.names(res) <- as.character(Call[-1L])
+    res
+  }
+  else {
+    computeqic(object)
+  }
+}
+
+
+
+
+
 
 
 back_gee <-function(base,vars,metrica,fijas=NULL){
@@ -54,12 +116,12 @@ back_gee <-function(base,vars,metrica,fijas=NULL){
     tabla<- tibble("out"=sapply(1:length(modelos),
                                 function(i){setdiff(var_all, 
                                             labels(terms(modelos[[i]]$formula)))}))%>%
-            mutate(valor=sapply(modelos, function(i){QIC(i)[metrica]}),
-                   dife=QIC(modelo_all)[metrica]-valor)
+            mutate(valor=sapply(modelos, function(i){qic_elsoc(i)[metrica]}),
+                   dife=qic_elsoc(modelo_all)[metrica]-valor)
     
     
     #SALIDA LOOP
-    if(QIC(modelo_all)[metrica]-min(tabla$valor)<1) {break} 
+    if(qic_elsoc(modelo_all)[metrica]-min(tabla$valor)<1) {break} 
     else{
       name_covs <-labels(terms(modelos[[which.min(tabla$valor)]]))
     print(list("fuera"=tabla[which.min(tabla$valor),]$out,
@@ -82,18 +144,9 @@ saveRDS(bestGEE_QICU,file = "modelamiento NR/modelos/bestGEE_QICU.RDS",
 
 bestGEE_QICU_m2 <- back_gee(m2,covariables,"QICu")
 saveRDS(bestGEE_QICU_m2,
-        file = "modelamiento NR/modelos/bestGEE_QICU_m2.RDS",
+       file = "modelamiento NR/modelos/bestGEE_QICU_m2.RDS",
         compress = "bzip2")
 
-
-#############################LA GRAN LINEA############################################
-bestGEE_QICU_estrato <- back_gee(m1,covariables,"QICu","estrato_disenno")
-bestGEE_QICU_estrato_m2 <- back_gee(m2,covariables,"QICu","estrato_disenno")
-
-saveRDS(bestGEE_QICU_estrato,file = "modelamiento NR/modelos/bestGEE_QICU_estrato.RDS",
-        compress = "bzip2")
-saveRDS(bestGEE_QICU_estrato_m2,file = "modelamiento NR/modelos/bestGEE_QICU_estrato_m2.RDS",
-        compress = "bzip2")
 
 
 
